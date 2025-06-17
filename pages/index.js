@@ -1,11 +1,13 @@
-import React from 'react'
-
+import React from "react";
+import Navbar from "./components/Navbar";
+import Home from "./components/Home";
 const index = () => {
   return (
     <>
-      <h1>Hello World</h1>
+      <Navbar />
+      <Home />
     </>
-  )
-}
+  );
+};
 
-export default index
+export default index;
