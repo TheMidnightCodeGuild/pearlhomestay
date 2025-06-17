@@ -1,32 +1,63 @@
-import React, { useState, useRef } from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
+import React, { useState, useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
+
+const ChevronDown = () => (
+  <svg
+    className="w-4 h-4 text-[#8B593E] pointer-events-none absolute right-3 top-1/2 transform -translate-y-1/2"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+  >
+    <path
+      d="M6 9l6 6 6-6"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+const CalendarIcon = () => (
+  <svg
+    className="w-5 h-5 text-[#8B593E] mr-2"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+  >
+    <rect x="3" y="4" width="18" height="18" rx="2" strokeWidth="2" />
+    <path d="M16 2v4M8 2v4M3 10h18" strokeWidth="2" />
+  </svg>
+);
 
 const CircleModal = ({ open, onClose, children }) => {
   const modalRef = useRef(null);
 
   React.useEffect(() => {
+    const body = document.body;
     if (open) {
-      document.body.style.overflow = 'hidden';
+      body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = '';
+      body.style.overflow = "";
     }
     return () => {
-      document.body.style.overflow = '';
+      body.style.overflow = "";
     };
   }, [open]);
 
   return (
     <div
       className={`fixed inset-0 z-50 flex items-center justify-center transition-all duration-500 ${
-        open ? 'pointer-events-auto' : 'pointer-events-none'
+        open ? "pointer-events-auto" : "pointer-events-none"
       }`}
       aria-modal="true"
       role="dialog"
     >
       <div
         className={`absolute inset-0 bg-black/40 transition-opacity duration-500 ${
-          open ? 'opacity-100' : 'opacity-0'
+          open ? "opacity-100" : "opacity-0"
         }`}
         onClick={onClose}
       />
@@ -38,12 +69,10 @@ const CircleModal = ({ open, onClose, children }) => {
           bg-[#C6A38D]/60 backdrop-blur-sm px-4 sm:px-8 py-6 sm:py-10 
           w-[95%] sm:min-w-[300px] md:min-w-[1000px] min-h-[220px] 
           max-w-[95vw] max-h-[95vh] border-2 rounded-3xl
-          ${open ? 'opacity-100' : 'opacity-0'}
+          ${open ? "opacity-100" : "opacity-0"}
         `}
         style={{
-          clipPath: open
-            ? 'circle(170% at 100% 0%)'
-            : 'circle(0% at 100% 0%)',
+          clipPath: open ? "circle(170% at 100% 0%)" : "circle(0% at 100% 0%)",
         }}
       >
         {children}
@@ -52,50 +81,55 @@ const CircleModal = ({ open, onClose, children }) => {
   );
 };
 
-const ChevronDown = () => (
-  <svg 
-    className="w-4 h-4 text-[#8B593E] pointer-events-none absolute right-3 top-1/2 transform -translate-y-1/2" 
-    fill="none" 
-    stroke="currentColor" 
-    viewBox="0 0 24 24"
-  >
-    <path d="M6 9l6 6 6-6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-
 const Home = () => {
   const [modalOpen, setModalOpen] = useState(false);
-  const [checkIn, setCheckIn] = useState('');
-  const [checkOut, setCheckOut] = useState('');
-  const [adults, setAdults] = useState(1);
-  const [children, setChildren] = useState(0);
+  const [bookingData, setBookingData] = useState({
+    checkIn: "",
+    checkOut: "",
+    adults: 1,
+    children: 0,
+  });
+
+  const handleInputChange = (field, value) => {
+    setBookingData((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+  };
 
   const handleBookingSubmit = (e) => {
     e.preventDefault();
+    // Add booking logic here
+    console.log("Booking submitted:", bookingData);
     setModalOpen(false);
   };
 
+  const today = new Date().toISOString().split("T")[0];
+
   return (
-    <main className="w-full min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
-      <div className="absolute inset-0 w-full h-full z-0 mt-[145.1px]">
+    <main className="w-full h-screen flex flex-col items-center justify-center relative overflow-hidden">
+      <div className="absolute inset-0 w-full h-full z-0 sm:mt-[145.1px] mt-[95px]">
         <Image
           src="/images/home.png"
           alt="Homestay Background"
           fill
           className="object-cover object-center"
           priority
+          sizes="100vw"
         />
       </div>
 
       <section className="w-full flex flex-col md:flex-row items-center justify-between lg:max-w-[1300px] mx-auto px-4 sm:px-6 py-12 sm:py-20 md:py-32 relative z-10">
-        <div className="flex-1 flex flex-col items-center md:items-start justify-center z-10 md:-mx-28 mt-20 md:mt-28">
-          <h1 className="text-3xl sm:text-4xl md:text-[43px] font-semibold text-[#4A2511] mb-3 uppercase text-center md:text-left">
+        <div className="flex-1 flex flex-col items-center md:items-start justify-center z-10 md:-mx-20 mt-20 md:mt-28">
+          <h1 className="text-3xl sm:text-4xl md:text-[49px] font-extralight text-[#4A2511] mb-3 uppercase text-center md:text-left font-masiku md:bg-transparent bg-[#F2E2D7]/50 p-2 rounded-lg">
             Welcome to <span className="text-[#8B593E]">Pearl Homestay</span>
           </h1>
-          <p className="text-base sm:text-lg md:text-base text-[#4A2511]/90 mb-4 max-w-lg text-center md:text-left mx-4 md:mx-10 italic">
-            Experience comfort, warmth, and tranquility at our family-run homestay. Nestled in nature, our cozy rooms and personalized service make you feel right at home.
+          <p className="text-sm sm:text-lg md:text-base text-[#4A2511]/90 mb-4 max-w-lg text-center md:text-left italic md:bg-transparent bg-[#F2E2D7]/50 p-2 rounded-lg">
+            &quot;Experience comfort, warmth, and tranquility at our family-run
+            homestay. Nestled in nature, our cozy rooms and personalized service
+            make you feel right at home.&quot;
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 mx-4 md:mx-44">
+          <div className="flex flex-row gap-4">
             <button
               onClick={() => setModalOpen(true)}
               className="w-full sm:w-auto px-5 py-3 bg-[#8B593E] text-[#F2E2D7] rounded-full font-semibold text-sm shadow-md hover:bg-[#6B4530] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#8B593E]/50"
@@ -123,17 +157,14 @@ const Home = () => {
           {/* Check In */}
           <div className="flex flex-col w-full md:w-auto">
             <div className="flex items-center bg-white rounded-lg shadow-md px-3 py-2">
-              <svg className="w-5 h-5 text-[#8B593E] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <rect x="3" y="4" width="18" height="18" rx="2" strokeWidth="2" />
-                <path d="M16 2v4M8 2v4M3 10h18" strokeWidth="2" />
-              </svg>
+              <CalendarIcon />
               <input
                 type="date"
                 className="outline-none h-10 text-base sm:text-lg bg-transparent w-full text-[#4A2511] placeholder-[#8B593E]/60"
-                value={checkIn}
-                onChange={e => setCheckIn(e.target.value)}
+                value={bookingData.checkIn}
+                onChange={(e) => handleInputChange("checkIn", e.target.value)}
                 required
-                min={new Date().toISOString().split('T')[0]}
+                min={today}
               />
             </div>
           </div>
@@ -141,17 +172,14 @@ const Home = () => {
           {/* Check Out */}
           <div className="flex flex-col w-full md:w-auto">
             <div className="flex items-center bg-white rounded-lg shadow-md px-3 py-2">
-              <svg className="w-5 h-5 text-[#8B593E] mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <rect x="3" y="4" width="18" height="18" rx="2" strokeWidth="2" />
-                <path d="M16 2v4M8 2v4M3 10h18" strokeWidth="2" />
-              </svg>
+              <CalendarIcon />
               <input
                 type="date"
                 className="outline-none h-10 text-base sm:text-lg bg-transparent w-full text-[#4A2511] placeholder-[#8B593E]/60"
-                value={checkOut}
-                onChange={e => setCheckOut(e.target.value)}
+                value={bookingData.checkOut}
+                onChange={(e) => handleInputChange("checkOut", e.target.value)}
                 required
-                min={checkIn || new Date().toISOString().split('T')[0]}
+                min={bookingData.checkIn || today}
               />
             </div>
           </div>
@@ -162,17 +190,19 @@ const Home = () => {
               <span className="text-[#4A2511] font-medium mr-2">Adults</span>
               <div className="relative flex-1">
                 <select
-                  value={adults}
-                  onChange={e => setAdults(Number(e.target.value))}
+                  value={bookingData.adults}
+                  onChange={(e) =>
+                    handleInputChange("adults", Number(e.target.value))
+                  }
                   className="w-full appearance-none bg-transparent text-base sm:text-lg text-[#4A2511] pl-2 pr-8 py-1 outline-none cursor-pointer"
                 >
-                  {[...Array(10)].map((_, i) => (
+                  {Array.from({ length: 10 }, (_, i) => (
                     <option
                       key={i + 1}
                       value={i + 1}
                       className="py-2 hover:bg-[#F2E2D7]"
                     >
-                      {i + 1} {i === 0 ? 'Adult' : 'Adults'}
+                      {i + 1} {i === 0 ? "Adult" : "Adults"}
                     </option>
                   ))}
                 </select>
@@ -187,17 +217,19 @@ const Home = () => {
               <span className="text-[#4A2511] font-medium mr-2">Children</span>
               <div className="relative flex-1">
                 <select
-                  value={children}
-                  onChange={e => setChildren(Number(e.target.value))}
+                  value={bookingData.children}
+                  onChange={(e) =>
+                    handleInputChange("children", Number(e.target.value))
+                  }
                   className="w-full appearance-none bg-transparent text-lg text-[#4A2511] pl-2 pr-8 py-1 outline-none cursor-pointer"
                 >
-                  {[...Array(6)].map((_, i) => (
+                  {Array.from({ length: 6 }, (_, i) => (
                     <option
                       key={i}
                       value={i}
                       className="py-2 hover:bg-[#F2E2D7]"
                     >
-                      {i} {i === 1 ? 'Child' : 'Children'}
+                      {i} {i === 1 ? "Child" : "Children"}
                     </option>
                   ))}
                 </select>
@@ -223,7 +255,7 @@ const Home = () => {
         </button>
       </CircleModal>
     </main>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -15,39 +15,42 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const router = useRouter();
 
-  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
+  const toggleMenu = useCallback(() => {
+    setIsMenuOpen(prev => !prev);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 10);
     };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [router.pathname]);
+
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-[#000000] ${
-        isScrolled ? 'bg-[#C6A38D]' : 'bg-[#C6A38D]'
-      }`}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-[#C6A38D] `}
     >
       <div className="max-w-[1300px] mx-auto px-4 sm:px-6 py-2">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link 
             href="/" 
-            className="flex items-center transform hover:scale-105 transition-duration-200"
+            className="flex items-center "
+            aria-label="Home"
           >
             <Image
               src="/images/logo.png"
               alt="Homestay Logo"
               width={150}
               height={50}
-              className="object-cover w-20 h-12 sm:w-24 sm:h-14 md:w-28 md:h-16 lg:w-32 lg:h-32 border-4 border-[#8B593E] rounded-full shadow-lg"
+              className="object-cover w-20 h-20 sm:w-24 sm:h-14 md:w-28 md:h-16 lg:w-32 lg:h-[129px] sm:border-4 border-[#8B593E] sm:rounded-full"
               priority
             />
           </Link>
@@ -64,6 +67,7 @@ const Navbar = () => {
                       ? 'text-[#8B593E] bg-[#F2E2D7]'
                       : 'text-[#4A2511] hover:text-[#8B593E] hover:bg-[#F2E2D7]/70'
                   }`}
+                aria-current={router.pathname === link.href ? 'page' : undefined}
               >
                 {link.label}
               </Link>
@@ -81,6 +85,7 @@ const Navbar = () => {
                 stroke="currentColor"
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
               >
                 <path
                   strokeLinecap="round"
@@ -97,6 +102,7 @@ const Navbar = () => {
             onClick={toggleMenu}
             className="md:hidden p-2 rounded-lg hover:bg-[#F2E2D7]/50 transition-colors duration-200"
             aria-label="Toggle menu"
+            aria-expanded={isMenuOpen}
           >
             <svg
               className="w-6 h-6 text-[#4A2511]"
@@ -106,6 +112,7 @@ const Navbar = () => {
               strokeWidth="2"
               viewBox="0 0 24 24"
               stroke="currentColor"
+              aria-hidden="true"
             >
               {isMenuOpen ? (
                 <path d="M6 18L18 6M6 6l12 12" />
@@ -121,6 +128,7 @@ const Navbar = () => {
           className={`md:hidden transition-all duration-300 overflow-hidden ${
             isMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
           }`}
+          aria-hidden={!isMenuOpen}
         >
           <div className="py-3 space-y-2">
             {navLinks.map((link) => (
@@ -133,7 +141,7 @@ const Navbar = () => {
                       ? 'text-[#8B593E] bg-[#F2E2D7]'
                       : 'text-[#4A2511] hover:text-[#8B593E] hover:bg-[#F2E2D7]/70'
                   }`}
-                onClick={() => setIsMenuOpen(false)}
+                aria-current={router.pathname === link.href ? 'page' : undefined}
               >
                 {link.label}
               </Link>
@@ -142,7 +150,6 @@ const Navbar = () => {
               href="/book-now"
               className="block mt-4 mx-4 px-6 py-3 bg-[#8B593E] text-[#F2E2D7] rounded-full 
                 font-semibold text-center hover:bg-[#6B4530] transition-colors duration-200"
-              onClick={() => setIsMenuOpen(false)}
             >
               Book Now
             </Link>
