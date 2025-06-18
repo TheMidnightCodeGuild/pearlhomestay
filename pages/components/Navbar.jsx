@@ -13,6 +13,8 @@ const navLinks = [
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const router = useRouter();
 
   const toggleMenu = useCallback(() => {
@@ -21,12 +23,24 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      const currentScrollY = window.scrollY;
+      
+      // Determine if scrolled past threshold
+      setIsScrolled(currentScrollY > 10);
+      
+      // Hide navbar when scrolling down, show when scrolling up
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+      
+      setLastScrollY(currentScrollY);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
   // Close mobile menu on route change
   useEffect(() => {
@@ -35,22 +49,24 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-[#C6A38D] `}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out ${
+        isScrolled ? 'bg-[#C6A38D] shadow-md' : 'bg-[#C6A38D]'
+      } ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}
     >
       <div className="max-w-[1300px] mx-auto px-4 sm:px-6 py-2">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link 
             href="/" 
-            className="flex items-center "
+            className="flex items-center"
             aria-label="Home"
           >
             <Image
-              src="/images/logo.png"
+              src="/images/logo1.png"
               alt="Homestay Logo"
               width={150}
               height={50}
-              className="object-cover w-20 h-20 sm:w-24 sm:h-14 md:w-28 md:h-16 lg:w-32 lg:h-[129px] sm:border-4 border-[#8B593E] sm:rounded-full"
+              className="object-cover w-20 h-20 sm:w-24 sm:h-14 md:w-28 md:h-16 lg:w-32 lg:h-[110px]"
               priority
             />
           </Link>
@@ -61,7 +77,7 @@ const Navbar = () => {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-3 py-2 rounded-lg text-sm lg:text-base font-medium transition-all duration-200 
+                className={`px-3 py-2 rounded-lg text-sm lg:text-xs font-medium transition-all uppercase duration-200 
                   ${
                     router.pathname === link.href
                       ? 'text-[#8B593E] bg-[#F2E2D7]'
@@ -72,28 +88,14 @@ const Navbar = () => {
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="/book-now"
-              className="ml-2 px-5 py-2 bg-[#8B593E] text-[#F2E2D7] rounded-full font-semibold 
-                hover:bg-[#6B4530] transform hover:scale-105 transition-all duration-200 
-                shadow-md text-sm lg:text-base flex items-center"
-            >
-              Book Now
-              <svg
-                className="w-4 h-4 ml-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
+            <Link href="/book-now" className="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-[#8B593E] rounded-full shadow-md group">
+              <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-[#8B593E] group-hover:translate-x-0 ease">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+              </span>
+              <span className="absolute flex items-center justify-center w-full h-full text-[#8B593E] transition-all duration-300 transform group-hover:translate-x-full ease">Book Now</span>
+              <span className="relative invisible">Book Now</span>
             </Link>
           </div>
 
@@ -146,12 +148,16 @@ const Navbar = () => {
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="/book-now"
-              className="block mt-4 mx-4 px-6 py-3 bg-[#8B593E] text-[#F2E2D7] rounded-full 
-                font-semibold text-center hover:bg-[#6B4530] transition-colors duration-200"
-            >
-              Book Now
+            <Link href="/book-now" className="block px-4 py-2">
+              <div className="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-[#8B593E] rounded-full shadow-md group w-full">
+                <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-[#ffffff] group-hover:translate-x-0 ease">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                  </svg>
+                </span>
+                <span className="absolute flex items-center justify-center w-full h-full text-[#ffffff] transition-all duration-300 transform group-hover:translate-x-full ease text-white">Book Now</span>
+                <span className="relative invisible text-[#ffffff]">Book Now</span>
+              </div>
             </Link>
           </div>
         </div>

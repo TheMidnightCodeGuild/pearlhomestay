@@ -66,9 +66,9 @@ const CircleModal = ({ open, onClose, children }) => {
         className={`
           relative flex flex-col items-center justify-center
           transition-[clip-path,opacity] duration-700 ease-in-out
-          bg-[#C6A38D]/60 backdrop-blur-sm px-4 sm:px-8 py-6 sm:py-10 
+          bg-white/30 backdrop-blur-xs px-4 sm:px-8 py-6 sm:py-10 
           w-[95%] sm:min-w-[300px] md:min-w-[1000px] min-h-[220px] 
-          max-w-[95vw] max-h-[95vh] border-2 rounded-3xl
+          max-w-[75vw] max-h-[95vh] border-2 rounded-3xl
           ${open ? "opacity-100" : "opacity-0"}
         `}
         style={{
@@ -108,7 +108,7 @@ const Home = () => {
 
   return (
     <main className="w-full h-screen flex flex-col items-center justify-center relative overflow-hidden">
-      <div className="absolute inset-0 w-full h-full z-0 sm:mt-[145.1px] mt-[95px]">
+      <div className="absolute inset-0 w-full h-full z-0 sm:mt-[121px] mt-[95px]">
         <Image
           src="/images/home.png"
           alt="Homestay Background"
