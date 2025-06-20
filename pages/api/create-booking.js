@@ -2,9 +2,17 @@ import { db } from '../../lib/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import nodemailer from 'nodemailer';
 
-// Configure email transporter
-const transporter = nodemailer.createTransport({
+// Configure email transporters
+const homestayTransporter = nodemailer.createTransport({
   service: 'gmail',
+  auth: {
+    user: process.env.HOMESTAY_EMAIL,
+    pass: process.env.HOMESTAY_PASSWORD
+  }
+});
+
+const normalTransporter = nodemailer.createTransport({
+  service: 'gmail', 
   auth: {
     user: process.env.EMAIL_USERNAME,
     pass: process.env.EMAIL_PASSWORD
@@ -79,18 +87,27 @@ export default async function handler(req, res) {
         <li>Total Price: ₹${totalPrice} + GST</li>
       </ul>
       <p>Booking Reference: ${bookingRef.id}</p>
+      <div style="margin-top: 30px; text-align: center;">
+        <a href="${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/confirm-booking?bookingId=${bookingRef.id}" 
+           style="background-color: #28a745; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block; font-weight: bold;">
+          Confirm Booking
+        </a>
+      </div>
+      <p style="margin-top: 20px; font-size: 14px; color: #666;">
+        Click the button above to confirm this booking. This will send a confirmation email to the customer.
+      </p>
     `;
 
     // Send emails
     await Promise.all([
-      transporter.sendMail({
-        from: process.env.EMAIL_USER,
+      homestayTransporter.sendMail({
+        from: process.env.HOMESTAY_EMAIL,
         to: customerEmail,
         subject: 'Reservation Request - Pearl Homestay',
         html: customerEmailContent
       }),
-      transporter.sendMail({
-        from: process.env.EMAIL_USER,
+      normalTransporter.sendMail({
+        from: process.env.EMAIL_USERNAME,
         to: process.env.HOMESTAY_EMAIL,
         subject: 'New Reservation Request - Pearl Homestay',
         html: homestayEmailContent
