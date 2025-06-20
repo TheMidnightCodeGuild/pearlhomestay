@@ -14,7 +14,7 @@ export default async function handler(req, res) {
     }
 
     // Get booking details from Firestore
-    const bookingRef = doc(db, 'bookings', bookingId);
+    const bookingRef = doc(db, 'reservations', bookingId);
     const bookingDoc = await getDoc(bookingRef);
     
     if (!bookingDoc.exists()) {

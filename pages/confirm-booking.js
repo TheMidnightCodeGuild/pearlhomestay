@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { db } from '../lib/firebase';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 
 export default function ConfirmBooking() {
   const router = useRouter();
@@ -38,6 +40,14 @@ export default function ConfirmBooking() {
     setError('');
 
     try {
+      // Save to Firestore
+      const bookingRef = doc(db, 'bookings', bookingId);
+      await setDoc(bookingRef, {
+        ...booking,
+        status: 'confirmed'
+      }, { merge: true });
+
+      // Call API to send confirmation email
       const response = await fetch('/api/confirm-booking', {
         method: 'POST',
         headers: {
@@ -193,4 +203,4 @@ export default function ConfirmBooking() {
       </div>
     </div>
   );
-} 
+}

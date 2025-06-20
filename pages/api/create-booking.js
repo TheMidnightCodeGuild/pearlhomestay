@@ -50,7 +50,7 @@ export default async function handler(req, res) {
     };
 
     // Save to Firestore
-    const bookingRef = await addDoc(collection(db, 'bookings'), bookingData);
+    const reservationRef = await addDoc(collection(db, 'reservations'), reservationData);
 
     // Send email to customer
     const customerEmailContent = `
@@ -67,7 +67,7 @@ export default async function handler(req, res) {
         <li>Total Price: ₹${totalPrice} + GST</li>
       </ul>
       <p>We will review your request and confirm your booking shortly. You will receive another email with the confirmation.</p>
-      <p>Booking Reference: ${bookingRef.id}</p>
+      <p>Booking Reference: ${reservationRef.id}</p>
       <p>Best regards,<br>Pearl Homestay Team</p>
     `;
 
@@ -86,9 +86,9 @@ export default async function handler(req, res) {
         ).join(', ')}</li>
         <li>Total Price: ₹${totalPrice} + GST</li>
       </ul>
-      <p>Booking Reference: ${bookingRef.id}</p>
+      <p>Booking Reference: ${reservationRef.id}</p>
       <div style="margin-top: 30px; text-align: center;">
-        <a href="${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/confirm-booking?bookingId=${bookingRef.id}" 
+        <a href="${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/confirm-booking?bookingId=${reservationRef.id}" 
            style="background-color: #28a745; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block; font-weight: bold;">
           Confirm Booking
         </a>
@@ -115,8 +115,8 @@ export default async function handler(req, res) {
     ]);
 
     return res.status(200).json({ 
-      message: 'Booking request submitted successfully',
-      bookingId: bookingRef.id
+      message: 'Reservation request submitted successfully',
+      reservationId: reservationRef.id
     });
 
   } catch (error) {

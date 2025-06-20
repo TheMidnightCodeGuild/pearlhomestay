@@ -2,20 +2,12 @@ import { db } from '../../lib/firebase';
 import { doc, updateDoc, serverTimestamp } from 'firebase/firestore';
 import nodemailer from 'nodemailer';
 
-// Configure email transporters
-const homestayTransporter = nodemailer.createTransporter({
+// Configure email transporter
+const homestayTransporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: process.env.HOMESTAY_EMAIL,
     pass: process.env.HOMESTAY_PASSWORD
-  }
-});
-
-const normalTransporter = nodemailer.createTransporter({
-  service: 'gmail', 
-  auth: {
-    user: process.env.EMAIL_USERNAME,
-    pass: process.env.EMAIL_PASSWORD
   }
 });
 
@@ -78,8 +70,8 @@ export default async function handler(req, res) {
     `;
 
     // Send confirmation email to customer
-    await normalTransporter.sendMail({
-      from: process.env.EMAIL_USERNAME,
+    await homestayTransporter.sendMail({
+      from: process.env.HOMESTAY_EMAIL,
       to: bookingData.customerEmail,
       subject: 'Booking Confirmed - Pearl Homestay',
       html: customerConfirmationEmail
