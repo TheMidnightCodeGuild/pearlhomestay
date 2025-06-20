@@ -2,7 +2,11 @@ import { db } from '../../lib/firebase';
 import { doc, updateDoc, serverTimestamp } from 'firebase/firestore';
 import nodemailer from 'nodemailer';
 
+<<<<<<< HEAD
 // Configure email transporters
+=======
+// Configure email transporter
+>>>>>>> 30cf696eb86e7a14a0c1b304892453855e6ef2b9
 const homestayTransporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -11,6 +15,7 @@ const homestayTransporter = nodemailer.createTransport({
   }
 });
 
+<<<<<<< HEAD
 const normalTransporter = nodemailer.createTransport({
   service: 'gmail', 
   auth: {
@@ -19,6 +24,8 @@ const normalTransporter = nodemailer.createTransport({
   }
 });
 
+=======
+>>>>>>> 30cf696eb86e7a14a0c1b304892453855e6ef2b9
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed' });
@@ -78,8 +85,8 @@ export default async function handler(req, res) {
     `;
 
     // Send confirmation email to customer
-    await normalTransporter.sendMail({
-      from: process.env.EMAIL_USERNAME,
+    await homestayTransporter.sendMail({
+      from: process.env.HOMESTAY_EMAIL,
       to: bookingData.customerEmail,
       subject: 'Booking Confirmed - Pearl Homestay',
       html: customerConfirmationEmail
