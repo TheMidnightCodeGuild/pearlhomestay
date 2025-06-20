@@ -3,7 +3,7 @@ import { doc, updateDoc, serverTimestamp } from 'firebase/firestore';
 import nodemailer from 'nodemailer';
 
 // Configure email transporters
-const homestayTransporter = nodemailer.createTransporter({
+const homestayTransporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: process.env.HOMESTAY_EMAIL,
@@ -11,7 +11,7 @@ const homestayTransporter = nodemailer.createTransporter({
   }
 });
 
-const normalTransporter = nodemailer.createTransporter({
+const normalTransporter = nodemailer.createTransport({
   service: 'gmail', 
   auth: {
     user: process.env.EMAIL_USERNAME,
@@ -94,4 +94,4 @@ export default async function handler(req, res) {
     console.error('Error confirming booking:', error);
     return res.status(500).json({ message: 'Error confirming booking' });
   }
-} 
+}
