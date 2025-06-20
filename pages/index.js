@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/About";
+import Amenities from "./components/Amenities";
 // import Loader from "./components/Loader";
 const index = () => {
   return (
@@ -10,6 +11,7 @@ const index = () => {
       <Navbar />
       <Home />
       <About />
+      <Amenities />
     </>
   );
 };

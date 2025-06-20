@@ -50,7 +50,7 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out ${
-        isScrolled ? 'bg-[#C6A38D] shadow-md' : 'bg-[#C6A38D]'
+        isScrolled ? 'bg-[#000000] shadow-md' : 'bg-[#000000]'
       } ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}
     >
       <div className="max-w-[1300px] mx-auto px-4 sm:px-6 py-2">
@@ -155,7 +155,7 @@ const Navbar = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                   </svg>
                 </span>
-                <span className="absolute flex items-center justify-center w-full h-full text-[#ffffff] transition-all duration-300 transform group-hover:translate-x-full ease text-white">Book Now</span>
+                <span className="absolute flex items-center justify-center w-full h-full text-[#ffffff] transition-all duration-300 transform group-hover:translate-x-full ease ">Book Now</span>
                 <span className="relative invisible text-[#ffffff]">Book Now</span>
               </div>
             </Link>
