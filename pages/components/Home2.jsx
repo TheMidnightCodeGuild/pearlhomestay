@@ -1,7 +1,10 @@
-import React, { useState, useRef } from "react";
+// Imports
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import gsap from "gsap";
 
+// SVG Components
 const ChevronDown = () => (
   <svg
     className="w-4 h-4 text-[#8B593E] pointer-events-none absolute right-3 top-1/2 transform -translate-y-1/2"
@@ -32,9 +35,11 @@ const CalendarIcon = () => (
   </svg>
 );
 
+// Modal Component
 const CircleModal = ({ open, onClose, children }) => {
   const modalRef = useRef(null);
 
+  // Handle body scroll lock
   React.useEffect(() => {
     const body = document.body;
     if (open) {
@@ -55,12 +60,14 @@ const CircleModal = ({ open, onClose, children }) => {
       aria-modal="true"
       role="dialog"
     >
+      {/* Modal Backdrop */}
       <div
         className={`absolute inset-0 bg-black/40 transition-opacity duration-500 ${
           open ? "opacity-100" : "opacity-0"
         }`}
         onClick={onClose}
       />
+      {/* Modal Content */}
       <div
         ref={modalRef}
         className={`
@@ -82,7 +89,14 @@ const CircleModal = ({ open, onClose, children }) => {
   );
 };
 
-const Home = () => {
+// Main Component
+const Home2 = () => {
+  // Refs for animations
+  const heroTextRef = useRef(null);
+  const heroImageRef = useRef(null);
+  const ctaButtonsRef = useRef(null);
+
+  // State Management
   const [modalOpen, setModalOpen] = useState(false);
   const [bookingData, setBookingData] = useState({
     checkIn: "",
@@ -91,6 +105,29 @@ const Home = () => {
     children: 0,
   });
 
+  // Animation Setup
+  useEffect(() => {
+    // Hero Text Animation
+    gsap.from(heroTextRef.current, {
+      duration: 1,
+      y: 100,
+      opacity: 0,
+      ease: "power3.out",
+    });
+
+    // Hero Image Animation
+    gsap.from(heroImageRef.current, {
+      duration: 1,
+      x: 100,
+      opacity: 0,
+      ease: "power3.out",
+      delay: 0.3,
+    });
+
+   
+  }, []);
+
+  // Event Handlers
   const handleInputChange = (field, value) => {
     setBookingData((prev) => ({
       ...prev,
@@ -105,48 +142,74 @@ const Home = () => {
     setModalOpen(false);
   };
 
+  // Date Management
   const today = new Date().toISOString().split("T")[0];
 
   return (
-    <main className="w-full min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
-      <div className="absolute inset-0 w-full h-full z-0 sm:mt-[121px] mt-[95px]">
-        <Image
-          src="/images/home.png"
-          alt="Homestay Background"
-          fill
-          className="object-cover object-center"
-          priority
-          sizes="100vw"
-        />
+    <div className="min-h-screen w-full bg-[#C6A38D] mt-10">
+      <div className="lg:max-w-[1300px] mx-auto">
+        {/* Hero Section */}
+        <section className="flex flex-col md:flex-row justify-center items-center min-h-screen p-4 md:p-8 my-0 sm:my-2">
+          {/* Left Content */}
+          <div className="w-full md:w-1/2 px-4 py-8 sm:px-6 lg:px-8">
+            {/* Hero Text */}
+            <div className="md:mb-0 mt-5 sm:mt-0" ref={heroTextRef}>
+              <h1 className="text-3xl sm:text-4xl md:text-[59px] font-extralight text-[#4A2511] mb-3 uppercase text-center md:text-left font-masiku md:bg-transparent bg-[#F2E2D7]/50 p-2 rounded-lg">
+                Welcome to <span className="text-[#8B593E]">Pearl Homestay</span>
+              </h1>
+              <p className="text-sm sm:text-lg md:text-base text-[#4A2511]/90 mb-4 max-w-lg text-center md:text-left italic md:bg-transparent bg-[#F2E2D7]/50 p-2 rounded-lg">
+                &quot;Experience comfort, warmth, and tranquility at our family-run
+                homestay. Nestled in nature, our cozy rooms and personalized service
+                make you feel right at home.&quot;
+              </p>
+            </div>
+
+            {/* Mobile Image */}
+            <div className="md:hidden" ref={heroImageRef}>
+              <Image
+                src="/images/home.png"
+                alt="Pearl Homestay"
+                width={500}
+                height={300}
+                className="object-cover"
+                priority
+              />
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="flex justify-center gap-5 mr-28" >
+              <button
+                onClick={() => setModalOpen(true)}
+                className="w-full sm:w-auto px-5 py-3 bg-[#8B593E] text-[#F2E2D7] rounded-full font-semibold text-sm shadow-md hover:bg-[#6B4530] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#8B593E]/50"
+              >
+                Book Now
+              </button>
+              <Link
+                href="/rooms"
+                className="w-full sm:w-auto px-5 py-3 bg-[#F2E2D7] text-[#8B593E] rounded-full font-semibold text-sm shadow-md hover:bg-[#e5d1c0] transition-all duration-200 text-center"
+              >
+                View Rooms
+              </Link>
+            </div>
+          </div>
+
+          {/* Right Content - Desktop Image */}
+          <div className="rightSection w-full md:w-1/2 px-4 py-8 sm:px-6 lg:px-8 hidden md:flex justify-center items-center md:pl-12">
+            <div className="w-full max-w-xl relative mt-5" ref={heroImageRef}>
+              <Image
+                src="/images/home.png"
+                alt="Pearl Homestay"
+                width={800}
+                height={600}
+                className="object-cover"
+                priority
+              />
+            </div>
+          </div>
+        </section>
       </div>
 
-      <section className="w-full flex flex-col md:flex-row items-center justify-between lg:max-w-[1300px] mx-auto px-4 sm:px-6 py-12 sm:py-20 md:py-32 relative z-10">
-        <div className="flex-1 flex flex-col items-center md:items-start justify-center z-10 md:-mx-20 mt-20 md:mt-28">
-          <h1 className="text-3xl sm:text-4xl md:text-[49px] font-extralight text-[#4A2511] mb-3 uppercase text-center md:text-left font-masiku md:bg-transparent bg-[#F2E2D7]/50 p-2 rounded-lg">
-            Welcome to <span className="text-[#8B593E]">Pearl Homestay</span>
-          </h1>
-          <p className="text-sm sm:text-lg md:text-base text-[#4A2511]/90 mb-4 max-w-lg text-center md:text-left italic md:bg-transparent bg-[#F2E2D7]/50 p-2 rounded-lg">
-            &quot;Experience comfort, warmth, and tranquility at our family-run
-            homestay. Nestled in nature, our cozy rooms and personalized service
-            make you feel right at home.&quot;
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-            <button
-              onClick={() => setModalOpen(true)}
-              className="w-full sm:w-auto px-5 py-3 bg-[#8B593E] text-[#F2E2D7] rounded-full font-semibold text-sm shadow-md hover:bg-[#6B4530] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#8B593E]/50"
-            >
-              Book Now
-            </button>
-            <Link
-              href="/rooms"
-              className="w-full sm:w-auto px-5 py-3 bg-[#F2E2D7] text-[#8B593E] rounded-full font-semibold text-sm shadow-md hover:bg-[#e5d1c0] transition-all duration-200 text-center"
-            >
-              View Rooms
-            </Link>
-          </div>
-        </div>
-      </section>
-
+      {/* Booking Modal */}
       <CircleModal open={modalOpen} onClose={() => setModalOpen(false)}>
         <h2 className="text-2xl sm:text-4xl font-semibold text-[#000000] mb-6 text-center">
           Book Your Stay Now...
@@ -248,6 +311,7 @@ const Home = () => {
           </button>
         </form>
 
+        {/* Close Modal Button */}
         <button
           onClick={() => setModalOpen(false)}
           className="mt-6 px-4 py-2 bg-[#8B593E] text-[#F2E2D7] rounded-full font-semibold text-lg shadow-md hover:bg-[#6B4530] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#8B593E]/50"
@@ -255,11 +319,8 @@ const Home = () => {
           Close
         </button>
       </CircleModal>
-    </main>
+    </div>
   );
 };
 
-export default Home;
-
-
-
+export default Home2;
