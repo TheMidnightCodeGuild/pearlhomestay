@@ -4,32 +4,50 @@ import { db } from '../lib/firebase';
 
 export default function Dashboard() {
   const [bookings, setBookings] = useState([]);
+  const [reservations, setReservations] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [filter, setFilter] = useState('all'); // all, pending, confirmed, cancelled
 
   useEffect(() => {
-    fetchBookings();
+    fetchBookingsAndReservations();
   }, []);
 
-  const fetchBookings = async () => {
+  const fetchBookingsAndReservations = async () => {
     try {
       setLoading(true);
+      
+      // Fetch confirmed bookings
       const bookingsRef = collection(db, 'bookings');
-      const q = query(bookingsRef, orderBy('createdAt', 'desc'));
-      const querySnapshot = await getDocs(q);
+      const bookingsQuery = query(bookingsRef, orderBy('createdAt', 'desc'));
+      const bookingsSnapshot = await getDocs(bookingsQuery);
 
-      const bookingsData = querySnapshot.docs.map(doc => ({
+      const bookingsData = bookingsSnapshot.docs.map(doc => ({
         id: doc.id,
         ...doc.data(),
         createdAt: doc.data().createdAt?.toDate?.() || new Date(),
-        updatedAt: doc.data().updatedAt?.toDate?.() || new Date()
+        updatedAt: doc.data().updatedAt?.toDate?.() || new Date(),
+        status: 'confirmed'
+      }));
+
+      // Fetch pending reservations
+      const reservationsRef = collection(db, 'reservations');
+      const reservationsQuery = query(reservationsRef, orderBy('createdAt', 'desc'));
+      const reservationsSnapshot = await getDocs(reservationsQuery);
+
+      const reservationsData = reservationsSnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data(),
+        createdAt: doc.data().createdAt?.toDate?.() || new Date(),
+        updatedAt: doc.data().updatedAt?.toDate?.() || new Date(),
+        status: 'pending'
       }));
 
       setBookings(bookingsData);
+      setReservations(reservationsData);
       setError(null);
     } catch (error) {
-      console.error('Error fetching bookings:', error);
+      console.error('Error fetching data:', error);
       setError('Failed to load dashboard data');
     } finally {
       setLoading(false);
@@ -49,16 +67,18 @@ export default function Dashboard() {
     }
   };
 
-  const filteredBookings = bookings.filter(booking => {
+  const allEntries = [...bookings, ...reservations];
+
+  const filteredEntries = allEntries.filter(entry => {
     if (filter === 'all') return true;
-    return booking.status === filter;
+    return entry.status === filter;
   });
 
   const stats = {
-    total: bookings.length,
-    pending: bookings.filter(b => b.status === 'pending').length,
-    confirmed: bookings.filter(b => b.status === 'confirmed').length,
-    cancelled: bookings.filter(b => b.status === 'cancelled').length
+    total: allEntries.length,
+    pending: reservations.length,
+    confirmed: bookings.length,
+    cancelled: allEntries.filter(b => b.status === 'cancelled').length
   };
 
   if (loading) {
@@ -79,7 +99,7 @@ export default function Dashboard() {
           <h2 className="text-2xl font-bold text-red-600 mb-4">Error</h2>
           <p className="text-gray-600 mb-4">{error}</p>
           <button
-            onClick={fetchBookings}
+            onClick={fetchBookingsAndReservations}
             className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
           >
             Retry
@@ -187,7 +207,7 @@ export default function Dashboard() {
 
         {/* Bookings List */}
         <div className="bg-white rounded-lg shadow">
-          {filteredBookings.length === 0 ? (
+          {filteredEntries.length === 0 ? (
             <div className="p-8 text-center">
               <svg className="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
@@ -223,48 +243,48 @@ export default function Dashboard() {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                  {filteredBookings.map((booking) => (
-                    <tr key={booking.id} className="hover:bg-gray-50">
+                  {filteredEntries.map((entry) => (
+                    <tr key={entry.id} className="hover:bg-gray-50">
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="text-sm font-medium text-gray-900">
-                          #{booking.id.slice(-8)}
+                          #{entry.id.slice(-8)}
                         </div>
                         <div className="text-sm text-gray-500">
-                          {booking.createdAt.toLocaleDateString()}
+                          {entry.createdAt.toLocaleDateString()}
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">{booking.customerEmail}</div>
-                        <div className="text-sm text-gray-500">{booking.customerPhone}</div>
-                        <div className="text-sm text-gray-500">{booking.numPeople} guests</div>
+                        <div className="text-sm text-gray-900">{entry.customerEmail}</div>
+                        <div className="text-sm text-gray-500">{entry.customerPhone}</div>
+                        <div className="text-sm text-gray-500">{entry.numPeople} guests</div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="text-sm text-gray-900">
-                          <div>Check-in: {booking.checkIn}</div>
-                          <div>Check-out: {booking.checkOut}</div>
+                          <div>Check-in: {entry.checkIn}</div>
+                          <div>Check-out: {entry.checkOut}</div>
                         </div>
                       </td>
                       <td className="px-6 py-4">
                         <div className="text-sm text-gray-900">
-                          {booking.selectedRooms?.map((room, index) => (
+                          {entry.selectedRooms?.map((room, index) => (
                             <div key={index} className="text-sm text-gray-600">
                               {room.description} ({room.isAc ? 'AC' : 'Non-AC'})
                             </div>
                           ))}
                           <div className="font-medium text-gray-900 mt-1">
-                            ₹{booking.totalPrice} + GST
+                            ₹{entry.totalPrice} + GST
                           </div>
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full border ${getStatusColor(booking.status)}`}>
-                          {booking.status}
+                        <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full border ${getStatusColor(entry.status)}`}>
+                          {entry.status}
                         </span>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        {booking.status === 'pending' && (
+                        {entry.status === 'pending' && (
                           <a
-                            href={`/confirm-booking?bookingId=${booking.id}`}
+                            href={`/confirm-booking?bookingId=${entry.id}`}
                             className="text-blue-600 hover:text-blue-900 mr-4"
                           >
                             Confirm
@@ -272,7 +292,7 @@ export default function Dashboard() {
                         )}
                         <button
                           onClick={() => {
-                            navigator.clipboard.writeText(booking.id);
+                            navigator.clipboard.writeText(entry.id);
                             alert('Booking ID copied to clipboard!');
                           }}
                           className="text-gray-600 hover:text-gray-900"
