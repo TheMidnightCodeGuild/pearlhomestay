@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { db } from '../lib/firebase';
-import { doc, getDoc, setDoc, deleteDoc } from 'firebase/firestore';
 
 export default function ConfirmBooking() {
   const router = useRouter();
@@ -40,18 +38,6 @@ export default function ConfirmBooking() {
     setError('');
 
     try {
-      // Create new booking in bookings collection
-      const bookingRef = doc(db, 'bookings', bookingId);
-      await setDoc(bookingRef, {
-        ...booking,
-        status: 'confirmed'
-      });
-
-      // Delete from reservations collection
-      const reservationRef = doc(db, 'reservations', bookingId);
-      await deleteDoc(reservationRef);
-
-      // Call API to send confirmation email
       const response = await fetch('/api/confirm-booking', {
         method: 'POST',
         headers: {
@@ -111,10 +97,10 @@ export default function ConfirmBooking() {
             The booking has been successfully confirmed. A confirmation email has been sent to the customer.
           </p>
           <button
-            onClick={() => router.push('/')}
+            onClick={() => router.push('/asdfghjkl')}
             className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
           >
-            Go to Homepage
+            Go to Dashboard
           </button>
         </div>
       </div>
@@ -132,6 +118,24 @@ export default function ConfirmBooking() {
             className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
           >
             Go to Homepage
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // Don't allow confirmation if already confirmed
+  if (booking.status === 'confirmed') {
+    return (
+      <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+        <div className="max-w-md mx-auto bg-white rounded-lg shadow-md p-8 text-center">
+          <h2 className="text-2xl font-bold text-blue-600 mb-4">Booking Already Confirmed</h2>
+          <p className="text-gray-600 mb-4">This booking has already been confirmed.</p>
+          <button
+            onClick={() => router.push('/asdfghjkl')}
+            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          >
+            Go to Dashboard
           </button>
         </div>
       </div>
@@ -198,7 +202,7 @@ export default function ConfirmBooking() {
             {confirming ? 'Confirming...' : 'Confirm Booking'}
           </button>
           <button
-            onClick={() => router.push('/')}
+            onClick={() => router.push('/asdfghjkl')}
             className="flex-1 bg-gray-600 text-white py-3 px-4 rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
           >
             Cancel
