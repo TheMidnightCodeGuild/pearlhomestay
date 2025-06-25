@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const About = () => {
   return (
-    <section className="w-full min-h-screen bg-[#C6A38D] py-24 px-4 border-r-[10px] border-b-[10px] border-[#8B593E]">
+    <section className="w-full min-h-screen bg-[#C6A38D] py-24 px-4 border-l-[10px] border-r-[10px] border-b-[10px] border-[#8B593E]">
       <div className="max-w-6xl mx-auto">
         <div className="bg-[#fffff0] rounded-2xl shadow-xl overflow-hidden mb-20 transition-all duration-300 hover:shadow-2xl">
           <div className="flex flex-col md:flex-row">

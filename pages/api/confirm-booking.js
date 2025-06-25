@@ -3,7 +3,7 @@ import { doc, setDoc, deleteDoc, serverTimestamp } from 'firebase/firestore';
 import nodemailer from 'nodemailer';
 
 // Configure email transporters
-const homestayTransporter = nodemailer.createTransporter({
+const homestayTransporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: process.env.HOMESTAY_EMAIL,

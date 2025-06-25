@@ -22,7 +22,7 @@ const Amenities = () => {
   ];
 
   return (
-    <section id="services" className="py-20 bg-[#C6A38D]">
+    <section id="services" className="py-20 bg-[#C6A38D] border-l-[10px] border-r-[10px] border-b-[10px] border-[#8B593E]">
       <div className="lg:max-w-[1300px] mx-auto px-6">
         <header className="text-center mb-16">
           <h2 className="text-5xl md:text-5xl sm:text-4xl font-bold mb-6 text-neutral-800">
