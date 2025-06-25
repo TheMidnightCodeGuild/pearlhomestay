@@ -50,7 +50,7 @@ export default async function handler(req, res) {
     };
 
     // Save to Firestore
-    const reservationRef = await addDoc(collection(db, 'reservations'), reservationData);
+    const reservationRef = await addDoc(collection(db, 'reservations'), bookingData);
 
     // Send email to customer
     const customerEmailContent = `
