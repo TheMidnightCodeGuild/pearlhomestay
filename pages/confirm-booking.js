@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { db } from '../lib/firebase';
-import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc, deleteDoc } from 'firebase/firestore';
 
 export default function ConfirmBooking() {
   const router = useRouter();
@@ -40,12 +40,16 @@ export default function ConfirmBooking() {
     setError('');
 
     try {
-      // Save to Firestore
+      // Create new booking in bookings collection
       const bookingRef = doc(db, 'bookings', bookingId);
       await setDoc(bookingRef, {
         ...booking,
         status: 'confirmed'
-      }, { merge: true });
+      });
+
+      // Delete from reservations collection
+      const reservationRef = doc(db, 'reservations', bookingId);
+      await deleteDoc(reservationRef);
 
       // Call API to send confirmation email
       const response = await fetch('/api/confirm-booking', {

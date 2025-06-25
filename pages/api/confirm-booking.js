@@ -1,5 +1,5 @@
 import { db } from '../../lib/firebase';
-import { doc, updateDoc, serverTimestamp } from 'firebase/firestore';
+import { doc, setDoc, deleteDoc, serverTimestamp } from 'firebase/firestore';
 import nodemailer from 'nodemailer';
 
 // Configure email transporters
@@ -31,22 +31,27 @@ export default async function handler(req, res) {
       return res.status(400).json({ message: 'Booking ID is required' });
     }
 
-    // Update booking status in Firestore
+    // Get reservation details
+    const { getDoc } = await import('firebase/firestore');
+    const reservationRef = doc(db, 'reservations', bookingId);
+    const reservationDoc = await getDoc(reservationRef);
+    
+    if (!reservationDoc.exists()) {
+      return res.status(404).json({ message: 'Reservation not found' });
+    }
+
+    const reservationData = reservationDoc.data();
+
+    // Create new booking in bookings collection
     const bookingRef = doc(db, 'bookings', bookingId);
-    await updateDoc(bookingRef, {
+    await setDoc(bookingRef, {
+      ...reservationData,
       status: 'confirmed',
       updatedAt: serverTimestamp()
     });
 
-    // Get booking details for email
-    const { getDoc } = await import('firebase/firestore');
-    const bookingDoc = await getDoc(bookingRef);
-    
-    if (!bookingDoc.exists()) {
-      return res.status(404).json({ message: 'Booking not found' });
-    }
-
-    const bookingData = bookingDoc.data();
+    // Delete from reservations collection
+    await deleteDoc(reservationRef);
 
     // Send confirmation email to customer
     const customerConfirmationEmail = `
@@ -57,13 +62,13 @@ export default async function handler(req, res) {
         <h3>Booking Details:</h3>
         <ul>
           <li><strong>Booking Reference:</strong> ${bookingId}</li>
-          <li><strong>Check-in:</strong> ${bookingData.checkIn}</li>
-          <li><strong>Check-out:</strong> ${bookingData.checkOut}</li>
-          <li><strong>Number of Guests:</strong> ${bookingData.numPeople}</li>
-          <li><strong>Selected Rooms:</strong> ${bookingData.selectedRooms.map(room => 
+          <li><strong>Check-in:</strong> ${reservationData.checkIn}</li>
+          <li><strong>Check-out:</strong> ${reservationData.checkOut}</li>
+          <li><strong>Number of Guests:</strong> ${reservationData.numPeople}</li>
+          <li><strong>Selected Rooms:</strong> ${reservationData.selectedRooms.map(room => 
             `${room.description} (${room.isAc ? 'AC' : 'Non-AC'})`
           ).join(', ')}</li>
-          <li><strong>Total Price:</strong> ₹${bookingData.totalPrice} + GST</li>
+          <li><strong>Total Price:</strong> ₹${reservationData.totalPrice} + GST</li>
         </ul>
       </div>
       <p><strong>Important Information:</strong></p>
@@ -80,7 +85,7 @@ export default async function handler(req, res) {
     // Send confirmation email to customer
     await homestayTransporter.sendMail({
       from: process.env.HOMESTAY_EMAIL,
-      to: bookingData.customerEmail,
+      to: reservationData.customerEmail,
       subject: 'Booking Confirmed - Pearl Homestay',
       html: customerConfirmationEmail
     });
