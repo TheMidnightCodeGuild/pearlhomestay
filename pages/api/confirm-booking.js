@@ -3,7 +3,7 @@ import { doc, setDoc, deleteDoc, serverTimestamp } from 'firebase/firestore';
 import nodemailer from 'nodemailer';
 
 // Configure email transporters
-const homestayTransporter = nodemailer.createTransport({
+const homestayTransporter = nodemailer.createTransporter({
   service: 'gmail',
   auth: {
     user: process.env.HOMESTAY_EMAIL,
@@ -31,7 +31,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ message: 'Booking ID is required' });
     }
 
-    // Get reservation details
+    // Get reservation details from reservations collection
     const { getDoc } = await import('firebase/firestore');
     const reservationRef = doc(db, 'reservations', bookingId);
     const reservationDoc = await getDoc(reservationRef);
@@ -47,6 +47,7 @@ export default async function handler(req, res) {
     await setDoc(bookingRef, {
       ...reservationData,
       status: 'confirmed',
+      confirmedAt: serverTimestamp(),
       updatedAt: serverTimestamp()
     });
 

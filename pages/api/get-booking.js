@@ -13,22 +13,38 @@ export default async function handler(req, res) {
       return res.status(400).json({ message: 'Booking ID is required' });
     }
 
-    // Get booking details from Firestore
-    const bookingRef = doc(db, 'reservations', bookingId);
-    const bookingDoc = await getDoc(bookingRef);
+    // First check reservations collection
+    const reservationRef = doc(db, 'reservations', bookingId);
+    const reservationDoc = await getDoc(reservationRef);
     
-    if (!bookingDoc.exists()) {
-      return res.status(404).json({ message: 'Booking not found' });
+    if (reservationDoc.exists()) {
+      const reservationData = reservationDoc.data();
+      return res.status(200).json({ 
+        booking: {
+          id: reservationDoc.id,
+          ...reservationData,
+          status: 'pending'
+        }
+      });
     }
 
-    const bookingData = bookingDoc.data();
+    // If not found in reservations, check bookings collection
+    const bookingRef = doc(db, 'bookings', bookingId);
+    const bookingDoc = await getDoc(bookingRef);
+    
+    if (bookingDoc.exists()) {
+      const bookingData = bookingDoc.data();
+      return res.status(200).json({ 
+        booking: {
+          id: bookingDoc.id,
+          ...bookingData,
+          status: 'confirmed'
+        }
+      });
+    }
 
-    return res.status(200).json({ 
-      booking: {
-        id: bookingDoc.id,
-        ...bookingData
-      }
-    });
+    // If not found in either collection
+    return res.status(404).json({ message: 'Booking not found' });
 
   } catch (error) {
     console.error('Error fetching booking:', error);
