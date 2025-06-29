@@ -24,27 +24,6 @@ html.lenis {
   will-change: transform;
 }
 
-/* Custom Scrollbar Styling */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: #000000;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-  /* background: url('/images/trishul.png') center/cover; */
-  border-radius: 10px;
-  border: 2px solid #F2E2D7;
-  min-height: 50px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  opacity: 0.8;
-}
-
 .font-masiku {
   font-family: "Masiku", sans-serif;
 }
