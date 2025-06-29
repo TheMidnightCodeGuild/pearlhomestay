@@ -1,17 +1,59 @@
 import { useState, useEffect } from 'react';
-import { collection, getDocs, orderBy, query } from 'firebase/firestore';
+import { collection, getDocs, orderBy, query, doc, updateDoc } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 
 export default function Dashboard() {
   const [bookings, setBookings] = useState([]);
   const [reservations, setReservations] = useState([]);
+  const [rooms, setRooms] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [filter, setFilter] = useState('all'); // all, pending, confirmed, cancelled
+  const [editingRoom, setEditingRoom] = useState(null);
 
   useEffect(() => {
     fetchBookingsAndReservations();
+    fetchRooms();
   }, []);
+
+  const fetchRooms = async () => {
+    try {
+      const roomsRef = collection(db, 'rooms');
+      const roomsSnapshot = await getDocs(roomsRef);
+      const roomsData = roomsSnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+      setRooms(roomsData);
+    } catch (error) {
+      console.error('Error fetching rooms:', error);
+      setError('Failed to load rooms data');
+    }
+  };
+
+  const handleRoomEdit = (room) => {
+    setEditingRoom({...room});
+  };
+
+  const handleRoomSave = async () => {
+    try {
+      const roomRef = doc(db, 'rooms', editingRoom.id);
+      await updateDoc(roomRef, {
+        ACCost: Number(editingRoom.ACCost),
+        NonACCost: Number(editingRoom.NonACCost),
+        capacity: Number(editingRoom.capacity),
+        type: editingRoom.type
+      });
+      
+      setRooms(rooms.map(room => 
+        room.id === editingRoom.id ? editingRoom : room
+      ));
+      setEditingRoom(null);
+    } catch (error) {
+      console.error('Error updating room:', error);
+      setError('Failed to update room');
+    }
+  };
 
   const fetchBookingsAndReservations = async () => {
     try {
@@ -115,6 +157,87 @@ export default function Dashboard() {
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Pearl Homestay Dashboard</h1>
           <p className="text-gray-600">Manage all bookings and reservations</p>
+        </div>
+
+        {/* Rooms Management Section */}
+        <div className="bg-white rounded-lg shadow mb-8 p-6">
+          <h2 className="text-xl font-bold text-gray-900 mb-4">Rooms Management</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {rooms.map(room => (
+              <div key={room.id} className="border rounded-lg p-4">
+                {editingRoom?.id === room.id ? (
+                  <>
+                    <div className="space-y-3">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700">AC Cost</label>
+                        <input
+                          type="number"
+                          value={editingRoom.ACCost}
+                          onChange={(e) => setEditingRoom({...editingRoom, ACCost: e.target.value})}
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700">Non-AC Cost</label>
+                        <input
+                          type="number"
+                          value={editingRoom.NonACCost}
+                          onChange={(e) => setEditingRoom({...editingRoom, NonACCost: e.target.value})}
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700">Capacity</label>
+                        <input
+                          type="number"
+                          value={editingRoom.capacity}
+                          onChange={(e) => setEditingRoom({...editingRoom, capacity: e.target.value})}
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700">Type</label>
+                        <input
+                          type="text"
+                          value={editingRoom.type}
+                          onChange={(e) => setEditingRoom({...editingRoom, type: e.target.value})}
+                          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        />
+                      </div>
+                      <div className="flex space-x-2 mt-4">
+                        <button
+                          onClick={handleRoomSave}
+                          className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+                        >
+                          Save
+                        </button>
+                        <button
+                          onClick={() => setEditingRoom(null)}
+                          className="bg-gray-200 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-300"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <h3 className="font-medium text-lg mb-2">Room {room.id}</h3>
+                    <p>AC Cost: ₹{room.ACCost}</p>
+                    <p>Non-AC Cost: ₹{room.NonACCost}</p>
+                    <p>Capacity: {room.capacity} people</p>
+                    <p>Type: {room.type}</p>
+                    <button
+                      onClick={() => handleRoomEdit(room)}
+                      className="mt-4 text-blue-600 hover:text-blue-800"
+                    >
+                      Edit Room
+                    </button>
+                  </>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Stats Cards */}
