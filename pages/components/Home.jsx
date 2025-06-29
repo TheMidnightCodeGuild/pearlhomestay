@@ -3,22 +3,33 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
 const HomePage = () => {
-  const imageRef = useRef(null);
+  const desktopImageRef = useRef(null);
+  const mobileImageRef = useRef(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [bookingData, setBookingData] = useState({
     checkIn: "",
-    checkOut: "", 
+    checkOut: "",
     adults: 1,
     children: 0,
   });
 
   useEffect(() => {
-    gsap.from(imageRef.current, {
-      duration: 1.5,
-      x: "-100%",
-      rotation: 360,
-      ease: "power2.out",
-    });
+    // Animation for both mobile and desktop images
+    const images = [desktopImageRef.current, mobileImageRef.current];
+    
+    // Add 4 second delay before animation
+    setTimeout(() => {
+      images.forEach(image => {
+        if (image) {
+          gsap.from(image, {
+            duration: 1.5,
+            x: "-100%",
+            rotation: 360,
+            ease: "power2.out",
+          });
+        }
+      });
+    }, 3000);
   }, []);
 
   const handleInputChange = (field, value) => {
@@ -68,7 +79,7 @@ const HomePage = () => {
 
   const CircleModal = ({ open, onClose, children }) => {
     const modalRef = useRef(null);
-  
+
     useEffect(() => {
       const body = document.body;
       if (open) {
@@ -80,7 +91,7 @@ const HomePage = () => {
         body.style.overflow = "";
       };
     }, [open]);
-  
+
     return (
       <div
         className={`fixed inset-0 z-50 flex items-center justify-center transition-all duration-500 ${
@@ -107,7 +118,9 @@ const HomePage = () => {
             ${open ? "opacity-100" : "opacity-0"}
           `}
           style={{
-            clipPath: open ? "circle(170% at 100% 0%)" : "circle(0% at 100% 0%)",
+            clipPath: open
+              ? "circle(170% at 100% 0%)"
+              : "circle(0% at 100% 0%)",
           }}
         >
           {children}
@@ -117,18 +130,20 @@ const HomePage = () => {
   };
 
   return (
-    <section className="flex flex-col md:flex-row justify-center items-center min-h-screen p-4 md:p-8   mt-2  bg-[#C6A38D] border-[10px] border-[#8B593E]">
+    <section className="flex flex-col md:flex-row justify-center items-center min-h-screen p-4 md:p-8 mt-2 bg-[#C6A38D] border-[10px] border-[#8B593E]">
       <div className="w-full md:w-1/2 px-4 py-8 sm:px-6 lg:px-8 md:pr-12 ">
         <div className="md:mb-2 mt-5 sm:mt-10 text-center md:text-left sm:mx-5 mx-0">
           <h1 className="text-[31px] sm:text-4xl md:text-[59px] font-extralight text-[#4A2511] uppercase font-masiku md:bg-transparent p-2 rounded-lg ">
-            <span className="sm:mx-10  mx-0"> Welcome to </span>
+            <span className="sm:mx-10  mx-0 font-masiku"> Welcome to </span>
 
             <br />
-            <span className="text-[#8B593E] animate-pulse">Pearl Homestay</span>
+            <span className="text-[#8B593E] animate-pulse font-masiku">
+              Pearl Homestay
+            </span>
           </h1>
         </div>
 
-        <div className="md:hidden" ref={imageRef}>
+        <div className="md:hidden" ref={mobileImageRef}>
           <Image
             src="/images/home.png"
             alt="Pearl Homestay"
@@ -157,7 +172,7 @@ const HomePage = () => {
       </div>
 
       <div className="w-full md:w-1/2 px-4 py-8 sm:px-6 lg:px-8 hidden md:flex justify-center items-center md:pl-12">
-        <div className="w-full max-w-xl relative mt-10" ref={imageRef}>
+        <div className="w-full max-w-xl relative mt-10" ref={desktopImageRef}>
           <Image
             src="/images/home.png"
             alt="Pearl Homestay"
@@ -201,7 +216,9 @@ const HomePage = () => {
                   type="date"
                   className="outline-none h-10 text-sm sm:text-base bg-transparent w-full text-[#4A2511]"
                   value={bookingData.checkOut}
-                  onChange={(e) => handleInputChange("checkOut", e.target.value)}
+                  onChange={(e) =>
+                    handleInputChange("checkOut", e.target.value)
+                  }
                   required
                   min={bookingData.checkIn || today}
                 />
@@ -211,11 +228,15 @@ const HomePage = () => {
             {/* Adults */}
             <div className="flex flex-col">
               <div className="flex items-center bg-white rounded-lg shadow-md px-3 py-2">
-                <span className="text-[#4A2511] font-medium text-sm sm:text-base mr-2">Adults</span>
+                <span className="text-[#4A2511] font-medium text-sm sm:text-base mr-2">
+                  Adults
+                </span>
                 <div className="relative flex-1">
                   <select
                     value={bookingData.adults}
-                    onChange={(e) => handleInputChange("adults", Number(e.target.value))}
+                    onChange={(e) =>
+                      handleInputChange("adults", Number(e.target.value))
+                    }
                     className="w-full appearance-none bg-transparent text-sm sm:text-base text-[#4A2511] pl-2 pr-8 py-1 outline-none cursor-pointer"
                   >
                     {Array.from({ length: 10 }, (_, i) => (
@@ -232,11 +253,15 @@ const HomePage = () => {
             {/* Children */}
             <div className="flex flex-col">
               <div className="flex items-center bg-white rounded-lg shadow-md px-3 py-2">
-                <span className="text-[#4A2511] font-medium text-sm sm:text-base mr-2">Children</span>
+                <span className="text-[#4A2511] font-medium text-sm sm:text-base mr-2">
+                  Children
+                </span>
                 <div className="relative flex-1">
                   <select
                     value={bookingData.children}
-                    onChange={(e) => handleInputChange("children", Number(e.target.value))}
+                    onChange={(e) =>
+                      handleInputChange("children", Number(e.target.value))
+                    }
                     className="w-full appearance-none bg-transparent text-sm sm:text-base text-[#4A2511] pl-2 pr-8 py-1 outline-none cursor-pointer"
                   >
                     {Array.from({ length: 6 }, (_, i) => (

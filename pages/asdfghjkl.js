@@ -395,7 +395,7 @@ export default function Dashboard() {
                             </div>
                           ))}
                           <div className="font-medium text-gray-900 mt-1">
-                            ₹{entry.totalPrice} + GST
+                            ₹{entry.totalPrice}
                           </div>
                         </div>
                       </td>

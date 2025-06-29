@@ -71,7 +71,7 @@ export default function Booking() {
     if (checkIn && checkOut) {
       checkRoomAvailability();
     }
-  }, [checkIn, checkOut, numPeople, rooms]);
+  }, [checkIn, checkOut, numPeople, rooms, checkRoomAvailability]);
 
   // Calculate total price whenever selected rooms change
   useEffect(() => {

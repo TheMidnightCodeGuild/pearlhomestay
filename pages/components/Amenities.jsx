@@ -3,26 +3,26 @@ import Image from "next/image";
 import ac from "@/public/icons/air-conditioner.png";
 import bathroom from "@/public/icons/male-and-female.png";
 import family from "@/public/icons/parents.png";
-import parking from "@/public/icons/garage.png";
-import power from "@/public/icons/generator.png";
+import hotwater from "@/public/icons/hot-water.png";
+import security from "@/public/icons/security.png";
 import tea from "@/public/icons/coffee-cup.png";
-import toiletries from "@/public/icons/toiletries.png";
+import generator from "@/public/icons/generator.png";
 import wifi from "@/public/icons/travel.png";
 
 const Amenities = () => {
   const services = [
     { id: "1", text: "Luxurious Air Conditioning", icon: ac },
     { id: "2", text: "Modern Clean Bathrooms", icon: bathroom },
-    { id: "3", text: "Secure Parking Facility", icon: parking },
+    { id: "3", text: "Hot Water Available", icon: hotwater },
     { id: "4", text: "High-Speed Internet", icon: wifi },
-    { id: "5", text: "Premium Toiletries", icon: toiletries },
+    { id: "5", text: "24/7 Power Backup", icon: generator },
     { id: "6", text: "Welcoming Family Space", icon: family },
-    { id: "7", text: "24/7 Security", icon: power },
-    { id: "8", text: "24/7 Room Service", icon: tea },
+    { id: "7", text: "24/7 Security", icon: security },
+    { id: "8", text: "Food Service Available", icon: tea },
   ];
 
   return (
-    <section id="services" className="py-20 bg-[#C6A38D] border-l-[10px] border-r-[10px] border-b-[10px] border-[#8B593E]">
+    <section id="amenities" className="py-20 bg-[#C6A38D] border-l-[10px] border-r-[10px] border-b-[10px] border-[#8B593E]">
       <div className="lg:max-w-[1300px] mx-auto px-6">
         <header className="text-center mb-16">
           <h2 className="text-5xl md:text-5xl sm:text-4xl font-bold mb-6 text-neutral-800">

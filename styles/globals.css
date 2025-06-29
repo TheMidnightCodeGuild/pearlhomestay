@@ -8,6 +8,9 @@ body {
   overflow: hidden;
   scroll-behavior: auto;
 }
+* {
+  font-family: "Quicksand", sans-serif;
+}
 
 html.lenis {
   height: auto;

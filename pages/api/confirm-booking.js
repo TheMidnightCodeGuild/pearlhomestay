@@ -69,7 +69,7 @@ export default async function handler(req, res) {
           <li><strong>Selected Rooms:</strong> ${reservationData.selectedRooms.map(room => 
             `${room.description} (${room.isAc ? 'AC' : 'Non-AC'})`
           ).join(', ')}</li>
-          <li><strong>Total Price:</strong> ₹${reservationData.totalPrice} + GST</li>
+          <li><strong>Total Price:</strong> ₹${reservationData.totalPrice}</li>
         </ul>
       </div>
       <p><strong>Important Information:</strong></p>
