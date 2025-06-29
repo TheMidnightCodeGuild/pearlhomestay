@@ -2,12 +2,7 @@
 @import url('https://fonts.cdnfonts.com/css/masiku');
 @import "tailwindcss";
 
-html,
-body {
-  height: 100%;
-  overflow: hidden;
-  scroll-behavior: auto;
-}
+
 * {
   font-family: "Quicksand", sans-serif;
 }
