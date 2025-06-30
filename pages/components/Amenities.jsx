@@ -24,35 +24,35 @@ const Amenities = () => {
   return (
     <section
       id="amenities"
-      className="py-24 bg-[#C6A38D] border-l-[10px] border-r-[10px] border-b-[10px] border-[#8B593E]"
+      className="py-12 md:py-16 lg:py-24 bg-[#C6A38D] border-l-[10px] border-r-[10px] border-b-[10px] border-[#8B593E]"
     >
-      <div className="lg:max-w-[1300px] mx-auto px-6">
-        <header className="text-center mb-14 ">
-          <h2 className="text-5xl md:text-4xl sm:text-4xl font-bold mb-5 text-neutral-800">
-            Premium <span className="text-[#8B593E]"> Amenities</span>
+      <div className="lg:max-w-[1300px] mx-auto px-4 sm:px-6">
+        <header className="text-center mb-8 md:mb-10 lg:mb-14">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 md:mb-5 text-neutral-800">
+            Premium <span className="text-[#8B593E]">Amenities</span>
           </h2>
-          <p className="text-base  text-neutral-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-sm sm:text-base text-neutral-600 max-w-2xl mx-auto leading-relaxed px-4">
             Experience luxury and comfort with our carefully curated selection
             of premium amenities designed to make your stay exceptional.
           </p>
         </header>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-10">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8 lg:gap-10">
           {services.map((service) => (
             <div
               key={service.id}
               className="flex flex-col items-center group hover:transform hover:scale-105 transition-all duration-300"
             >
-              <div className="rounded-full p-6 mb-4 bg-white shadow-lg group-hover:shadow-xl group-hover:bg-primary/10 transition-all duration-300 border-6 border-[#8B593E]">
+              <div className="rounded-full p-3 sm:p-4 md:p-6 mb-2 sm:mb-3 md:mb-4 bg-white shadow-lg group-hover:shadow-xl group-hover:bg-primary/10 transition-all duration-300 border-4 sm:border-6 border-[#8B593E]">
                 <Image
                   src={service.icon}
                   alt={service.text}
-                  className="w-12 h-12 object-cover group-hover:scale-110 transition-transform duration-300"
+                  className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 object-cover group-hover:scale-110 transition-transform duration-300"
                   width={48}
                   height={48}
                 />
               </div>
-              <p className="text-center font-medium text-neutral-700 group-hover:text-primary transition-colors duration-300">
+              <p className="text-center text-xs sm:text-sm md:text-base font-medium text-neutral-700 group-hover:text-primary transition-colors duration-300 px-1">
                 {service.text}
               </p>
             </div>
