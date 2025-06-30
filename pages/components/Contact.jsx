@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import { db } from "../../firebase/config";
+import { db } from "@/lib/firebase";
 import { collection, addDoc } from "firebase/firestore";
 
 const Book = () => {

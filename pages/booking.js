@@ -172,7 +172,7 @@ export default function Booking() {
   return (
     <>
     <Navbar />
-    <div className="min-h-screen flex flex-col items-center justify-center bg-[#C6A38D] py-6 sm:py-12 px-4 sm:px-6 lg:px-8 border-l-[10px] border-r-[10px] border-b-[10px] border-[#8B593E]">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-[#C6A38D] py-6 sm:py-12 px-4 sm:px-6 lg:px-8 border-l-[10px] border-r-[10px] border-b-[10px] border-[#ffffff]">
       <div className="w-full max-w-3xl rounded-[50px] mx-auto bg-white shadow-lg p-4 sm:p-8 border-2 border-[#8B593E] flex flex-col items-center mt-24">
         <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-10 text-[#8B593E]">Book Your Stay Now...</h2>
         
