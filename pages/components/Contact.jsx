@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+"use client";
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { db } from "../../lib/firebase";
 import { collection, addDoc } from "firebase/firestore";
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 const Book = () => {
+  const sectionRef = useRef(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -11,6 +15,28 @@ const Book = () => {
     message: "",
   });
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    
+    const section = sectionRef.current;
+    
+    gsap.fromTo(section, {
+      opacity: 0,
+      y: 100
+    }, {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: section,
+        start: "top 80%",
+        end: "top 20%",
+        toggleActions: "play none none reverse"
+      }
+    });
+  }, []);
 
   const handleChange = (e) => {
     setFormData({
@@ -52,9 +78,9 @@ const Book = () => {
       {/* Contact Section */}
       <section
         id="contact"
-        className="py-12 sm:py-16 md:py-5 bg-[#C6A38D] border-l-[10px] border-r-[10px] ] border-[#ffffff]"
+        className="py-24 md:py-12 bg-[#C6A38D] border-l-[10px] border-r-[10px] ] border-[#ffffff]"
       >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div ref={sectionRef} className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 grid-cols-1 gap-8">
             <div className="lg:mb-0 mb-8">
               <div className="group w-full h-full min-h-[400px] sm:min-h-[500px]">

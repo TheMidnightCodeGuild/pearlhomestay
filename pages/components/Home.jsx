@@ -10,18 +10,47 @@ const HomePage = () => {
   useEffect(() => {
     const images = [desktopImageRef.current, mobileImageRef.current];
     
-    setTimeout(() => {
+    // Reset initial position before animation
+    images.forEach(image => {
+      if (image) {
+        gsap.set(image, {
+          x: "-100%",
+          rotation: 360
+        });
+      }
+    });
+
+    // Check if animation has been shown before
+    const hasAnimated = sessionStorage.getItem("homeAnimationShown");
+
+    if (!hasAnimated) {
+      // First time visit - delay animation by 3 seconds
+      setTimeout(() => {
+        images.forEach(image => {
+          if (image) {
+            gsap.to(image, {
+              duration: 1.5,
+              x: "0%",
+              rotation: 0,
+              ease: "power2.out",
+            });
+          }
+        });
+        sessionStorage.setItem("homeAnimationShown", "true");
+      }, 3000);
+    } else {
+      // Subsequent visits - run animation immediately
       images.forEach(image => {
         if (image) {
-          gsap.from(image, {
+          gsap.to(image, {
             duration: 1.5,
-            x: "-100%",
-            rotation: 360,
+            x: "0%", 
+            rotation: 0,
             ease: "power2.out",
           });
         }
       });
-    }, 3000);
+    }
   }, []);
 
   return (
@@ -48,17 +77,17 @@ const HomePage = () => {
           />
         </div>
 
-        <p className="text-[13px] sm:text-base md:text-base text-[#4A2511]/90 mt-4 max-w-lg mx-auto md:mx-0 italic  md:bg-transparent  rounded-lg mb-5 font-bold text-center">
+        <p className="text-[13px] sm:text-base md:text-base text-[#4A2511]/90 mt-4 max-w-lg mx-auto md:mx-0 italic  md:bg-transparent  rounded-lg mb-4 font-bold text-center">
           &quot;Experience comfort, warmth, and tranquility at our family-run
           homestay. Nestled in nature, our cozy rooms and personalized service
           make you feel right at home.&quot;
         </p>
 
-        <div className="flex justify-center md:justify-start mx-44">
+        <div className="flex justify-center md:justify-start sm:mx-44 mx-4 ">
           <Link
             href="/booking"
             target="_blank"
-            className="relative inline-flex items-center justify-start inline-block px-5 py-3 overflow-hidden font-bold rounded-full group"
+            className="relative inline-flex items-center justify-start inline-block px-5 sm:py-3 py-2 overflow-hidden font-bold rounded-full group "
           >
             <span className="w-32 h-32 rotate-45 translate-x-12 -translate-y-2 absolute left-0 top-0 bg-[#8B593E] opacity-[3%]"></span>
             <span className="absolute top-0 left-0 w-48 h-48 -mt-1 transition-all duration-500 ease-in-out rotate-45 -translate-x-56 -translate-y-24 bg-[#8B593E] opacity-100 group-hover:-translate-x-8"></span>

@@ -1,5 +1,8 @@
 "use client";
 import Image from "next/image";
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import ac from "../../public/icons/air-conditioner.png";
 import bathroom from "../../public/icons/male-and-female.png";
 import family from "../../public/icons/parents.png";
@@ -10,6 +13,30 @@ import generator from "../../public/icons/generator.png";
 import wifi from "../../public/icons/travel.png";
 
 const Amenities = () => {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    
+    const section = sectionRef.current;
+    
+    gsap.fromTo(section, {
+      opacity: 0,
+      y: 100
+    }, {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: section,
+        start: "top 80%",
+        end: "top 20%",
+        toggleActions: "play none none reverse"
+      }
+    });
+  }, []);
+
   const services = [
     { id: "1", text: "Luxurious Air Conditioning", icon: ac },
     { id: "2", text: "Modern Clean Bathrooms", icon: bathroom },
@@ -24,9 +51,9 @@ const Amenities = () => {
   return (
     <section
       id="amenities"
-      className="py-12 md:py-16 lg:py-24 bg-[#C6A38D] border-l-[10px] border-r-[10px] border-[#ffffff]"
+      className="py-24 md:py-12 bg-[#C6A38D] border-l-[10px] border-r-[10px] border-[#ffffff]"
     >
-      <div className="lg:max-w-[1300px] mx-auto px-4 sm:px-6">
+      <div ref={sectionRef} className="lg:max-w-[1300px] mx-auto px-4 sm:px-6">
         <header className="text-center mb-8 md:mb-10 lg:mb-14">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 md:mb-5 text-neutral-800">
             Premium <span className="text-[#8B593E]">Amenities</span>

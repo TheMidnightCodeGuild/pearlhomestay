@@ -43,16 +43,7 @@ const Loader = () => {
   return (
     <div className="fixed inset-0 bg-[#F5EBE0] z-[9999] flex items-center justify-center loading">
       <div className="flex flex-col items-center gap-8">
-        <div className="relative w-24 h-24">
-          {/* Circular loader with 3 rings */}
-          <div className="absolute inset-0 border-4 border-[#8B593E] rounded-full animate-[spin_3s_linear_infinite]"></div>
-          <div className="absolute inset-2 border-4 border-[#8B593E] rounded-full animate-[spin_2s_linear_infinite]"></div>
-          <div className="absolute inset-4 border-4 border-[#8B593E] rounded-full animate-[spin_1s_linear_infinite]"></div>
-          
-          {/* Center dot */}
-          <div className="absolute inset-[42%] bg-[#8B593E] rounded-full animate-pulse"></div>
-        </div>
-        
+        <div className="w-16 h-16 border-t-4 border-[#8B593E] border-solid rounded-full animate-spin"></div>
         <p className="welcome-text text-2xl font-masiku text-[#8B593E]">
           Welcome to Pearl Home Stay
         </p>

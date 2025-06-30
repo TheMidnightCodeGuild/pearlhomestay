@@ -3,8 +3,35 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
 import Image from 'next/image';
 import 'swiper/css';
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 const Gallery = () => {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    
+    const section = sectionRef.current;
+    
+    gsap.fromTo(section, {
+      opacity: 0,
+      y: 100
+    }, {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: section,
+        start: "top 80%",
+        end: "top 20%",
+        toggleActions: "play none none reverse"
+      }
+    });
+  }, []);
+
   const images = [
     {
       src: "/images/img1.png",
@@ -33,8 +60,8 @@ const Gallery = () => {
   ];
 
   return (
-    <section id="gallery" className="py-12 md:py-20 bg-[#C6A38D] border-l-[10px] border-r-[10px] border-[#ffffff]">
-      <div className="w-full lg:max-w-[1300px] mx-auto px-4 md:px-6 ">
+    <section id="gallery" className="py-12 md:py-12 bg-[#C6A38D] border-l-[10px] border-r-[10px] border-[#ffffff] ">
+      <div ref={sectionRef} className="w-full lg:max-w-[1300px] mx-auto px-4 md:px-6 ">
         <header className="text-center mb-8 md:mb-8">
           <h2 className="text-3xl sm:text-4xl md:text-4xl font-bold mb-4 md:mb-2 text-neutral-800 text-center">
             Our <span className="text-[#8B593E]">Gallery</span>

@@ -1,4 +1,5 @@
-import { useState } from "react";
+"use client";
+import { useState, useRef, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Pagination, Parallax } from "swiper/modules";
 import "swiper/css";
@@ -6,12 +7,36 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import "swiper/css/parallax";
-
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Image from "next/image";
 import Link from "next/link";
 
 export default function NearbyAtraction() {
   const [selectedImage, setSelectedImage] = useState(null);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    
+    const section = sectionRef.current;
+    
+    gsap.fromTo(section, {
+      opacity: 0,
+      y: 100
+    }, {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: section,
+        start: "top 80%",
+        end: "top 20%",
+        toggleActions: "play none none reverse"
+      }
+    });
+  }, []);
 
   const openImage = (src) => {
     setSelectedImage(src);
@@ -126,8 +151,8 @@ export default function NearbyAtraction() {
   return (
     <section
       id="nearbyAttraction"
-      className="py-12 sm:py-20 bg-[#C6A38D] border-l-[10px] border-r-[10px] border-[#ffffff]">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      className="py-24 md:py-12 bg-[#C6A38D] border-l-[10px] border-r-[10px] border-[#ffffff]">
+      <div ref={sectionRef} className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <header className="text-center pb-10">
           <h1 className="text-3xl sm:text-4xl md:text-4xl font-bold text-[#000000] mb-4">
             Nearby

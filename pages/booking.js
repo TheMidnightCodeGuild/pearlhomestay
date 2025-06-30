@@ -19,6 +19,7 @@ export default function Booking() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [bookingSuccess, setBookingSuccess] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
 
   // Fetch all rooms from Firestore
   useEffect(() => {
@@ -133,7 +134,7 @@ export default function Booking() {
         throw new Error(data.message || 'Error creating booking');
       }
 
-      setBookingSuccess(true);
+      setShowConfirmationModal(true);
       setNumPeople(1);
       setCheckIn('');
       setCheckOut('');
@@ -149,30 +150,10 @@ export default function Booking() {
     }
   };
 
-  if (bookingSuccess) {
-    return (
-      <div className="min-h-screen bg-[#F2E2D7] py-8 px-4 sm:py-12 sm:px-6 lg:px-8">
-        <div className="max-w-md mx-auto bg-white rounded-xl shadow-lg p-6 sm:p-8 text-center border-2 border-[#8B593E]">
-          <h2 className="text-2xl sm:text-3xl font-bold text-[#8B593E] mb-4 sm:mb-6">Booking Confirmed!</h2>
-          <p className="text-sm sm:text-base text-gray-700 mb-4 sm:mb-6 leading-relaxed">
-            Thank you for choosing Pearl Homestay! We have sent a confirmation email to {customerEmail}.
-            We look forward to welcoming you soon.
-          </p>
-          <button
-            onClick={() => setBookingSuccess(false)}
-            className="w-full py-2 sm:py-3 px-4 sm:px-6 rounded-lg text-white bg-[#8B593E] hover:bg-[#6B4530] transition duration-300 ease-in-out font-medium text-base sm:text-lg shadow-md"
-          >
-            Make Another Booking
-          </button>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <>
     <Navbar />
-    <div className="min-h-screen flex flex-col items-center justify-center bg-[#C6A38D] py-6 sm:py-12 px-4 sm:px-6 lg:px-8 border-l-[10px] border-r-[10px] border-b-[10px] border-[#ffffff]">
+    <div className={`min-h-screen flex flex-col items-center justify-center bg-[#C6A38D] py-6 sm:py-12 px-4 sm:px-6 lg:px-8 border-l-[10px] border-r-[10px] border-b-[10px] border-[#ffffff] ${showConfirmationModal ? 'blur-sm' : ''}`}>
       <div className="w-full max-w-3xl rounded-[50px] mx-auto bg-white shadow-lg p-4 sm:p-8 border-2 border-[#8B593E] flex flex-col items-center mt-24">
         <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-10 text-[#8B593E]">Book Your Stay Now...</h2>
         
@@ -421,6 +402,28 @@ export default function Booking() {
         </form>
       </div>
     </div>
+
+    {/* Confirmation Modal */}
+    {showConfirmationModal && (
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div className="bg-white rounded-xl p-6 max-w-md w-full text-center">
+          <h3 className="text-2xl font-bold text-[#8B593E] mb-4">Booking Confirmed!</h3>
+          <p className="text-gray-700 mb-6">
+            Thank you for choosing Pearl Homestay! We have sent a confirmation email to {customerEmail}.
+            We look forward to welcoming you soon.
+          </p>
+          <button
+            onClick={() => {
+              setShowConfirmationModal(false);
+              window.location.reload();
+            }}
+            className="w-full py-3 bg-[#8B593E] text-white rounded-lg font-semibold hover:bg-[#6B4530] transition duration-300"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    )}
     </>
   );
 }

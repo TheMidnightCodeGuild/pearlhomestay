@@ -1,10 +1,37 @@
-import React from 'react';
+"use client";
+import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 const About = () => {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    
+    const section = sectionRef.current;
+    
+    gsap.fromTo(section, {
+      opacity: 0,
+      y: 100
+    }, {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: section,
+        start: "top 80%",
+        end: "top 20%",
+        toggleActions: "play none none reverse"
+      }
+    });
+  }, []);
+
   return (
-    <section id="about" className="w-full min-h-screen bg-[#C6A38D] py-4 px-4 border-l-[10px] border-r-[10px] border-[#ffffff]">
-      <div className="max-w-7xl mx-auto">
+    <section  id="about" className="w-full min-h-screen bg-[#C6A38D]  px-4 border-l-[10px] border-r-[10px] border-[#ffffff] py-24 md:py-12 ">
+      <div ref={sectionRef} className="max-w-7xl mx-auto">
         <div className="bg-[#fffff0]  rounded-4xl shadow-xl overflow-hidden  transition-all duration-300 hover:shadow-2xl">
           <div className="flex flex-col md:flex-row">
             <div className="md:w-1/2 p-6 md:p-10">

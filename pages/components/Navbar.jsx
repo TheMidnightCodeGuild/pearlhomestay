@@ -78,15 +78,16 @@ const Navbar = () => {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-3 py-2 rounded-lg text-sm lg:text-xs font-medium transition-all uppercase duration-200 hover:rotate-[360deg] hover:scale-110
+                className={`px-3 py-2 rounded-lg text-sm lg:text-xs font-medium transition-all duration-200 relative group
                   ${
                     router.pathname === link.href
-                      ? 'text-[#8B593E] bg-[#F2E2D7]'
-                      : 'text-[#4A2511] hover:text-[#8B593E] hover:bg-[#F2E2D7]/70'
+                      ? 'text-[#4A2511] '
+                      : 'text-[#4A2511] hover:text-[#8B593E]'
                   }`}
                 aria-current={router.pathname === link.href ? 'page' : undefined}
               >
                 {link.label}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#8B593E] transition-all duration-300 group-hover:w-full"></span>
               </Link>
             ))}
             <Link href="/booking" className="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-[#8B593E] rounded-full shadow-md group">
@@ -138,15 +139,16 @@ const Navbar = () => {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`block px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 hover:rotate-[360deg] hover:scale-110
+                className={`block px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 relative group
                   ${
                     router.pathname === link.href
                       ? 'text-[#8B593E] bg-[#F2E2D7]'
-                      : 'text-[#4A2511] hover:text-[#8B593E] hover:bg-[#F2E2D7]/70'
+                      : 'text-[#4A2511] hover:text-[#8B593E]'
                   }`}
                 aria-current={router.pathname === link.href ? 'page' : undefined}
               >
                 {link.label}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#8B593E] transition-all duration-300 group-hover:w-full"></span>
               </Link>
             ))}
             <Link href="/booking" className="block px-4 py-2">
@@ -156,7 +158,7 @@ const Navbar = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                   </svg>
                 </span>
-                <span className="absolute flex items-center justify-center w-full h-full text-[#ffffff] transition-all duration-300 transform group-hover:translate-x-full ease ">Book Now</span>
+                <span className="absolute flex items-center justify-center w-full h-full text-[#ffffff] transition-all duration-300 transform group-hover:translate-x-full ease">Book Now</span>
                 <span className="relative invisible text-[#ffffff]">Book Now</span>
               </div>
             </Link>
