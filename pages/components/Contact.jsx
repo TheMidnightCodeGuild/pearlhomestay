@@ -10,6 +10,7 @@ const Book = () => {
     phone: "",
     message: "",
   });
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -20,6 +21,7 @@ const Book = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       await addDoc(collection(db, "enquiries"), {
         name: formData.name,
@@ -40,6 +42,8 @@ const Book = () => {
     } catch (error) {
       console.error("Error:", error);
       alert("Failed to send message. Please try again later.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -181,9 +185,14 @@ const Book = () => {
                 ></textarea>
                 <button
                   type="submit"
-                  className="w-full h-10 sm:h-12 text-[#1A1A1A] text-sm sm:text-base font-semibold leading-6 rounded-full transition-all duration-700 hover:bg-[#F2E2D7] bg-[#E69500] shadow-sm"
+                  disabled={loading}
+                  className="w-full h-10 sm:h-12 text-[#1A1A1A] text-sm sm:text-base font-semibold leading-6 rounded-full transition-all duration-700 hover:bg-[#F2E2D7] bg-[#E69500] shadow-sm flex items-center justify-center"
                 >
-                  Send Message
+                  {loading ? (
+                    <div className="w-6 h-6 border-2 border-t-transparent border-[#1A1A1A] rounded-full animate-spin"></div>
+                  ) : (
+                    "Send Message"
+                  )}
                 </button>
               </form>
             </div>
