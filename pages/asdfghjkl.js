@@ -1,20 +1,73 @@
 import { useState, useEffect } from 'react';
-import { collection, getDocs, orderBy, query, doc, updateDoc } from 'firebase/firestore';
+import { collection, getDocs, orderBy, query, doc, updateDoc, deleteDoc, limit, startAfter } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 
 export default function Dashboard() {
   const [bookings, setBookings] = useState([]);
   const [reservations, setReservations] = useState([]);
   const [rooms, setRooms] = useState([]);
+  const [enquiries, setEnquiries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [filter, setFilter] = useState('all'); // all, pending, confirmed, cancelled
   const [editingRoom, setEditingRoom] = useState(null);
+  const [lastEnquiryDoc, setLastEnquiryDoc] = useState(null);
+  const [hasMoreEnquiries, setHasMoreEnquiries] = useState(true);
 
   useEffect(() => {
     fetchBookingsAndReservations();
     fetchRooms();
+    fetchEnquiries();
   }, []);
+
+  const fetchEnquiries = async (lastDoc = null) => {
+    try {
+      const enquiriesRef = collection(db, 'enquiries');
+      let enquiriesQuery;
+      
+      if (lastDoc) {
+        enquiriesQuery = query(enquiriesRef, orderBy('createdAt', 'desc'), startAfter(lastDoc), limit(5));
+      } else {
+        enquiriesQuery = query(enquiriesRef, orderBy('createdAt', 'desc'), limit(5));
+      }
+
+      const enquiriesSnapshot = await getDocs(enquiriesQuery);
+      
+      const enquiriesData = enquiriesSnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data(),
+        createdAt: doc.data().createdAt?.toDate?.() || new Date()
+      }));
+
+      if (!lastDoc) {
+        setEnquiries(enquiriesData);
+      } else {
+        setEnquiries(prev => [...prev, ...enquiriesData]);
+      }
+
+      setLastEnquiryDoc(enquiriesSnapshot.docs[enquiriesSnapshot.docs.length - 1]);
+      setHasMoreEnquiries(enquiriesSnapshot.docs.length === 5);
+    } catch (error) {
+      console.error('Error fetching enquiries:', error);
+      setError('Failed to load enquiries');
+    }
+  };
+
+  const handleLoadMoreEnquiries = () => {
+    if (lastEnquiryDoc) {
+      fetchEnquiries(lastEnquiryDoc);
+    }
+  };
+
+  const handleDeleteEnquiry = async (enquiryId) => {
+    try {
+      await deleteDoc(doc(db, 'enquiries', enquiryId));
+      setEnquiries(enquiries.filter(e => e.id !== enquiryId));
+    } catch (error) {
+      console.error('Error deleting enquiry:', error);
+      setError('Failed to delete enquiry');
+    }
+  };
 
   const fetchRooms = async () => {
     try {
@@ -157,6 +210,44 @@ export default function Dashboard() {
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Pearl Homestay Dashboard</h1>
           <p className="text-gray-600">Manage all bookings and reservations</p>
+        </div>
+
+        {/* Enquiries Section */}
+        <div className="bg-white rounded-lg shadow mb-8 p-6">
+          <h2 className="text-xl font-bold text-gray-900 mb-4">Recent Enquiries</h2>
+          {enquiries.length === 0 ? (
+            <p className="text-gray-500">No enquiries yet</p>
+          ) : (
+            <div className="space-y-4">
+              {enquiries.map(enquiry => (
+                <div key={enquiry.id} className="border rounded-lg p-4 flex justify-between items-start">
+                  <div>
+                    <p className="font-medium">{enquiry.name}</p>
+                    <p className="text-gray-600">{enquiry.email}</p>
+                    <p className="text-gray-600">{enquiry.phone}</p>
+                    <p className="text-gray-700 mt-2">{enquiry.message}</p>
+                    <p className="text-sm text-gray-500 mt-2">
+                      {enquiry.createdAt.toLocaleDateString()}
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => handleDeleteEnquiry(enquiry.id)}
+                    className="text-red-600 hover:text-red-800"
+                  >
+                    Delete
+                  </button>
+                </div>
+              ))}
+              {hasMoreEnquiries && (
+                <button
+                  onClick={handleLoadMoreEnquiries}
+                  className="w-full mt-4 py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                >
+                  Load More Enquiries
+                </button>
+              )}
+            </div>
+          )}
         </div>
 
         {/* Rooms Management Section */}
