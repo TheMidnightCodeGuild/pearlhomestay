@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
+import { db } from "../../firebase/config";
+import { collection, addDoc } from "firebase/firestore";
 
 const Book = () => {
   const [formData, setFormData] = useState({
@@ -19,32 +21,22 @@ const Book = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("/api/sendEmail", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          mobile: formData.phone,
-          message: formData.message,
-        }),
+      await addDoc(collection(db, "enquiries"), {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        message: formData.message,
+        createdAt: new Date()
       });
 
-      const data = await response.json();
-
-      if (response.ok) {
-        alert("Message sent successfully!");
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          message: "",
-        });
-      } else {
-        throw new Error(data.error || "Failed to send message");
-      }
+      alert("Message sent successfully!");
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+      });
+      
     } catch (error) {
       console.error("Error:", error);
       alert("Failed to send message. Please try again later.");
