@@ -64,7 +64,7 @@ const Book = () => {
               <div className="group w-full h-full min-h-[400px] sm:min-h-[500px]">
                 <div className="relative h-full border-6 rounded-4xl border-[#ffffff]">
                   <Image
-                    src="/images/contact.jpg"
+                    src="/images/contact.png"
                     alt="Contact Us"
                     fill
                     className="w-full h-full lg:rounded-l-2xl rounded-2xl object-cover"
