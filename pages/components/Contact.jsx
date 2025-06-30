@@ -54,7 +54,10 @@ const Book = () => {
   return (
     <>
       {/* Contact Section */}
-      <section id="contact" className="py-12 sm:py-16 md:py-24 bg-[#C6A38D] border-l-[10px] border-r-[10px] ] border-[#8B593E]">
+      <section
+        id="contact"
+        className="py-12 sm:py-16 md:py-5 bg-[#C6A38D] border-l-[10px] border-r-[10px] ] border-[#8B593E]"
+      >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 grid-cols-1 gap-8">
             <div className="lg:mb-0 mb-8">
@@ -66,7 +69,6 @@ const Book = () => {
                     fill
                     className="w-full h-full lg:rounded-l-2xl rounded-2xl object-cover"
                   />
-
 
                   <div className="absolute bottom-0 w-full p-4 sm:p-6 md:p-8 lg:p-11">
                     <div className="bg-[#1A1A1A]/80 rounded-lg p-4 sm:p-6 block">
@@ -133,8 +135,8 @@ const Book = () => {
                           />
                         </svg>
                         <h5 className="text-[#F2E2D7] text-base sm:text-lg font-semibold leading-6 ml-3 sm:ml-5">
-                          B - 61, Arpita Enclave,
-                          Near Jain Lassi, Ujjain, Madhya Pradesh 456010
+                          B - 61, Arpita Enclave, Near Jain Lassi, Ujjain,
+                          Madhya Pradesh 456010
                         </h5>
                       </div>
                     </div>
@@ -142,7 +144,7 @@ const Book = () => {
                 </div>
               </div>
             </div>
-            <div className="bg-[#1A1A1A] p-4 sm:p-6 md:p-8 lg:p-11 lg:rounded-r-2xl rounded-2xl border-[10px]  border-[#a18989]">
+            <div className="bg-[#1A1A1A] p-4 sm:p-6 md:p-8 lg:p-11 lg:rounded-r-2xl rounded-2xl border-[10px]  ">
               <h2 className="text-[#E69500] font-manrope text-2xl sm:text-3xl md:text-4xl font-semibold leading-tight mb-6 sm:mb-8 md:mb-11">
                 Contact Us
               </h2>

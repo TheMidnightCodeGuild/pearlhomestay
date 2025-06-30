@@ -7,7 +7,6 @@ const Footer = () => {
       <div className="lg:max-w-[1300px] mx-auto  py-4">
         <div className="text-center">
           <p className="text-lg">© {new Date().getFullYear()} Pearl Homestay. All rights reserved.</p>
-          <p className="text-sm mt-2 font-bold">Property Owner: Aadarsh Bhondwe</p>
           <p className="text-sm mt-2">
             Designed & Developed by{' '}
             <Link 

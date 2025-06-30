@@ -22,24 +22,25 @@ const Amenities = () => {
   ];
 
   return (
-    <section id="amenities" className="py-20 bg-[#C6A38D] border-l-[10px] border-r-[10px] border-b-[10px] border-[#8B593E]">
+    <section
+      id="amenities"
+      className="py-24 bg-[#C6A38D] border-l-[10px] border-r-[10px] border-b-[10px] border-[#8B593E]"
+    >
       <div className="lg:max-w-[1300px] mx-auto px-6">
-        <header className="text-center mb-16">
-          <h2 className="text-5xl md:text-5xl sm:text-4xl font-bold mb-6 text-neutral-800">
-            Premium <span className="text-primary relative">Amenities
-              <span className="absolute bottom-1 left-0 w-full h-2 bg-primary/30"></span>
-            </span>
+        <header className="text-center mb-14 ">
+          <h2 className="text-5xl md:text-4xl sm:text-4xl font-bold mb-5 text-neutral-800">
+            Premium <span className="text-[#8B593E]"> Amenities</span>
           </h2>
-          <p className="text-lg text-neutral-600 max-w-2xl mx-auto leading-relaxed">
-            Experience luxury and comfort with our carefully curated selection of
-            premium amenities designed to make your stay exceptional.
+          <p className="text-base  text-neutral-600 max-w-2xl mx-auto leading-relaxed">
+            Experience luxury and comfort with our carefully curated selection
+            of premium amenities designed to make your stay exceptional.
           </p>
         </header>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-10">
           {services.map((service) => (
-            <div 
-              key={service.id} 
+            <div
+              key={service.id}
               className="flex flex-col items-center group hover:transform hover:scale-105 transition-all duration-300"
             >
               <div className="rounded-full p-6 mb-4 bg-white shadow-lg group-hover:shadow-xl group-hover:bg-primary/10 transition-all duration-300 border-6 border-[#8B593E]">

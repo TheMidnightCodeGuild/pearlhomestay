@@ -33,13 +33,13 @@ const Gallery = () => {
   ];
 
   return (
-    <section id="gallery" className="py-12 md:py-20 bg-[#F5EBE0] border-l-[10px] border-r-[10px] border-b-[10px] border-[#8B593E]">
-      <div className="w-full lg:max-w-[1300px] mx-auto px-4 md:px-6">
-        <header className="text-center mb-8 md:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 text-neutral-800">
-            Our <span className="text-[#8B593E] ">Gallery</span>
+    <section id="gallery" className="py-12 md:py-12 bg-[#F5EBE0] border-l-[10px] border-r-[10px] border-b-[10px] border-[#8B593E]">
+      <div className="w-full lg:max-w-[1300px] mx-auto px-4 md:px-6 ">
+        <header className="text-left mb-8 md:mb-8">
+          <h2 className="text-3xl sm:text-4xl md:text-4xl font-bold mb-4 md:mb-2 text-neutral-800 text-left">
+            Our <span className="text-[#8B593E]">Gallery</span>
           </h2>
-          <p className="text-base md:text-lg text-neutral-600 max-w-2xl mx-auto leading-relaxed px-4">
+          <p className="text-base md:text-base text-neutral-600 max-w-4xl leading-relaxed">
             Take a visual journey through our elegant spaces and discover the perfect setting for your stay.
           </p>
         </header>
