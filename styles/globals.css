@@ -1,12 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
-@import url('https://fonts.cdnfonts.com/css/masiku');
+@import url("https://fonts.cdnfonts.com/css/masiku");
 @import "tailwindcss";
 
-html,
-body {
-  height: 100%;
-  overflow: hidden;
-  scroll-behavior: auto;
+* {
+  font-family: "Quicksand", sans-serif;
 }
 
 html.lenis {
@@ -19,27 +16,6 @@ html.lenis {
 
 .lenis.lenis-smooth [data-lenis-scroll] {
   will-change: transform;
-}
-
-/* Custom Scrollbar Styling */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: #000000;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-  /* background: url('/images/trishul.png') center/cover; */
-  border-radius: 10px;
-  border: 2px solid #F2E2D7;
-  min-height: 50px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  opacity: 0.8;
 }
 
 .font-masiku {

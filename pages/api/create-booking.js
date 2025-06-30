@@ -64,7 +64,7 @@ export default async function handler(req, res) {
         <li>Selected Rooms: ${selectedRooms.map(room => 
           `${room.description} (${room.isAc ? 'AC' : 'Non-AC'})`
         ).join(', ')}</li>
-        <li>Total Price: ₹${totalPrice} + GST</li>
+        <li>Total Price: ₹${totalPrice}</li>
       </ul>
       <p>We will review your request and confirm your booking shortly. You will receive another email with the confirmation.</p>
       <p>Booking Reference: ${reservationRef.id}</p>
@@ -84,7 +84,7 @@ export default async function handler(req, res) {
         <li>Selected Rooms: ${selectedRooms.map(room => 
           `${room.description} (${room.isAc ? 'AC' : 'Non-AC'})`
         ).join(', ')}</li>
-        <li>Total Price: ₹${totalPrice} + GST</li>
+        <li>Total Price: ₹${totalPrice}</li>
       </ul>
       <p>Booking Reference: ${reservationRef.id}</p>
       <div style="margin-top: 30px; text-align: center;">
@@ -113,6 +113,8 @@ export default async function handler(req, res) {
         html: homestayEmailContent
       })
     ]);
+
+    
 
     return res.status(200).json({ 
       message: 'Reservation request submitted successfully',

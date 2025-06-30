@@ -172,7 +172,7 @@ export default function ConfirmBooking() {
             </div>
             <div>
               <p className="text-sm text-gray-600">Total Price</p>
-              <p className="font-medium">₹{booking.totalPrice} + GST</p>
+              <p className="font-medium">₹{booking.totalPrice}</p>
             </div>
           </div>
           

@@ -7,15 +7,19 @@ import Amenities from "./components/Amenities";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Loader from "./components/Loader";
+import Gallery from "./components/Gallery";
+import Destinations from "./components/Destinations";
 const index = () => {
   return (
     <>
-      <Loader />
+      <Loader /> 
       <Navbar />
       {/* <Home2 /> */}
       <Home />
       <About />
+      <Gallery />
       <Amenities />
+      <Destinations />
       <Contact />
       <Footer />
     </>

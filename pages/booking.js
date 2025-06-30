@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { db } from '../lib/firebase';
-import { collection, query, getDocs } from 'firebase/firestore';
+import { collection, getDocs } from 'firebase/firestore';
+import Navbar from './components/Navbar';
 
 export default function Booking() {
   const [numPeople, setNumPeople] = useState(1);
@@ -17,6 +18,7 @@ export default function Booking() {
   const [customerPhone, setCustomerPhone] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [bookingSuccess, setBookingSuccess] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   // Fetch all rooms from Firestore
   useEffect(() => {
@@ -51,13 +53,15 @@ export default function Booking() {
         capacity: room.capacity,
         acCost: room.ACCost,
         nonAcCost: room.NonACCost,
-        description: `${room.type.charAt(0).toUpperCase() + room.type.slice(1)} Room`
+        description: `${room.type.charAt(0).toUpperCase() + room.type.slice(1)} Room`,
+        amenities: ['Free WiFi', 'Daily Housekeeping', 'Private Bathroom'],
+        images: room.images || []
       }));
       
       setAvailableRooms(available);
       
       if (available.length === 0) {
-        setError('No rooms available');
+        setError('No rooms available for selected dates');
       }
     } catch (err) {
       setError('Error checking room availability');
@@ -71,9 +75,8 @@ export default function Booking() {
     if (checkIn && checkOut) {
       checkRoomAvailability();
     }
-  }, [checkIn, checkOut, numPeople, rooms]);
+  }, [checkIn, checkOut, numPeople, rooms, checkRoomAvailability]);
 
-  // Calculate total price whenever selected rooms change
   useEffect(() => {
     const total = selectedRooms.reduce((sum, room) => {
       return sum + (room.isAc ? room.acCost : room.nonAcCost);
@@ -85,10 +88,8 @@ export default function Booking() {
     setSelectedRooms(prev => {
       const existingRoom = prev.find(r => r.id === room.id);
       if (existingRoom) {
-        // If room is already selected, remove it
         return prev.filter(r => r.id !== room.id);
       } else {
-        // Add new room selection
         return [...prev, { ...room, isAc }];
       }
     });
@@ -101,6 +102,7 @@ export default function Booking() {
       return;
     }
     setShowCustomerForm(true);
+    setShowModal(false);
   };
 
   const handleBookingSubmit = async (e) => {
@@ -132,7 +134,6 @@ export default function Booking() {
       }
 
       setBookingSuccess(true);
-      // Reset form
       setNumPeople(1);
       setCheckIn('');
       setCheckOut('');
@@ -150,16 +151,16 @@ export default function Booking() {
 
   if (bookingSuccess) {
     return (
-      <div className="min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-md mx-auto bg-white rounded-lg shadow-md p-8 text-center">
-          <h2 className="text-2xl font-bold text-green-600 mb-4">Booking Request Submitted!</h2>
-          <p className="text-gray-600 mb-4">
-            Thank you for your reservation request. We have sent a confirmation email to {customerEmail}.
-            We will review your request and confirm your booking shortly.
+      <div className="min-h-screen bg-[#F2E2D7] py-8 px-4 sm:py-12 sm:px-6 lg:px-8">
+        <div className="max-w-md mx-auto bg-white rounded-xl shadow-lg p-6 sm:p-8 text-center border-2 border-[#8B593E]">
+          <h2 className="text-2xl sm:text-3xl font-bold text-[#8B593E] mb-4 sm:mb-6">Booking Confirmed!</h2>
+          <p className="text-sm sm:text-base text-gray-700 mb-4 sm:mb-6 leading-relaxed">
+            Thank you for choosing Pearl Homestay! We have sent a confirmation email to {customerEmail}.
+            We look forward to welcoming you soon.
           </p>
           <button
             onClick={() => setBookingSuccess(false)}
-            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            className="w-full py-2 sm:py-3 px-4 sm:px-6 rounded-lg text-white bg-[#8B593E] hover:bg-[#6B4530] transition duration-300 ease-in-out font-medium text-base sm:text-lg shadow-md"
           >
             Make Another Booking
           </button>
@@ -169,23 +170,25 @@ export default function Booking() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-8">
-        <h2 className="text-2xl font-bold text-center mb-8">Make a Reservation</h2>
+    <>
+    <Navbar />
+    <div className="min-h-screen flex flex-col items-center justify-center bg-[#C6A38D] py-6 sm:py-12 px-4 sm:px-6 lg:px-8 border-l-[10px] border-r-[10px] border-b-[10px] border-[#8B593E]">
+      <div className="w-full max-w-3xl rounded-[50px] mx-auto bg-white shadow-lg p-4 sm:p-8 border-2 border-[#8B593E] flex flex-col items-center mt-24">
+        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-10 text-[#8B593E]">Book Your Stay Now...</h2>
         
         {error && (
-          <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
-            {error}
+          <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-red-50 border-l-4 border-red-500 text-red-700 rounded-r-lg w-full">
+            <p className="text-sm sm:text-base font-medium">{error}</p>
           </div>
         )}
         
-        <form onSubmit={showCustomerForm ? handleBookingSubmit : handleSubmit} className="space-y-6">
+        <form onSubmit={showCustomerForm ? handleBookingSubmit : handleSubmit} className="space-y-6 sm:space-y-8 w-full">
           {!showCustomerForm ? (
             <>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div>
-                  <label htmlFor="numPeople" className="block text-sm font-medium text-gray-700">
-                    Number of People
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 sm:gap-6">
+                <div className="space-y-2">
+                  <label htmlFor="numPeople" className="block text-sm sm:text-base font-medium text-[#4A2511]">
+                    Number of Guests
                   </label>
                   <input
                     type="number"
@@ -194,13 +197,13 @@ export default function Booking() {
                     max="12"
                     value={numPeople}
                     onChange={(e) => setNumPeople(parseInt(e.target.value))}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    className="w-full p-2 sm:p-2 text-sm sm:text-base border-2 border-[#C6A38D] rounded-lg focus:border-[#8B593E] focus:ring focus:ring-[#8B593E]/20 transition duration-200"
                     required
                   />
                 </div>
 
-                <div>
-                  <label htmlFor="checkIn" className="block text-sm font-medium text-gray-700">
+                <div className="space-y-2">
+                  <label htmlFor="checkIn" className="block text-sm sm:text-base font-medium text-[#4A2511]">
                     Check-in Date
                   </label>
                   <input
@@ -208,13 +211,13 @@ export default function Booking() {
                     id="checkIn"
                     value={checkIn}
                     onChange={(e) => setCheckIn(e.target.value)}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    className="w-full p-2 sm:p-2 text-sm sm:text-base border-2 border-[#C6A38D] rounded-lg focus:border-[#8B593E] focus:ring focus:ring-[#8B593E]/20 transition duration-200"
                     required
                   />
                 </div>
 
-                <div>
-                  <label htmlFor="checkOut" className="block text-sm font-medium text-gray-700">
+                <div className="space-y-2">
+                  <label htmlFor="checkOut" className="block text-sm sm:text-base font-medium text-[#4A2511]">
                     Check-out Date
                   </label>
                   <input
@@ -222,139 +225,195 @@ export default function Booking() {
                     id="checkOut"
                     value={checkOut}
                     onChange={(e) => setCheckOut(e.target.value)}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    className="w-full p-2 sm:p-2 text-sm sm:text-base border-2 border-[#C6A38D] rounded-lg focus:border-[#8B593E] focus:ring focus:ring-[#8B593E]/20 transition duration-200"
                     required
                   />
                 </div>
               </div>
 
-              {loading ? (
-                <div className="text-center">Checking availability...</div>
-              ) : availableRooms.length > 0 ? (
-                <div className="space-y-4">
-                  <h3 className="font-medium text-gray-700">Available Rooms:</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {availableRooms.map((room) => (
-                      <div key={room.id} className="p-4 border rounded-lg">
-                        <p className="font-medium">{room.description}</p>
-                        <p className="text-sm text-gray-600">Capacity: {room.capacity} people</p>
-                        <div className="mt-4 space-y-2">
-                          <div className="flex items-center justify-between">
-                            <div>
-                              <p className="text-sm font-medium">AC Room</p>
-                              <p className="text-sm text-gray-600">₹{room.acCost} + GST</p>
+              <button
+                type="button"
+                onClick={() => setShowModal(true)}
+                disabled={loading || !checkIn || !checkOut}
+                className="w-full py-3 sm:py-4 px-4 sm:px-6 text-base sm:text-lg font-semibold text-white bg-[#8B593E] rounded-xl hover:bg-[#6B4530] transition duration-300 disabled:bg-gray-400 disabled:cursor-not-allowed shadow-lg"
+              >
+                Continue to Book
+              </button>
+
+              {/* Modal */}
+              {showModal && (
+                <div className="fixed inset-0 bg-[#C6A38D] flex items-center justify-center z-50 p-4">
+                  <div className="bg-white rounded-xl p-4 sm:p-6 w-full max-h-[90vh] overflow-y-auto">
+                    <div className="flex justify-between items-center mb-4">
+                      <h3 className="text-xl sm:text-2xl font-bold text-[#8B593E]">Available Rooms</h3>
+                      <button 
+                        onClick={() => setShowModal(false)}
+                        className="text-gray-500 hover:text-gray-700"
+                      >
+                        ✕
+                      </button>
+                    </div>
+
+                    {loading ? (
+                      <div className="text-center py-8">
+                        <div className="animate-spin rounded-full h-12 w-12 border-4 border-[#8B593E] border-t-transparent mx-auto"></div>
+                        <p className="mt-4 text-lg text-[#4A2511]">Checking availability...</p>
+                      </div>
+                    ) : (
+                      <div className="flex flex-col lg:flex-row gap-6">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 flex-grow">
+                          {availableRooms.map((room) => (
+                            <div key={room.id} className="border-2 border-[#C6A38D] rounded-xl p-4">
+                              <div className="relative h-48 mb-4 rounded-lg overflow-hidden">
+                                <img 
+                                  src={room.images[0] || "/room-placeholder.jpg"} 
+                                  alt={room.description}
+                                  className="w-full h-full object-cover"
+                                />
+                              </div>
+                              
+                              <h4 className="text-lg font-semibold text-[#8B593E] mb-2">{room.description}</h4>
+                              <p className="text-sm text-[#4A2511] mb-2">
+                                <span className="font-medium">Capacity:</span> {room.capacity} guests
+                              </p>
+                              
+                              <div className="space-y-3 mt-4">
+                                <div className="flex items-center justify-between p-3 bg-[#F2E2D7] rounded-lg">
+                                  <div>
+                                    <p className="text-sm font-medium">AC Room</p>
+                                    <p className="text-lg font-bold text-[#8B593E]">₹{room.acCost}</p>
+                                  </div>
+                                  <button
+                                    type="button"
+                                    onClick={() => handleRoomSelection(room, true)}
+                                    className={`px-4 py-2 rounded-lg text-sm font-medium ${
+                                      selectedRooms.some(r => r.id === room.id && r.isAc)
+                                        ? 'bg-[#8B593E] text-white'
+                                        : 'bg-white text-[#8B593E] border-2 border-[#8B593E]'
+                                    }`}
+                                  >
+                                    {selectedRooms.some(r => r.id === room.id && r.isAc) ? 'Selected' : 'Select'}
+                                  </button>
+                                </div>
+                                
+                                <div className="flex items-center justify-between p-3 bg-[#F2E2D7] rounded-lg">
+                                  <div>
+                                    <p className="text-sm font-medium">Non-AC Room</p>
+                                    <p className="text-lg font-bold text-[#8B593E]">₹{room.nonAcCost}</p>
+                                  </div>
+                                  <button
+                                    type="button"
+                                    onClick={() => handleRoomSelection(room, false)}
+                                    className={`px-4 py-2 rounded-lg text-sm font-medium ${
+                                      selectedRooms.some(r => r.id === room.id && !r.isAc)
+                                        ? 'bg-[#8B593E] text-white'
+                                        : 'bg-white text-[#8B593E] border-2 border-[#8B593E]'
+                                    }`}
+                                  >
+                                    {selectedRooms.some(r => r.id === room.id && !r.isAc) ? 'Selected' : 'Select'}
+                                  </button>
+                                </div>
+                              </div>
                             </div>
-                            <button
-                              type="button"
-                              onClick={() => handleRoomSelection(room, true)}
-                              className={`px-4 py-2 rounded-md text-sm font-medium ${
-                                selectedRooms.some(r => r.id === room.id && r.isAc)
-                                  ? 'bg-green-600 text-white'
-                                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                              }`}
-                            >
-                              {selectedRooms.some(r => r.id === room.id && r.isAc) ? 'Selected' : 'Select'}
-                            </button>
-                          </div>
-                          <div className="flex items-center justify-between">
-                            <div>
-                              <p className="text-sm font-medium">Non-AC Room</p>
-                              <p className="text-sm text-gray-600">₹{room.nonAcCost} + GST</p>
+                          ))}
+                        </div>
+
+                        {/* Right side panel for total and proceed */}
+                        <div className="lg:w-80 lg:ml-6">
+                          {selectedRooms.length > 0 && (
+                            <div className="lg:sticky lg:top-6">
+                              <div className="p-4 bg-[#F2E2D7] rounded-xl">
+                                <h3 className="text-xl font-semibold text-[#4A2511] mb-3">Your Selection</h3>
+                                <div className="space-y-2">
+                                  {selectedRooms.map((room, index) => (
+                                    <div key={index} className="flex justify-between items-center p-2 bg-white rounded-lg">
+                                      <span className="text-sm text-[#4A2511] font-medium">
+                                        {room.description} ({room.isAc ? 'AC' : 'Non-AC'})
+                                      </span>
+                                      <span className="text-sm text-[#8B593E] font-semibold">
+                                        ₹{room.isAc ? room.acCost : room.nonAcCost}
+                                      </span>
+                                    </div>
+                                  ))}
+                                  <div className="border-t-2 border-[#C6A38D] pt-3 mt-3">
+                                    <div className="flex justify-between items-center text-lg font-bold">
+                                      <span className="text-[#4A2511]">Total Amount:</span>
+                                      <span className="text-[#8B593E]">₹{totalPrice}</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div className="mt-6 flex flex-col space-y-3">
+                                <button
+                                  type="submit"
+                                  disabled={selectedRooms.length === 0}
+                                  className="w-full py-3 bg-[#8B593E] text-white rounded-lg disabled:bg-gray-400 font-semibold"
+                                >
+                                  Proceed to Details
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={() => setShowModal(false)}
+                                  className="w-full py-3 text-[#8B593E] border-2 border-[#8B593E] rounded-lg font-semibold"
+                                >
+                                  Cancel
+                                </button>
+                              </div>
                             </div>
-                            <button
-                              type="button"
-                              onClick={() => handleRoomSelection(room, false)}
-                              className={`px-4 py-2 rounded-md text-sm font-medium ${
-                                selectedRooms.some(r => r.id === room.id && !r.isAc)
-                                  ? 'bg-green-600 text-white'
-                                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                              }`}
-                            >
-                              {selectedRooms.some(r => r.id === room.id && !r.isAc) ? 'Selected' : 'Select'}
-                            </button>
-                          </div>
+                          )}
                         </div>
                       </div>
-                    ))}
-                  </div>
-                </div>
-              ) : null}
-
-              {selectedRooms.length > 0 && (
-                <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-                  <h3 className="font-medium text-gray-700 mb-2">Selected Rooms:</h3>
-                  <div className="space-y-2">
-                    {selectedRooms.map((room, index) => (
-                      <div key={index} className="flex justify-between items-center">
-                        <span className="text-sm">
-                          {room.description} ({room.isAc ? 'AC' : 'Non-AC'})
-                        </span>
-                        <span className="text-sm font-medium">
-                          ₹{room.isAc ? room.acCost : room.nonAcCost} + GST
-                        </span>
-                      </div>
-                    ))}
-                    <div className="border-t pt-2 mt-2">
-                      <div className="flex justify-between items-center font-medium">
-                        <span>Total Price:</span>
-                        <span>₹{totalPrice} + GST</span>
-                      </div>
-                    </div>
+                    )}
                   </div>
                 </div>
               )}
-
-              <button
-                type="submit"
-                disabled={loading || selectedRooms.length === 0}
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:bg-gray-400 disabled:cursor-not-allowed"
-              >
-                Book Now
-              </button>
             </>
           ) : (
-            <div className="space-y-4">
-              <h3 className="font-medium text-gray-700">Customer Details</h3>
-              <div>
-                <label htmlFor="customerEmail" className="block text-sm font-medium text-gray-700">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  id="customerEmail"
-                  value={customerEmail}
-                  onChange={(e) => setCustomerEmail(e.target.value)}
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                  required
-                />
+            <div className="space-y-4 sm:space-y-6">
+              <h3 className="text-xl sm:text-2xl font-semibold text-[#4A2511] text-center">Your Details</h3>
+              <div className="space-y-3 sm:space-y-4">
+                <div>
+                  <label htmlFor="customerEmail" className="block text-base sm:text-lg font-medium text-[#4A2511] mb-1 sm:mb-2">
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    id="customerEmail"
+                    value={customerEmail}
+                    onChange={(e) => setCustomerEmail(e.target.value)}
+                    className="w-full p-2 sm:p-3 text-sm sm:text-base border-2 border-[#C6A38D] rounded-lg focus:border-[#8B593E] focus:ring focus:ring-[#8B593E]/20 transition duration-200"
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="customerPhone" className="block text-base sm:text-lg font-medium text-[#4A2511] mb-1 sm:mb-2">
+                    Phone Number
+                  </label>
+                  <input
+                    type="tel"
+                    id="customerPhone"
+                    value={customerPhone}
+                    onChange={(e) => setCustomerPhone(e.target.value)}
+                    className="w-full p-2 sm:p-3 text-sm sm:text-base border-2 border-[#C6A38D] rounded-lg focus:border-[#8B593E] focus:ring focus:ring-[#8B593E]/20 transition duration-200"
+                    required
+                  />
+                </div>
               </div>
-              <div>
-                <label htmlFor="customerPhone" className="block text-sm font-medium text-gray-700">
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                  id="customerPhone"
-                  value={customerPhone}
-                  onChange={(e) => setCustomerPhone(e.target.value)}
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                  required
-                />
-              </div>
-              <div className="flex space-x-4">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-3 sm:pt-4">
                 <button
                   type="button"
                   onClick={() => setShowCustomerForm(false)}
-                  className="flex-1 py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                  className="w-full sm:flex-1 py-2 sm:py-4 px-4 sm:px-6 text-base sm:text-lg font-semibold text-[#8B593E] bg-white border-2 border-[#8B593E] rounded-xl hover:bg-[#F2E2D7] transition duration-300"
                 >
                   Back
                 </button>
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="flex-1 py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:bg-gray-400 disabled:cursor-not-allowed"
+                  className="w-full sm:flex-1 py-2 sm:py-4 px-4 sm:px-6 text-base sm:text-lg font-semibold text-white bg-[#8B593E] rounded-xl hover:bg-[#6B4530] transition duration-300 disabled:bg-gray-400 disabled:cursor-not-allowed shadow-lg"
                 >
-                  {isSubmitting ? 'Submitting...' : 'Submit Booking Request'}
+                  {isSubmitting ? 'Processing...' : 'Confirm Booking'}
                 </button>
               </div>
             </div>
@@ -362,5 +421,6 @@ export default function Booking() {
         </form>
       </div>
     </div>
+    </>
   );
 }
