@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
-@import url('https://fonts.cdnfonts.com/css/masiku');
+@import url("https://fonts.cdnfonts.com/css/masiku");
 @import "tailwindcss";
-
 
 * {
   font-family: "Quicksand", sans-serif;

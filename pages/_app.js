@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import Lenis from '@studio-freight/lenis';
-import "@/styles/globals.css";
+import "../styles/globals.css";
 
 function App({ Component, pageProps }) {
   useEffect(() => {

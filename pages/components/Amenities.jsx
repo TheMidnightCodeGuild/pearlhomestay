@@ -1,13 +1,13 @@
 "use client";
 import Image from "next/image";
-import ac from "@/public/icons/air-conditioner.png";
-import bathroom from "@/public/icons/male-and-female.png";
-import family from "@/public/icons/parents.png";
-import hotwater from "@/public/icons/hot-water.png";
-import security from "@/public/icons/security.png";
-import tea from "@/public/icons/coffee-cup.png";
-import generator from "@/public/icons/generator.png";
-import wifi from "@/public/icons/travel.png";
+import ac from "../../public/icons/air-conditioner.png";
+import bathroom from "../../public/icons/male-and-female.png";
+import family from "../../public/icons/parents.png";
+import hotwater from "../../public/icons/hot-water.png";
+import security from "../../public/icons/security.png";
+import tea from "../../public/icons/coffee-cup.png";
+import generator from "../../public/icons/generator.png";
+import wifi from "../../public/icons/travel.png";
 
 const Amenities = () => {
   const services = [
