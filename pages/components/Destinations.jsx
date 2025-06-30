@@ -126,12 +126,12 @@ export default function NearbyAtraction() {
   return (
     <section
       id="nearbyAttraction"
-      className="py-12 sm:py-20 bg-[#C6A38D]">
+      className="py-12 sm:py-20 bg-[#C6A38D] border-l-[10px] border-r-[10px] border-[#ffffff]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <header className="text-center pb-10">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#8B593E] mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-4xl font-bold text-[#000000] mb-4">
             Nearby
-            <span className="text-[#5C3D2E]"> Attractions</span>
+            <span className="text-[#8B593E]"> Attractions</span>
           </h1>
           <p className="text-sm sm:text-base md:text-lg text-[#5C3D2E]/80">
             Explore the rich spiritual and cultural heritage of Ujjain with

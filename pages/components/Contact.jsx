@@ -56,7 +56,7 @@ const Book = () => {
       {/* Contact Section */}
       <section
         id="contact"
-        className="py-12 sm:py-16 md:py-5 bg-[#C6A38D] border-l-[10px] border-r-[10px] ] border-[#8B593E]"
+        className="py-12 sm:py-16 md:py-5 bg-[#C6A38D] border-l-[10px] border-r-[10px] ] border-[#ffffff]"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 grid-cols-1 gap-8">

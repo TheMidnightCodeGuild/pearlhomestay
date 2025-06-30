@@ -24,7 +24,7 @@ const Amenities = () => {
   return (
     <section
       id="amenities"
-      className="py-12 md:py-16 lg:py-24 bg-[#C6A38D] border-l-[10px] border-r-[10px] border-b-[10px] border-[#8B593E]"
+      className="py-12 md:py-16 lg:py-24 bg-[#C6A38D] border-l-[10px] border-r-[10px] border-[#ffffff]"
     >
       <div className="lg:max-w-[1300px] mx-auto px-4 sm:px-6">
         <header className="text-center mb-8 md:mb-10 lg:mb-14">

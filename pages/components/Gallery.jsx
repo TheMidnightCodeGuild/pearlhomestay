@@ -33,7 +33,7 @@ const Gallery = () => {
   ];
 
   return (
-    <section id="gallery" className="py-12 md:py-12 bg-[#F5EBE0] border-l-[10px] border-r-[10px] border-b-[10px] border-[#8B593E]">
+    <section id="gallery" className="py-12 md:py-12 bg-[#C6A38D] border-l-[10px] border-r-[10px] border-[#ffffff]">
       <div className="w-full lg:max-w-[1300px] mx-auto px-4 md:px-6 ">
         <header className="text-left mb-8 md:mb-8">
           <h2 className="text-3xl sm:text-4xl md:text-4xl font-bold mb-4 md:mb-2 text-neutral-800 text-left">

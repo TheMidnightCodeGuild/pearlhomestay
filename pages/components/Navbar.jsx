@@ -50,7 +50,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out border-t-[10px] border-r-[10px] border-l-[10px] border-[#8B593E] border-b-[1px]    ${
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out border-t-[10px] border-r-[10px] border-l-[10px] border-[#ffffff] border-b-[1px]    ${
         isScrolled ? 'bg-[#C6A38D] shadow-md' : 'bg-[#C6A38D]'
       } ${isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}
     >
@@ -95,8 +95,8 @@ const Navbar = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                 </svg>
               </span>
-              <span className="absolute flex items-center justify-center w-full h-full text-[#8B593E] transition-all duration-300 transform group-hover:translate-x-full ease">Contact Us</span>
-              <span className="relative invisible">Contact Us</span>
+              <span className="absolute flex items-center justify-center w-full h-full text-[#8B593E] transition-all duration-300 transform group-hover:translate-x-full ease">Book Now</span>
+              <span className="relative invisible">Book Now</span>
             </Link>
           </div>
 
@@ -156,8 +156,8 @@ const Navbar = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                   </svg>
                 </span>
-                <span className="absolute flex items-center justify-center w-full h-full text-[#ffffff] transition-all duration-300 transform group-hover:translate-x-full ease ">Contact Us</span>
-                <span className="relative invisible text-[#ffffff]">Contact Us</span>
+                <span className="absolute flex items-center justify-center w-full h-full text-[#ffffff] transition-all duration-300 transform group-hover:translate-x-full ease ">Book Now</span>
+                <span className="relative invisible text-[#ffffff]">Book Now</span>
               </div>
             </Link>
           </div>
