@@ -55,7 +55,7 @@ const Gallery = () => {
       src: "/images/img1.png",
     },
     {
-      src: "/images/img2.jpg",
+      src: "/images/img1.jpg",
     },
     {
       src: "/images/img3.jpg",
