@@ -5,6 +5,7 @@ import "swiper/css";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import Head from 'next/head';
 
 const Gallery = () => {
   const sectionRef = useRef(null);
@@ -53,56 +54,78 @@ const Gallery = () => {
   const images = [
     {
       src: "/images/img1.png",
+      alt: "Pearl Homestay Ujjain - Exterior View"
     },
     {
       src: "/images/img2.jpg",
+      alt: "Pearl Homestay Ujjain - Lobby Area"
     },
     {
       src: "/images/img3.jpg",
+      alt: "Pearl Homestay Ujjain - Deluxe Room"
     },
     {
       src: "/images/img4.jpg",
+      alt: "Pearl Homestay Ujjain - Family Suite"
     },
     {
       src: "/images/img5.jpg",
+      alt: "Pearl Homestay Ujjain - Dining Area"
     },
     {
       src: "/images/img6.jpg",
+      alt: "Pearl Homestay Ujjain - Modern Bathroom"
     },
     {
       src: "/images/img7.jpg",
+      alt: "Pearl Homestay Ujjain - Living Room"
     },
     {
       src: "/images/img8.jpg",
+      alt: "Pearl Homestay Ujjain - Kitchen Facilities"
     },
     {
       src: "/images/img9.jpg",
+      alt: "Pearl Homestay Ujjain - Garden View"
     },
     {
       src: "/images/img10.jpg",
+      alt: "Pearl Homestay Ujjain - Balcony View"
     },
     {
       src: "/images/img11.jpg",
+      alt: "Pearl Homestay Ujjain - Common Area"
     },
     {
       src: "/images/img12.jpg",
+      alt: "Pearl Homestay Ujjain - Guest Room"
     },
     {
       src: "/images/img13.jpg",
+      alt: "Pearl Homestay Ujjain - Premium Suite"
     },
     {
       src: "/images/img14.jpg",
+      alt: "Pearl Homestay Ujjain - Reception Area"
     },
     {
       src: "/images/img15.jpg",
+      alt: "Pearl Homestay Ujjain - Parking Space"
     },
     {
       src: "/images/img16.jpg",
+      alt: "Pearl Homestay Ujjain - Building Exterior"
     },
   ];
 
   return (
     <>
+      <Head>
+        <title>Gallery - Pearl Homestay Ujjain | Photo Tour of Our Accommodation</title>
+        <meta name="description" content="Browse our gallery to see Pearl Homestay's comfortable rooms, modern amenities and peaceful surroundings. Located near Mahakaleshwar Temple in Ujjain." />
+        <meta name="keywords" content="Pearl homestay gallery, Ujjain accommodation photos, homestay images, Mahakal temple stay pictures, Ujjain rooms gallery" />
+      </Head>
+
       <section
         id="gallery"
         className="py-12 md:py-12 bg-[#C6A38D] border-l-[10px] border-r-[10px] border-[#ffffff] "
@@ -162,7 +185,7 @@ const Gallery = () => {
                 >
                   <Image
                     src={image.src}
-                    alt={`Gallery image ${index + 1}`}
+                    alt={image.alt}
                     fill
                     className="object-cover h-full w-full sm:h-[500px] md:h-[500px] lg:h-[800px] "
                     sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 33vw"
@@ -183,7 +206,7 @@ const Gallery = () => {
           <div className="relative w-full max-w-6xl h-[80vh]">
             <Image
               src={selectedImage.src}
-              alt="Selected gallery image"
+              alt={selectedImage.alt}
               fill
               className="object-contain"
               sizes="90vw"

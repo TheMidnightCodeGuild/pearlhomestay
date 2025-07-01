@@ -11,6 +11,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import Image from "next/image";
 import Link from "next/link";
+import Head from 'next/head';
 
 export default function NearbyAtraction() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -49,7 +50,7 @@ export default function NearbyAtraction() {
   const attractionImages = [
     {
       src: "/images/nearby/mahakaltemple.jpg",
-      alt: "Mahakaleshwar Temple",
+      alt: "Mahakaleshwar Temple - One of the twelve Jyotirlingas in Ujjain",
       title: "Mahakaleshwar Temple", 
       description:
         "One of the twelve Jyotirlingas, this temple houses a self-manifested Shivalinga and is dedicated to Lord Shiva as the ruler of time.",
@@ -57,7 +58,7 @@ export default function NearbyAtraction() {
     },
     {
       src: "/images/nearby/harsiddhi-temple.png.webp",
-      alt: "Harsiddhi Temple",
+      alt: "Harsiddhi Temple - Ancient Shakti Peetha in Ujjain",
       title: "Harsiddhi Temple",
       description:
         "Known as a Shakti Peetha, this temple is linked to the story of Sati and showcases centuries of devotion through its Maratha-era renovations.",
@@ -65,7 +66,7 @@ export default function NearbyAtraction() {
     },
     {
       src: "/images/nearby/Chintaman-Ganesh.jpg", 
-      alt: "Chintaman Mandir",
+      alt: "Chintaman Ganesh Temple - Historic 1000-year-old temple in Ujjain",
       title: "Chintaman Mandir",
       description:
         "This 1,000-year-old temple on the Shipra River's banks is dedicated to Lord Ganesh, believed to remove worries and bestow prosperity.",
@@ -73,7 +74,7 @@ export default function NearbyAtraction() {
     },
     {
       src: "/images/nearby/kal-bhairav.png",
-      alt: "Kal Bhairav Temple",
+      alt: "Kal Bhairav Temple - Guardian deity temple of Ujjain",
       title: "Kal Bhairav Temple",
       description:
         "Dedicated to Ujjain's guardian deity, Kal Bhairav, this temple is famous for its unique ritual of offering liquor to the deity.",
@@ -81,7 +82,7 @@ export default function NearbyAtraction() {
     },
     {
       src: "/images/nearby/ramghat.jpg",
-      alt: "Ram Ghat",
+      alt: "Ram Ghat - Sacred bathing ghat on Shipra River in Ujjain",
       title: "Ram Ghat",
       description:
         "A sacred bathing ghat on the Shipra River, Ram Ghat is renowned for its spiritual significance and as a key venue for the Kumbh Mela.",
@@ -89,7 +90,7 @@ export default function NearbyAtraction() {
     },
     {
       src: "/images/nearby/iskon.jpg",
-      alt: "ISKCON Temple",
+      alt: "ISKCON Temple Ujjain - Spiritual center for Krishna devotees",
       title: "ISKCON Temple",
       description:
         "This beautiful temple dedicated to Lord Krishna offers spiritual enlightenment and promotes Bhakti Yoga in a serene environment.",
@@ -100,7 +101,7 @@ export default function NearbyAtraction() {
   const moreAttractionImages = [
     {
       src: "/images/nearby/gopal-mandir.png",
-      alt: "Gopal Mandir",
+      alt: "Gopal Mandir - Historic Krishna temple in Ujjain",
       title: "Gopal Mandir",
       description:
         "A historic temple dedicated to Lord Krishna, Gopal Mandir is celebrated for its architectural beauty and religious importance.",
@@ -108,7 +109,7 @@ export default function NearbyAtraction() {
     },
     {
       src: "/images/nearby/Mahakallok.png",
-      alt: "Mahakal Lok",
+      alt: "Mahakal Lok - Newly developed spiritual corridor in Ujjain",
       title: "Mahakal Lok",
       description:
         "A newly developed corridor around Mahakaleshwar Temple, showcasing Ujjain's rich cultural and spiritual heritage through various attractions.",
@@ -116,7 +117,7 @@ export default function NearbyAtraction() {
     },
     {
       src: "/images/nearby/Baglamukhi-mandir.png",
-      alt: "Baglamukhi Mata Mandir",
+      alt: "Baglamukhi Mata Temple - Sacred Shakti temple in Ujjain",
       title: "Baglamukhi Mata Mandir",
       description:
         "This temple, dedicated to Goddess Baglamukhi, is known for its spiritual power and unique rituals that attract devotees from far and wide.",
@@ -124,7 +125,7 @@ export default function NearbyAtraction() {
     },
     {
       src: "/images/nearby/Dewas-tekri.png",
-      alt: "Dewas Tekri",
+      alt: "Dewas Tekri - Hilltop temples with panoramic views near Ujjain",
       title: "Dewas Tekri",
       description:
         "A hilltop offering panoramic views of Ujjain, Dewas Tekri houses temples dedicated to Chamunda Mata and Tulja Bhavani.",
@@ -132,7 +133,7 @@ export default function NearbyAtraction() {
     },
     {
       src: "/images/nearby/Mangalnathtemple.jpeg",
-      alt: "Mangalnath Temple",
+      alt: "Mangalnath Temple - Ancient astrological temple in Ujjain",
       title: "Mangalnath Temple",
       description:
         "Believed to be the birthplace of Mars (Mangal), this temple is an important astrological and spiritual site attracting many visitors.",
@@ -140,7 +141,7 @@ export default function NearbyAtraction() {
     },
     {
       src: "/images/nearby/sandipani.jpg",
-      alt: "Sandipani Ashram",
+      alt: "Sandipani Ashram - Ancient learning center of Lord Krishna in Ujjain",
       title: "Sandipani Ashram",
       description:
         "An ancient hermitage where Lord Krishna and Sudama are said to have received their education from the revered Sage Sandipani.",
@@ -149,154 +150,162 @@ export default function NearbyAtraction() {
   ];
 
   return (
-    <section
-      id="nearbyAttraction"
-      className="py-24 md:py-12 bg-[#C6A38D] border-l-[10px] border-r-[10px] border-[#ffffff]">
-      <div ref={sectionRef} className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <header className="text-center pb-10">
-          <h1 className="text-3xl sm:text-4xl md:text-4xl font-bold text-[#000000] mb-4">
-            Nearby
-            <span className="text-[#8B593E]"> Attractions</span>
-          </h1>
-          <p className="text-sm sm:text-base md:text-lg text-[#5C3D2E]/80">
-            Explore the rich spiritual and cultural heritage of Ujjain with
-            these nearby attractions:
-          </p>
-        </header>
+    <>
+      <Head>
+        <title>Sacred Attractions Near Pearl Homestay Ujjain - Religious & Cultural Sites</title>
+        <meta name="description" content="Explore famous religious and cultural attractions near Pearl Homestay Ujjain including Mahakaleshwar Temple, Harsiddhi Temple, Ram Ghat and other sacred sites." />
+        <meta name="keywords" content="Ujjain attractions, Mahakaleshwar Temple, Harsiddhi Temple, Ram Ghat, religious sites Ujjain, cultural places Ujjain, places to visit near Pearl Homestay" />
+      </Head>
+      
+      <section
+        id="nearbyAttraction"
+        className="py-24 md:py-12 bg-[#C6A38D] border-l-[10px] border-r-[10px] border-[#ffffff]">
+        <div ref={sectionRef} className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <header className="text-center pb-10">
+            <h1 className="text-3xl sm:text-4xl md:text-4xl font-bold text-[#000000] mb-4">
+              Nearby
+              <span className="text-[#8B593E]"> Attractions</span>
+            </h1>
+            <p className="text-sm sm:text-base md:text-lg text-[#5C3D2E]/80">
+              Explore the rich spiritual and cultural heritage of Ujjain with
+              these nearby attractions:
+            </p>
+          </header>
 
-        <Swiper
-          modules={[Navigation, Autoplay, Pagination, Parallax]}
-          slidesPerView={1}
-          spaceBetween={20}
-          loop={true}
-          autoplay={{
-            delay: 2000,
-            disableOnInteraction: false,
-            reverseDirection: false,
-          }}
-          breakpoints={{
-            480: {
-              slidesPerView: 1,
-              spaceBetween: 15,
-            },
-            640: {
-              slidesPerView: 2,
-              spaceBetween: 20,
-            },
-            1024: {
-              slidesPerView: 3,
-              spaceBetween: 30,
-            },
-          }}
-          className="swiper-container mb-8">
-          {attractionImages.map((attraction, index) => (
-            <SwiperSlide key={index}>
-              <div className="h-full flex flex-col bg-white/90 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="flex-grow flex flex-col p-4">
-                  <div className="relative w-full h-40 sm:h-48 mb-4 overflow-hidden rounded-md">
-                    <Image
-                      src={attraction.src}
-                      alt={attraction.alt}
-                      width={800}
-                      height={600}
-                      className="rounded-md cursor-pointer object-cover hover:scale-105 transition-transform duration-300"
-                      onClick={() => openImage(attraction.src)}
-                    />
-                  </div>
-                  <h3 className="text-base sm:text-lg font-semibold mb-2 text-[#5C3D2E]">
-                    {attraction.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-[#5C3D2E]/70 flex-grow mb-4">
-                    {attraction.description}
-                  </p>
-                  <div className="flex justify-end">
-                    <Link href={attraction.link}>
-                      <button className="bg-[#8B593E] text-white rounded-full p-2 hover:bg-[#5C3D2E] transition-colors">
-                        <PlusIcon className="w-4 h-4 sm:w-5 sm:h-5" />
-                      </button>
-                    </Link>
+          <Swiper
+            modules={[Navigation, Autoplay, Pagination, Parallax]}
+            slidesPerView={1}
+            spaceBetween={20}
+            loop={true}
+            autoplay={{
+              delay: 2000,
+              disableOnInteraction: false,
+              reverseDirection: false,
+            }}
+            breakpoints={{
+              480: {
+                slidesPerView: 1,
+                spaceBetween: 15,
+              },
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+              },
+            }}
+            className="swiper-container mb-8">
+            {attractionImages.map((attraction, index) => (
+              <SwiperSlide key={index}>
+                <div className="h-full flex flex-col bg-white/90 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  <div className="flex-grow flex flex-col p-4">
+                    <div className="relative w-full h-40 sm:h-48 mb-4 overflow-hidden rounded-md">
+                      <Image
+                        src={attraction.src}
+                        alt={attraction.alt}
+                        width={800}
+                        height={600}
+                        className="rounded-md cursor-pointer object-cover hover:scale-105 transition-transform duration-300"
+                        onClick={() => openImage(attraction.src)}
+                      />
+                    </div>
+                    <h3 className="text-base sm:text-lg font-semibold mb-2 text-[#5C3D2E]">
+                      {attraction.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-[#5C3D2E]/70 flex-grow mb-4">
+                      {attraction.description}
+                    </p>
+                    <div className="flex justify-end">
+                      <Link href={attraction.link}>
+                        <button className="bg-[#8B593E] text-white rounded-full p-2 hover:bg-[#5C3D2E] transition-colors">
+                          <PlusIcon className="w-4 h-4 sm:w-5 sm:h-5" />
+                        </button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+              </SwiperSlide>
+            ))}
+          </Swiper>
 
-        <Swiper
-          modules={[Navigation, Autoplay, Pagination, Parallax]}
-          slidesPerView={1}
-          spaceBetween={20}
-          loop={true}
-          autoplay={{
-            delay: 2000,
-            disableOnInteraction: false,
-            reverseDirection: true,
-          }}
-          breakpoints={{
-            480: {
-              slidesPerView: 1,
-              spaceBetween: 15,
-            },
-            640: {
-              slidesPerView: 2,
-              spaceBetween: 20,
-            },
-            1024: {
-              slidesPerView: 3,
-              spaceBetween: 30,
-            },
-          }}
-          className="swiper-container">
-          {moreAttractionImages.map((attraction, index) => (
-            <SwiperSlide key={index}>
-              <div className="h-full flex flex-col bg-white/90 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="flex-grow flex flex-col p-4">
-                  <div className="relative w-full h-40 sm:h-48 mb-4 overflow-hidden rounded-md">
-                    <Image
-                      priority
-                      width={800}
-                      height={600}
-                      src={attraction.src}
-                      alt={attraction.alt}
-                      className="rounded-md cursor-pointer object-cover hover:scale-105 transition-transform duration-300"
-                      onClick={() => openImage(attraction.src)}
-                    />
-                  </div>
-                  <h3 className="text-base sm:text-lg font-semibold mb-2 text-[#5C3D2E]">
-                    {attraction.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-[#5C3D2E]/70 flex-grow mb-4">
-                    {attraction.description}
-                  </p>
-                  <div className="flex justify-end">
-                    <Link href={attraction.link}>
-                      <button className="bg-[#8B593E] text-white rounded-full p-2 hover:bg-[#5C3D2E] transition-colors">
-                        <PlusIcon className="w-4 h-4 sm:w-5 sm:h-5" />
-                      </button>
-                    </Link>
+          <Swiper
+            modules={[Navigation, Autoplay, Pagination, Parallax]}
+            slidesPerView={1}
+            spaceBetween={20}
+            loop={true}
+            autoplay={{
+              delay: 2000,
+              disableOnInteraction: false,
+              reverseDirection: true,
+            }}
+            breakpoints={{
+              480: {
+                slidesPerView: 1,
+                spaceBetween: 15,
+              },
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+              },
+            }}
+            className="swiper-container">
+            {moreAttractionImages.map((attraction, index) => (
+              <SwiperSlide key={index}>
+                <div className="h-full flex flex-col bg-white/90 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  <div className="flex-grow flex flex-col p-4">
+                    <div className="relative w-full h-40 sm:h-48 mb-4 overflow-hidden rounded-md">
+                      <Image
+                        priority
+                        width={800}
+                        height={600}
+                        src={attraction.src}
+                        alt={attraction.alt}
+                        className="rounded-md cursor-pointer object-cover hover:scale-105 transition-transform duration-300"
+                        onClick={() => openImage(attraction.src)}
+                      />
+                    </div>
+                    <h3 className="text-base sm:text-lg font-semibold mb-2 text-[#5C3D2E]">
+                      {attraction.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-[#5C3D2E]/70 flex-grow mb-4">
+                      {attraction.description}
+                    </p>
+                    <div className="flex justify-end">
+                      <Link href={attraction.link}>
+                        <button className="bg-[#8B593E] text-white rounded-full p-2 hover:bg-[#5C3D2E] transition-colors">
+                          <PlusIcon className="w-4 h-4 sm:w-5 sm:h-5" />
+                        </button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
-
-      {/* Full-screen image modal */}
-      {selectedImage && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4"
-          onClick={closeImage}>
-          <Image
-            src={selectedImage}
-            alt="Full-screen"
-            width={1920}
-            height={1080}
-            className="max-w-full max-h-[90vh] object-contain rounded-lg"
-          />
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
-      )}
-    </section>
+
+        {/* Full-screen image modal */}
+        {selectedImage && (
+          <div
+            className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4"
+            onClick={closeImage}>
+            <Image
+              src={selectedImage}
+              alt="Full-screen view of attraction"
+              width={1920}
+              height={1080}
+              className="max-w-full max-h-[90vh] object-contain rounded-lg"
+            />
+          </div>
+        )}
+      </section>
+    </>
   );
 }
 
