@@ -157,14 +157,14 @@ const Gallery = () => {
             {images.map((image, index) => (
               <SwiperSlide key={index}>
                 <div
-                  className="relative h-[400px] sm:h-[400px] md:h-[500px] lg:h-[500px] rounded-lg overflow-hidden border-4 border-[#8B593E] cursor-pointer"
+                  className="relative h-[600px] sm:h-[400px] md:h-[500px] lg:h-[500px] rounded-lg overflow-hidden border-4 border-[#8B593E] cursor-pointer"
                   onClick={() => setSelectedImage(image)}
                 >
                   <Image
                     src={image.src}
                     alt={`Gallery image ${index + 1}`}
                     fill
-                    className="object-cover h-full w-full sm:h-[400px] md:h-[500px] lg:h-[800px] "
+                    className="object-cover h-full w-full sm:h-[500px] md:h-[500px] lg:h-[800px] "
                     sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 33vw"
                     priority={index < 4}
                   />
