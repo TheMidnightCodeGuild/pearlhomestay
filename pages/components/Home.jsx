@@ -13,11 +13,19 @@ const HomePage = () => {
     // Reset initial position before animation
     images.forEach(image => {
       if (image) {
-        gsap.set(image, {
-          x: "-100%",
-          rotation: 360,
-          filter: "blur(10px)" // Add initial blur
-        });
+        // Different initial states for desktop and mobile
+        if (image === desktopImageRef.current) {
+          gsap.set(image, {
+            x: "-100%",
+            rotation: 360,
+            filter: "blur(10px)"
+          });
+        } else {
+          gsap.set(image, {
+            x: "-100%",
+            filter: "blur(10px)"
+          });
+        }
       }
     });
 
@@ -29,13 +37,22 @@ const HomePage = () => {
       setTimeout(() => {
         images.forEach(image => {
           if (image) {
-            gsap.to(image, {
-              duration: 1.5,
-              x: "0%",
-              rotation: 0,
-              filter: "blur(0px)", // Clear the blur
-              ease: "power2.out",
-            });
+            if (image === desktopImageRef.current) {
+              gsap.to(image, {
+                duration: 1.5,
+                x: "0%",
+                rotation: 0,
+                filter: "blur(0px)",
+                ease: "power2.out",
+              });
+            } else {
+              gsap.to(image, {
+                duration: 1.5,
+                x: "0%",
+                filter: "blur(0px)",
+                ease: "power2.out",
+              });
+            }
           }
         });
         sessionStorage.setItem("homeAnimationShown", "true");
@@ -44,13 +61,22 @@ const HomePage = () => {
       // Subsequent visits - run animation immediately
       images.forEach(image => {
         if (image) {
-          gsap.to(image, {
-            duration: 1.5,
-            x: "0%", 
-            rotation: 0,
-            filter: "blur(0px)", // Clear the blur
-            ease: "power2.out",
-          });
+          if (image === desktopImageRef.current) {
+            gsap.to(image, {
+              duration: 1.5,
+              x: "0%",
+              rotation: 0,
+              filter: "blur(0px)",
+              ease: "power2.out",
+            });
+          } else {
+            gsap.to(image, {
+              duration: 1.5,
+              x: "0%",
+              filter: "blur(0px)",
+              ease: "power2.out",
+            });
+          }
         }
       });
     }

@@ -88,7 +88,7 @@ export default async function handler(req, res) {
       </ul>
       <p>Booking Reference: ${reservationRef.id}</p>
       <div style="margin-top: 30px; text-align: center;">
-        <a href="${'https://pearlhomestayujjain.in' || 'http://localhost:3000' || 'https://pearlhomestay.vercel.app'}/confirm-booking?bookingId=${reservationRef.id}" 
+        <a href="${'https://pearlhomestayujjain.in'}/confirm-booking?bookingId=${reservationRef.id}" 
            style="background-color: #28a745; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block; font-weight: bold;">
           Confirm Booking
         </a>
