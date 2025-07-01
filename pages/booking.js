@@ -50,15 +50,15 @@ export default function Booking() {
     
     try {
       const available = rooms.map(room => {
-        let roomImage = "/images/img1.png"; // Default image
+        let roomImage = "/images/img6.jpg"; // Default image
         
         // Set specific images based on room type
         if (room.type.toLowerCase() === "elite") {
-          roomImage = "/images/img1.png";
+          roomImage = "/images/img6.jpg";
         } else if (room.type.toLowerCase() === "royal") {
-          roomImage = "/images/img3.jpg";
+          roomImage = "/images/img1.jpg";
         } else if (room.type.toLowerCase() === "quad") {
-          roomImage = "/images/img3.jpg";
+          roomImage = "/images/img2.jpg"; // Changed quad room image
         }
 
         return {
