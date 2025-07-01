@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { db } from '../lib/firebase';
 import { collection, getDocs } from 'firebase/firestore';
 import Navbar from './components/Navbar';
+import Image from 'next/image';
 
 export default function Booking() {
   const [numPeople, setNumPeople] = useState(1);
@@ -48,16 +49,29 @@ export default function Booking() {
     setError('');
     
     try {
-      const available = rooms.map(room => ({
-        id: room.id,
-        type: room.type,
-        capacity: room.capacity,
-        acCost: room.ACCost,
-        nonAcCost: room.NonACCost,
-        description: `${room.type.charAt(0).toUpperCase() + room.type.slice(1)} Room`,
-        amenities: ['Free WiFi', 'Daily Housekeeping', 'Private Bathroom'],
-        images: room.images || []
-      }));
+      const available = rooms.map(room => {
+        let roomImage = "/images/img1.png"; // Default image
+        
+        // Set specific images based on room type
+        if (room.type.toLowerCase() === "elite") {
+          roomImage = "/images/img1.png";
+        } else if (room.type.toLowerCase() === "royal") {
+          roomImage = "/images/img3.jpg";
+        } else if (room.type.toLowerCase() === "quad") {
+          roomImage = "/images/img3.jpg";
+        }
+
+        return {
+          id: room.id,
+          type: room.type,
+          capacity: room.capacity,
+          acCost: room.ACCost,
+          nonAcCost: room.NonACCost,
+          description: `${room.type.charAt(0).toUpperCase() + room.type.slice(1)} Room`,
+          amenities: ['Free WiFi', 'Daily Housekeeping', 'Private Bathroom'],
+          images: [roomImage]
+        };
+      });
       
       setAvailableRooms(available);
       
@@ -191,7 +205,14 @@ export default function Booking() {
                     type="date"
                     id="checkIn"
                     value={checkIn}
-                    onChange={(e) => setCheckIn(e.target.value)}
+                    min={new Date().toISOString().split('T')[0]}
+                    onChange={(e) => {
+                      setCheckIn(e.target.value);
+                      // Clear checkout if it's before new checkin
+                      if (checkOut && checkOut <= e.target.value) {
+                        setCheckOut('');
+                      }
+                    }}
                     className="w-full p-2 sm:p-2 text-sm sm:text-base border-2 border-[#C6A38D] rounded-lg focus:border-[#8B593E] focus:ring focus:ring-[#8B593E]/20 transition duration-200"
                     required
                   />
@@ -205,7 +226,9 @@ export default function Booking() {
                     type="date"
                     id="checkOut"
                     value={checkOut}
+                    min={checkIn ? new Date(checkIn).toISOString().split('T')[0] : new Date().toISOString().split('T')[0]}
                     onChange={(e) => setCheckOut(e.target.value)}
+                    disabled={!checkIn}
                     className="w-full p-2 sm:p-2 text-sm sm:text-base border-2 border-[#C6A38D] rounded-lg focus:border-[#8B593E] focus:ring focus:ring-[#8B593E]/20 transition duration-200"
                     required
                   />
@@ -246,10 +269,15 @@ export default function Booking() {
                           {availableRooms.map((room) => (
                             <div key={room.id} className="border-2 border-[#C6A38D] rounded-xl p-4">
                               <div className="relative h-48 mb-4 rounded-lg overflow-hidden">
-                                <img 
-                                  src={room.images[0] || "/room-placeholder.jpg"} 
+                                <Image
+                                  src={room.images[0] || "/images/img2.png"} 
+
                                   alt={room.description}
                                   className="w-full h-full object-cover"
+                                  width={500}
+                                  height={500}
+                                  quality={100}
+                                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                 />
                               </div>
                               

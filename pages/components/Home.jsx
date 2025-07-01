@@ -15,7 +15,8 @@ const HomePage = () => {
       if (image) {
         gsap.set(image, {
           x: "-100%",
-          rotation: 360
+          rotation: 360,
+          filter: "blur(10px)" // Add initial blur
         });
       }
     });
@@ -32,6 +33,7 @@ const HomePage = () => {
               duration: 1.5,
               x: "0%",
               rotation: 0,
+              filter: "blur(0px)", // Clear the blur
               ease: "power2.out",
             });
           }
@@ -46,6 +48,7 @@ const HomePage = () => {
             duration: 1.5,
             x: "0%", 
             rotation: 0,
+            filter: "blur(0px)", // Clear the blur
             ease: "power2.out",
           });
         }

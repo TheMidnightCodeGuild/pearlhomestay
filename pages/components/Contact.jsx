@@ -89,6 +89,9 @@ const Book = () => {
                     src="/images/contact.png"
                     alt="Contact Us"
                     fill
+                    priority
+                    quality={100}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="w-full h-full lg:rounded-l-2xl rounded-2xl object-cover"
                   />
 
