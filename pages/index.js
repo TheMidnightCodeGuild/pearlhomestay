@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import Loader from "./components/Loader";
 import Gallery from "./components/Gallery";
 import Destinations from "./components/Destinations";
+import Testimonial from "./components/Testimonial";
 const index = () => {
   return (
     <>
@@ -20,6 +21,7 @@ const index = () => {
       <Gallery />
       <Amenities />
       <Destinations />
+      <Testimonial />
       <Contact />
       <Footer />
     </>
