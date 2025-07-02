@@ -7,7 +7,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Head from 'next/head';
-import Image from 'next/image';
+
 
 const Testimonial = () => {
   const sectionRef = useRef(null);
@@ -56,8 +56,8 @@ const Testimonial = () => {
     {
       id: 3,
       content:
-        "I had an unforgettable experience at this homestay. The personalized service, attention to detail, and the warmth of the hosts made all the difference. Highly recommend .",
-      name: "Krish Gupta",
+        "I had an unforgettable experience at this homestay. The personalized service, attention to detail, and the warmth of the hosts made all the difference. Highly recommend.",
+      name: "Krish Gupta", 
       role: "Solo Traveler",
     },
     {
@@ -129,13 +129,13 @@ const Testimonial = () => {
                     </div>
                     <div className="flex items-center mt-auto">
                       <div className="flex-shrink-0">
-                        <Image
-                          width={48}
-                          height={48}
-                          className="rounded-full"
-                          src={`https://ui-avatars.com/api/?name=${data.name}&background=random`}
-                          alt={`${data.name}'s testimonial for Pearl Homestay Ujjain`}
-                        />
+                        <svg 
+                          xmlns="http://www.w3.org/2000/svg" 
+                          viewBox="0 0 512 512" 
+                          className="w-12 h-12 text-[#8B593E]"
+                        >
+                          <path d="M399 384.2C376.9 345.8 335.4 320 288 320l-64 0c-47.4 0-88.9 25.8-111 64.2c35.2 39.2 86.2 63.8 143 63.8s107.8-24.7 143-63.8zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 16a72 72 0 1 0 0-144 72 72 0 1 0 0 144z"/>
+                        </svg>
                       </div>
                       <div className="ml-4">
                         <div className="text-lg font-medium text-[#4A2511]">
