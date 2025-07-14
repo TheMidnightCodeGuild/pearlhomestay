@@ -7,11 +7,11 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import "swiper/css/parallax";
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Image from "next/image";
 import Link from "next/link";
-import Head from 'next/head';
+import Head from "next/head";
 
 export default function NearbyAtraction() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -19,24 +19,28 @@ export default function NearbyAtraction() {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    
+
     const section = sectionRef.current;
-    
-    gsap.fromTo(section, {
-      opacity: 0,
-      y: 100
-    }, {
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: section,
-        start: "top 80%",
-        end: "top 20%",
-        toggleActions: "play none none reverse"
+
+    gsap.fromTo(
+      section,
+      {
+        opacity: 0,
+        y: 100,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: section,
+          start: "top 80%",
+          end: "top 20%",
+          toggleActions: "play none none reverse",
+        },
       }
-    });
+    );
   }, []);
 
   const openImage = (src) => {
@@ -51,7 +55,7 @@ export default function NearbyAtraction() {
     {
       src: "/images/nearby/mahakaltemple.jpg",
       alt: "Mahakaleshwar Temple - One of the twelve Jyotirlingas in Ujjain",
-      title: "Mahakaleshwar Temple", 
+      title: "Mahakaleshwar Temple",
       description:
         "One of the twelve Jyotirlingas, this temple houses a self-manifested Shivalinga and is dedicated to Lord Shiva as the ruler of time.",
       link: "https://en.wikipedia.org/wiki/Mahakaleshwar_Jyotirlinga",
@@ -65,7 +69,7 @@ export default function NearbyAtraction() {
       link: "https://ujjain.nic.in/en/tourist-place/harsiddhi/",
     },
     {
-      src: "/images/nearby/Chintaman-Ganesh.jpg", 
+      src: "/images/nearby/Chintaman-Ganesh.jpg",
       alt: "Chintaman Ganesh Temple - Historic 1000-year-old temple in Ujjain",
       title: "Chintaman Mandir",
       description:
@@ -89,7 +93,7 @@ export default function NearbyAtraction() {
       link: "https://en.wikipedia.org/wiki/Shipra_River",
     },
     {
-      src: "/images/nearby/iskon.jpg",
+      src: "/images/nearby/Iskon.jpg",
       alt: "ISKCON Temple Ujjain - Spiritual center for Krishna devotees",
       title: "ISKCON Temple",
       description:
@@ -152,15 +156,28 @@ export default function NearbyAtraction() {
   return (
     <>
       <Head>
-        <title>Sacred Attractions Near Pearl Homestay Ujjain - Religious & Cultural Sites</title>
-        <meta name="description" content="Explore famous religious and cultural attractions near Pearl Homestay Ujjain including Mahakaleshwar Temple, Harsiddhi Temple, Ram Ghat and other sacred sites." />
-        <meta name="keywords" content="Ujjain attractions, Mahakaleshwar Temple, Harsiddhi Temple, Ram Ghat, religious sites Ujjain, cultural places Ujjain, places to visit near Pearl Homestay" />
+        <title>
+          Sacred Attractions Near Pearl Homestay Ujjain - Religious & Cultural
+          Sites
+        </title>
+        <meta
+          name="description"
+          content="Explore famous religious and cultural attractions near Pearl Homestay Ujjain including Mahakaleshwar Temple, Harsiddhi Temple, Ram Ghat and other sacred sites."
+        />
+        <meta
+          name="keywords"
+          content="Ujjain attractions, Mahakaleshwar Temple, Harsiddhi Temple, Ram Ghat, religious sites Ujjain, cultural places Ujjain, places to visit near Pearl Homestay"
+        />
       </Head>
-      
+
       <section
         id="nearbyAttraction"
-        className="py-24 md:py-12 bg-[#C6A38D] border-l-[10px] border-r-[10px] border-[#ffffff]">
-        <div ref={sectionRef} className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        className="py-24 md:py-12 bg-[#C6A38D] border-l-[10px] border-r-[10px] border-[#ffffff]"
+      >
+        <div
+          ref={sectionRef}
+          className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+        >
           <header className="text-center pb-10">
             <h1 className="text-3xl sm:text-4xl md:text-4xl font-bold text-[#000000] mb-4">
               Nearby
@@ -196,7 +213,8 @@ export default function NearbyAtraction() {
                 spaceBetween: 30,
               },
             }}
-            className="swiper-container mb-8">
+            className="swiper-container mb-8"
+          >
             {attractionImages.map((attraction, index) => (
               <SwiperSlide key={index}>
                 <div className="h-full flex flex-col bg-white/90 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
@@ -254,7 +272,8 @@ export default function NearbyAtraction() {
                 spaceBetween: 30,
               },
             }}
-            className="swiper-container">
+            className="swiper-container"
+          >
             {moreAttractionImages.map((attraction, index) => (
               <SwiperSlide key={index}>
                 <div className="h-full flex flex-col bg-white/90 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
@@ -294,7 +313,8 @@ export default function NearbyAtraction() {
         {selectedImage && (
           <div
             className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4"
-            onClick={closeImage}>
+            onClick={closeImage}
+          >
             <Image
               src={selectedImage}
               alt="Full-screen view of attraction"
@@ -319,7 +339,8 @@ const PlusIcon = (props) => {
       stroke="currentColor"
       strokeWidth="2"
       strokeLinecap="round"
-      strokeLinejoin="round">
+      strokeLinejoin="round"
+    >
       <path d="M5 12h14" />
       <path d="M12 5v14" />
     </svg>

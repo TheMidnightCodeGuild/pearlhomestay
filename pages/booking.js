@@ -31,6 +31,7 @@ export default function Booking() {
           id: doc.id,
           ...doc.data(),
         }));
+        console.log("Fetched rooms from Firebase:", roomsData); // Debug log
         setRooms(roomsData);
       } catch (err) {
         console.error("Error fetching rooms:", err);
@@ -50,16 +51,32 @@ export default function Booking() {
 
     try {
       const available = rooms.map((room) => {
-        let roomImage = "/images/img6.jpg"; // Default image
+        console.log("Room type:", room.type); // Debug log
 
-        // Set specific images based on room type
-        if (room.type && room.type.toLowerCase() === "elite") {
+        // More flexible room type matching
+        const roomType = room.type ? room.type.toLowerCase().trim() : "";
+        let roomImage;
+
+        if (roomType.includes("elite") || roomType.includes("premium")) {
+          roomImage = "/images/img14.jpg";
+        } else if (roomType.includes("royal") || roomType.includes("luxury")) {
+          roomImage = "/images/img10.jpg";
+        } else if (roomType.includes("quad") || roomType.includes("family")) {
           roomImage = "/images/img6.jpg";
-        } else if (room.type && room.type.toLowerCase() === "royal") {
-          roomImage = "/images/img1.jpg";
-        } else if (room.type && room.type.toLowerCase() === "quad") {
-          roomImage = "/images/img2.jpg";
+        } else if (
+          roomType.includes("standard") ||
+          roomType.includes("basic")
+        ) {
+          roomImage = "/images/img4.jpg";
+        } else if (roomType.includes("deluxe")) {
+          roomImage = "/images/img5.jpg";
+        } else if (roomType.includes("suite")) {
+          roomImage = "/images/img6.jpg";
+        } else {
+          // Default image for any other room type
+          roomImage = "/images/img8.jpg";
         }
+        console.log("Selected image:", roomImage); // Debug log
 
         return {
           id: room.id,
@@ -270,7 +287,7 @@ export default function Booking() {
                 {/* Modal */}
                 {showModal && (
                   <div className="fixed inset-0 bg-[#C6A38D] flex items-center justify-center z-50 p-4">
-                    <div className="bg-white rounded-xl p-4 sm:p-6 w-full max-h-[90vh] overflow-y-auto">
+                    <div className="bg-white rounded-xl p-4 sm:p-12 w-full max-h-[100vh] overflow-y-auto">
                       <div className="flex justify-between items-center mb-4">
                         <h3 className="text-xl sm:text-2xl font-bold text-[#8B593E]">
                           Available Rooms
@@ -298,9 +315,9 @@ export default function Booking() {
                                 key={room.id}
                                 className="border-2 border-[#C6A38D] rounded-xl p-4"
                               >
-                                <div className="relative h-48 mb-4 rounded-lg overflow-hidden">
+                                <div className="relative h-72 mb-4 rounded-lg overflow-hidden">
                                   <Image
-                                    src={room.images[0] || "/images/img2.png"}
+                                    src={room.images[0]}
                                     alt={room.description}
                                     className="w-full h-full object-cover"
                                     width={500}
