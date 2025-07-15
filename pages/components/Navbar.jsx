@@ -51,15 +51,6 @@ const Navbar = () => {
 
   return (
     <>
-      <Head>
-        <title>Pearl Homestay Ujjain</title>
-        <meta
-          name="description"
-          content="Navigate through Pearl Homestay Ujjain's website to explore our accommodations, services, gallery and contact information. Easy booking available."
-        />
-        <meta name="robots" content="noindex,follow" />
-      </Head>
-
       <nav
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out border-t-[10px] border-r-[10px] border-l-[10px] border-[#ffffff]    ${
           isScrolled ? "bg-[#C6A38D] shadow-md" : "bg-[#C6A38D]"

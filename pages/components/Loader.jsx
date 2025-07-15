@@ -17,7 +17,7 @@ const Loader = () => {
       opacity: 0,
       delay: 1,
       y: 50,
-      ease: "power2.out"
+      ease: "power2.out",
     });
 
     // Then slide up loader after delay
@@ -42,9 +42,9 @@ const Loader = () => {
 
   return (
     <div className="fixed inset-0 bg-[#F5EBE0] z-[9999] flex items-center justify-center loading">
-      <div className="flex flex-col items-center gap-8">
-        <div className="w-16 h-16 border-t-4 border-[#8B593E] border-solid rounded-full animate-spin"></div>
-        <p className="welcome-text text-2xl font-masiku text-[#8B593E]">
+      <div className="flex flex-col items-center gap-4 sm:gap-6 md:gap-8 p-4 sm:p-6 md:p-8">
+        <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 border-t-4 border-[#8B593E] border-solid rounded-full animate-spin"></div>
+        <p className="welcome-text text-lg sm:text-xl md:text-2xl font-masiku text-[#8B593E] text-center px-4">
           Welcome to Pearl Home Stay
         </p>
       </div>
