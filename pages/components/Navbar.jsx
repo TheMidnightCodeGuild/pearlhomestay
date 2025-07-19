@@ -10,6 +10,7 @@ const navLinks = [
   { href: "#gallery", label: "Gallery" },
   { href: "#amenities", label: "Services" },
   { href: "#contact", label: "Contact Us" },
+  { href: "/ujjain", label: "Insights" }, // Added Insights linking to ujjain.js
 ];
 
 const Navbar = () => {
