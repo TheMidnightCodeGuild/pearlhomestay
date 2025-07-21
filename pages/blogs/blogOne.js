@@ -28,7 +28,7 @@ const BlogOne = () => {
 
         <div className="space-y-8">
           <p className="text-lg md:text-xl leading-relaxed">
-            Nestled in the spiritual heart of Madhya Pradesh, Pearl Homestay in Ujjain offers a cozy and affordable stay for travelers, pilgrims, and tourists alike. Whether you're visiting the sacred Mahakaleshwar Temple, attending the Kumbh Mela, or simply exploring the ancient city, Pearl Homestay provides the perfect blend of comfort, convenience, and cultural authenticity.
+            Nestled in the spiritual heart of Madhya Pradesh, Pearl Homestay in Ujjain offers a cozy and affordable stay for travelers, pilgrims, and tourists alike. Whether you&apos;re visiting the sacred Mahakaleshwar Temple, attending the Kumbh Mela, or simply exploring the ancient city, Pearl Homestay provides the perfect blend of comfort, convenience, and cultural authenticity.
           </p>
 
           <section>
@@ -48,13 +48,13 @@ const BlogOne = () => {
                 <li>Nag Panchami</li>
                 <li>Mahashivratri</li>
               </ul>
-              <p>If you're looking for a place that allows you to experience the divine essence of Ujjain while staying close to all major temples and ghats, Pearl Homestay is your best bet.</p>
+              <p>If you&apos;re looking for a place that allows you to experience the divine essence of Ujjain while staying close to all major temples and ghats, Pearl Homestay is your best bet.</p>
             </div>
           </section>
 
           <section>
             <h2 className="text-2xl font-semibold mb-4">🚶‍♂️ Top Attractions Near Pearl Homestay</h2>
-            <p className="mb-4">One of the biggest advantages of staying at Pearl Homestay is its proximity to Ujjain's top attractions. Here's a quick list of must-visit places just a short distance away:</p>
+            <p className="mb-4">One of the biggest advantages of staying at Pearl Homestay is its proximity to Ujjain&apos;s top attractions. Here&apos;s a quick list of must-visit places just a short distance away:</p>
             <div className="grid md:grid-cols-2 gap-4">
               <div className="bg-gray-50 p-4 rounded-lg">
                 <h3 className="font-semibold">🔱 Mahakaleshwar Temple (2.5 km)</h3>
@@ -66,7 +66,7 @@ const BlogOne = () => {
               </div>
               <div className="bg-gray-50 p-4 rounded-lg">
                 <h3 className="font-semibold">🛕 Kal Bhairav Temple (3.5 km)</h3>
-                <p>Famous for its unique ritual of offering liquor to the deity. It's a quick rickshaw ride from Pearl Homestay.</p>
+                <p>Famous for its unique ritual of offering liquor to the deity. It&apos;s a quick rickshaw ride from Pearl Homestay.</p>
               </div>
               <div className="bg-gray-50 p-4 rounded-lg">
                 <h3 className="font-semibold">🪷 Sandipani Ashram (4.8 km)</h3>
@@ -99,20 +99,20 @@ const BlogOne = () => {
                 <li>Local Transport Assistance</li>
               </ul>
             </div>
-            <p className="mt-4">We believe it's the small touches — like a welcoming cup of chai, or a freshly cleaned room after your darshan — that make your stay special.</p>
+            <p className="mt-4">We believe it&apos;s the small touches — like a welcoming cup of chai, or a freshly cleaned room after your darshan — that make your stay special.</p>
           </section>
 
           <section>
             <h2 className="text-2xl font-semibold mb-4">👪 Perfect for Solo Travelers, Couples, and Families</h2>
             <div className="space-y-4">
-              <p>Whether you're a solo spiritual seeker or a family on vacation, Pearl Homestay is designed for all kinds of guests. Our rooms are spacious and safe, our staff is respectful and helpful, and the location is peaceful yet connected.</p>
-              <p>We also have a no-noise policy after 10 PM, ensuring you can rest well after your day's journey.</p>
+              <p>Whether you&apos;re a solo spiritual seeker or a family on vacation, Pearl Homestay is designed for all kinds of guests. Our rooms are spacious and safe, our staff is respectful and helpful, and the location is peaceful yet connected.</p>
+              <p>We also have a no-noise policy after 10 PM, ensuring you can rest well after your day&apos;s journey.</p>
             </div>
           </section>
 
           <section>
             <h2 className="text-2xl font-semibold mb-4">🧘‍♀️ Experience the Local Culture of Ujjain</h2>
-            <p>One of the biggest advantages of a homestay like Pearl is the opportunity to connect with local traditions. If you're interested, we can help you explore:</p>
+            <p>One of the biggest advantages of a homestay like Pearl is the opportunity to connect with local traditions. If you&apos;re interested, we can help you explore:</p>
             <ul className="list-disc pl-6 space-y-2 mt-4">
               <li>Local aartis and rituals at temples</li>
               <li>Vegetarian street food tours</li>
@@ -125,15 +125,15 @@ const BlogOne = () => {
             <h2 className="text-2xl font-semibold mb-4">💬 What Guests Are Saying About Pearl Homestay</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <blockquote className="bg-gray-50 p-6 rounded-lg border-l-4 border-gray-400">
-                <p className="italic">"I booked Pearl Homestay for a weekend visit to Ujjain. It was peaceful, clean, and close to the Mahakal temple. The owners even arranged an early rickshaw for our Bhasma Aarti!"</p>
+                <p className="italic">&quot;I booked Pearl Homestay for a weekend visit to Ujjain. It was peaceful, clean, and close to the Mahakal temple. The owners even arranged an early rickshaw for our Bhasma Aarti!&quot;</p>
                 <footer className="mt-2 font-semibold">– Neha, Mumbai</footer>
               </blockquote>
               <blockquote className="bg-gray-50 p-6 rounded-lg border-l-4 border-gray-400">
-                <p className="italic">"Felt like staying at a relative's place. Clean beds, hot water, and real hospitality."</p>
+                <p className="italic">&quot;Felt like staying at a relative&apos;s place. Clean beds, hot water, and real hospitality.&quot;</p>
                 <footer className="mt-2 font-semibold">– Rajeev, Lucknow</footer>
               </blockquote>
               <blockquote className="bg-gray-50 p-6 rounded-lg border-l-4 border-gray-400">
-                <p className="italic">"Way better than the hotels I've tried in the past. Less expensive, more soul."</p>
+                <p className="italic">&quot;Way better than the hotels I&apos;ve tried in the past. Less expensive, more soul.&quot;</p>
                 <footer className="mt-2 font-semibold">– Ananya, Bangalore</footer>
               </blockquote>
             </div>
@@ -206,7 +206,7 @@ const BlogOne = () => {
           <section className="bg-gray-50 p-6 rounded-lg">
             <h2 className="text-2xl font-semibold mb-4">🙏 Come as a Guest, Leave as Family</h2>
             <div className="space-y-4">
-              <p>Ujjain isn't just a city — it's an emotion. And Pearl Homestay isn't just accommodation — it's an experience. Whether you're coming for a quick darshan or a slow spiritual retreat, we promise you a stay filled with warmth, devotion, and unforgettable memories.</p>
+              <p>Ujjain isn&apos;t just a city — it&apos;s an emotion. And Pearl Homestay isn&apos;t just accommodation — it&apos;s an experience. Whether you&apos;re coming for a quick darshan or a slow spiritual retreat, we promise you a stay filled with warmth, devotion, and unforgettable memories.</p>
               <p className="font-semibold">Book your stay today and discover why guests call us the best homestay in Ujjain.</p>
             </div>
           </section>

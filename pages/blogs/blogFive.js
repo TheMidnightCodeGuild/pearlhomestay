@@ -29,7 +29,7 @@ const BlogFive = () => {
         <div className="space-y-8">
           <div className="space-y-4">
             <p className="text-lg md:text-xl leading-relaxed">
-              Ujjain — the spiritual heartbeat of Madhya Pradesh — attracts lakhs of pilgrims and travelers each year. Whether you're visiting for the divine darshan at Mahakaleshwar Jyotirlinga, exploring the heritage of Kal Bhairav Temple, or just soaking in the city's ancient charm, one question often arises:
+              Ujjain — the spiritual heartbeat of Madhya Pradesh — attracts lakhs of pilgrims and travelers each year. Whether you&apos;re visiting for the divine darshan at Mahakaleshwar Jyotirlinga, exploring the heritage of Kal Bhairav Temple, or just soaking in the city&apos;s ancient charm, one question often arises:
             </p>
             <p className="text-xl font-semibold text-center italic">
               Where should I stay in Ujjain?
@@ -45,7 +45,7 @@ const BlogFive = () => {
               Situated on the banks of the Shipra River, Ujjain is one of the seven holiest cities in Hinduism. Its spiritual and historical significance is unmatched — home to the Mahakaleshwar Temple, one of the twelve jyotirlingas, and the site of the famous Kumbh Mela every 12 years.
             </p>
             <p className="italic">
-              But amidst all this spiritual energy, there's one practical thing every traveler needs: a peaceful, clean, and conveniently located place to stay in Ujjain.
+              But amidst all this spiritual energy, there&apos;s one practical thing every traveler needs: a peaceful, clean, and conveniently located place to stay in Ujjain.
             </p>
           </section>
 
@@ -76,7 +76,7 @@ const BlogFive = () => {
 
           <section>
             <h2 className="text-2xl font-semibold mb-6">💎 Pearl Homestay – The Hidden Gem of Ujjain</h2>
-            <p className="mb-6">If you're looking for a blend of comfort, affordability, and convenience, Pearl Homestay stands out as a top-rated place to stay in Ujjain.</p>
+            <p className="mb-6">If you&apos;re looking for a blend of comfort, affordability, and convenience, Pearl Homestay stands out as a top-rated place to stay in Ujjain.</p>
 
             <div className="space-y-6">
               <div className="bg-gray-50 p-6 rounded-lg">
@@ -102,7 +102,7 @@ const BlogFive = () => {
                 <h3 className="text-xl font-semibold mb-4">✅ Budget Friendly:</h3>
                 <ul className="list-disc pl-6 space-y-2">
                   <li>Pearl Homestay is recognized among the best budget-friendly guesthouses in Ujjain</li>
-                  <li>It's one of the cheapest places to stay in Ujjain without compromising on quality</li>
+                  <li>It&apos;s one of the cheapest places to stay in Ujjain without compromising on quality</li>
                   <li>No hidden charges, and you can choose from multiple room types (AC/Non-AC)</li>
                 </ul>
               </div>
@@ -165,7 +165,7 @@ const BlogFive = () => {
               <li>Government guesthouses (availability may be limited)</li>
               <li>Budget lodges around Railway Station Road</li>
             </ul>
-            <p className="mt-4 italic text-gray-700">But beware: low cost often comes with trade-offs in hygiene, safety, or comfort. That's why guesthouses like Pearl Homestay offer the best of both worlds — affordability and quality.</p>
+            <p className="mt-4 italic text-gray-700">But beware: low cost often comes with trade-offs in hygiene, safety, or comfort. That&apos;s why guesthouses like Pearl Homestay offer the best of both worlds — affordability and quality.</p>
           </section>
 
           <section>
@@ -173,7 +173,7 @@ const BlogFive = () => {
             <div className="bg-gray-50 p-6 rounded-lg space-y-2">
               <p>✓ Book early during festive seasons like Maha Shivratri, Kumbh, and Sawan</p>
               <p>✓ Always check for guest reviews</p>
-              <p>✓ Confirm distance from Mahakaleshwar Mandir if that's your priority</p>
+              <p>✓ Confirm distance from Mahakaleshwar Mandir if that&apos;s your priority</p>
               <p>✓ Look for cleanliness, water supply, Wi-Fi, and 24x7 accessibility</p>
             </div>
           </section>
@@ -188,7 +188,7 @@ const BlogFive = () => {
                 <p>💰 Affordable and transparent pricing</p>
               </div>
               <div className="bg-gray-50 p-4 rounded-lg">
-                <p>🚶‍♂️ Immediate access to Ujjain's top destinations</p>
+                <p>🚶‍♂️ Immediate access to Ujjain&apos;s top destinations</p>
               </div>
               <div className="bg-gray-50 p-4 rounded-lg">
                 <p>🤝 Supportive local hosts who can guide your entire journey</p>
@@ -198,15 +198,15 @@ const BlogFive = () => {
 
           <section className="bg-gray-50 p-6 rounded-lg">
             <h2 className="text-2xl font-semibold mb-4">📍 Final Thoughts</h2>
-            <p className="mb-4">So the next time you're searching for:</p>
+            <p className="mb-4">So the next time you&apos;re searching for:</p>
             <ul className="list-disc pl-6 space-y-2 mb-6">
-              <li>"places to stay in Ujjain"</li>
-              <li>"best places to stay in Ujjain near Mahakal"</li>
-              <li>"cheap and clean guesthouse in Ujjain"</li>
+              <li>&quot;places to stay in Ujjain&quot;</li>
+              <li>&quot;best places to stay in Ujjain near Mahakal&quot;</li>
+              <li>&quot;cheap and clean guesthouse in Ujjain&quot;</li>
             </ul>
-            <p className="mb-4">…you'll know where to book.</p>
+            <p className="mb-4">…you&apos;ll know where to book.</p>
             <p className="text-xl font-semibold text-center mb-4">Pearl Homestay – Your peaceful abode in the City of Shiva.</p>
-            <p className="text-center font-medium">Book now and experience Ujjain, the way it's meant to be.</p>
+            <p className="text-center font-medium">Book now and experience Ujjain, the way it&apos;s meant to be.</p>
           </section>
         </div>
       </article>

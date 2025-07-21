@@ -29,15 +29,15 @@ const BlogTwo = () => {
         <div className="space-y-8">
           <div className="space-y-4">
             <p className="text-lg md:text-xl leading-relaxed">
-              When you think of Ujjain, what comes to mind first? For most travelers and devotees, it's the divine Mahakal Mandir — one of the most sacred Jyotirlingas in India. This spiritual energy, ancient history, and cultural richness make Ujjain a magnet for pilgrims and tourists from across the globe.
+              When you think of Ujjain, what comes to mind first? For most travelers and devotees, it&apos;s the divine Mahakal Mandir — one of the most sacred Jyotirlingas in India. This spiritual energy, ancient history, and cultural richness make Ujjain a magnet for pilgrims and tourists from across the globe.
             </p>
             <p className="text-lg leading-relaxed">
-              But finding a comfortable, affordable, and convenient place to stay near Mahakaleshwar Temple can be challenging. That's where Pearl Homestay, a welcoming guesthouse in Nanakheda, steps in as your perfect accommodation partner in Ujjain.
+              But finding a comfortable, affordable, and convenient place to stay near Mahakaleshwar Temple can be challenging. That&apos;s where Pearl Homestay, a welcoming guesthouse in Nanakheda, steps in as your perfect accommodation partner in Ujjain.
             </p>
           </div>
 
           <div className="bg-gray-50 p-6 rounded-lg">
-            <h2 className="text-xl font-semibold mb-4">In this article, we'll explore:</h2>
+            <h2 className="text-xl font-semibold mb-4">In this article, we&apos;ll explore:</h2>
             <ul className="list-disc pl-6 space-y-2">
               <li>Why Ujjain is a must-visit destination</li>
               <li>The significance of Mahakal Mandir</li>
@@ -48,19 +48,19 @@ const BlogTwo = () => {
 
           <section>
             <h2 className="text-2xl font-semibold mb-4">🌟 Why Ujjain Is a Spiritual Treasure of India</h2>
-            <p className="mb-4">Located on the banks of the holy Shipra River, Ujjain is one of the oldest cities in India and is known as the City of Temples. It's not just a destination, but a spiritual experience. Ujjain is home to:</p>
+            <p className="mb-4">Located on the banks of the holy Shipra River, Ujjain is one of the oldest cities in India and is known as the City of Temples. It&apos;s not just a destination, but a spiritual experience. Ujjain is home to:</p>
             <ul className="list-disc pl-6 space-y-2">
               <li>Mahakal Mandir (Mahakaleshwar Jyotirlinga) – the most famous Shiva shrine in the country</li>
-              <li>Kumbh Mela – one of the world's largest religious gatherings</li>
+              <li>Kumbh Mela – one of the world&apos;s largest religious gatherings</li>
               <li>Ram Ghat – sacred bathing ghat along the Shipra river</li>
               <li>Bhartrihari Caves, Kal Bhairav Temple, and Sandipani Ashram – spiritual and mythological landmarks</li>
             </ul>
-            <p className="mt-4">For centuries, Ujjain has been a beacon of faith, culture, and tradition. And if you're planning a visit, choosing the right stay can make all the difference.</p>
+            <p className="mt-4">For centuries, Ujjain has been a beacon of faith, culture, and tradition. And if you&apos;re planning a visit, choosing the right stay can make all the difference.</p>
           </section>
 
           <section>
             <h2 className="text-2xl font-semibold mb-4">🔱 The Importance of Mahakal Mandir in Ujjain</h2>
-            <p className="mb-4">The Mahakal Mandir is the heart and soul of Ujjain. It's one of the 12 Jyotirlingas — shrines where Lord Shiva is believed to have manifested as a fiery column of light. Devotees believe a visit to this sacred temple washes away sins and grants liberation (moksha).</p>
+            <p className="mb-4">The Mahakal Mandir is the heart and soul of Ujjain. It&apos;s one of the 12 Jyotirlingas — shrines where Lord Shiva is believed to have manifested as a fiery column of light. Devotees believe a visit to this sacred temple washes away sins and grants liberation (moksha).</p>
             <div className="bg-gray-50 p-6 rounded-lg">
               <h3 className="font-semibold mb-3">Key highlights of the temple:</h3>
               <ul className="list-disc pl-6 space-y-2">
@@ -69,15 +69,15 @@ const BlogTwo = () => {
                 <li><span className="font-medium">Shrawan Month, Shivratri, and Nag Panchami</span> – Celebrated with great grandeur.</li>
               </ul>
             </div>
-            <p className="mt-4">If you're coming to Ujjain to visit Mahakal Mandir, staying nearby is essential for early morning rituals and easy temple access. That's where Pearl Homestay in Nanakheda becomes your ideal base.</p>
+            <p className="mt-4">If you&apos;re coming to Ujjain to visit Mahakal Mandir, staying nearby is essential for early morning rituals and easy temple access. That&apos;s where Pearl Homestay in Nanakheda becomes your ideal base.</p>
           </section>
 
           <section>
             <h2 className="text-2xl font-semibold mb-4">📍 Why Choose Nanakheda as Your Stay Location in Ujjain?</h2>
-            <p className="mb-4">Nanakheda is a rapidly developing and highly accessible neighborhood in Ujjain. It's known for:</p>
+            <p className="mb-4">Nanakheda is a rapidly developing and highly accessible neighborhood in Ujjain. It&apos;s known for:</p>
             <ul className="list-disc pl-6 space-y-2">
               <li>Its proximity to the Mahakaleshwar Temple (just 5–10 minutes by auto)</li>
-              <li>Access to Nanakheda Bus Stand, the city's major transportation hub</li>
+              <li>Access to Nanakheda Bus Stand, the city&apos;s major transportation hub</li>
               <li>Nearby restaurants, local markets, ATMs, and medical shops</li>
               <li>Calm and peaceful surroundings, away from temple crowds yet close enough</li>
             </ul>
@@ -86,7 +86,7 @@ const BlogTwo = () => {
 
           <section>
             <h2 className="text-2xl font-semibold mb-6">🏡 Introducing Pearl Homestay: The Trusted Guesthouse in Nanakheda, Ujjain</h2>
-            <p className="mb-6">Pearl Homestay is not just another place to sleep — it's a home-style guesthouse in Ujjain where comfort, cleanliness, and care come together.</p>
+            <p className="mb-6">Pearl Homestay is not just another place to sleep — it&apos;s a home-style guesthouse in Ujjain where comfort, cleanliness, and care come together.</p>
             
             <div className="space-y-6">
               <div className="bg-gray-50 p-6 rounded-lg">
@@ -138,8 +138,8 @@ const BlogTwo = () => {
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold mb-4">🛕 Mahakal Mandir and More: What's Nearby Pearl Homestay</h2>
-            <p className="mb-4">While your main goal may be to visit Mahakal Mandir, Ujjain offers a rich tapestry of experiences. Here's a quick guide to nearby spots:</p>
+            <h2 className="text-2xl font-semibold mb-4">🛕 Mahakal Mandir and More: What&apos;s Nearby Pearl Homestay</h2>
+            <p className="mb-4">While your main goal may be to visit Mahakal Mandir, Ujjain offers a rich tapestry of experiences. Here&apos;s a quick guide to nearby spots:</p>
             <div className="overflow-x-auto">
               <table className="w-full border-collapse border border-gray-300">
                 <thead className="bg-gray-50">
@@ -176,18 +176,18 @@ const BlogTwo = () => {
                 </tbody>
               </table>
             </div>
-            <p className="mt-4">Staying at Pearl Homestay in Nanakheda ensures that you're never too far from any major site in Ujjain.</p>
+            <p className="mt-4">Staying at Pearl Homestay in Nanakheda ensures that you&apos;re never too far from any major site in Ujjain.</p>
           </section>
 
           <section>
             <h2 className="text-2xl font-semibold mb-4">💬 What Guests Say About Our Homestay in Ujjain</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <blockquote className="bg-gray-50 p-6 rounded-lg border-l-4 border-gray-400">
-                <p className="italic">"A very neat and well-maintained guesthouse. I booked it to attend Bhasma Aarti, and the staff even helped me with rickshaw timing and temple entry info. Highly recommended!"</p>
+                <p className="italic">&quot;A very neat and well-maintained guesthouse. I booked it to attend Bhasma Aarti, and the staff even helped me with rickshaw timing and temple entry info. Highly recommended!&quot;</p>
                 <footer className="mt-2 font-semibold">– Pooja R., Jaipur</footer>
               </blockquote>
               <blockquote className="bg-gray-50 p-6 rounded-lg border-l-4 border-gray-400">
-                <p className="italic">"Perfect stay in Ujjain if you're visiting Mahakal Mandir. Peaceful location in Nanakheda. Will return with family again."</p>
+                <p className="italic">&quot;Perfect stay in Ujjain if you&apos;re visiting Mahakal Mandir. Peaceful location in Nanakheda. Will return with family again.&quot;</p>
                 <footer className="mt-2 font-semibold">– Satish M., Mumbai</footer>
               </blockquote>
             </div>
@@ -215,8 +215,8 @@ const BlogTwo = () => {
           <section className="bg-gray-50 p-6 rounded-lg">
             <h2 className="text-2xl font-semibold mb-4">🙌 Conclusion: Make Your Trip to Ujjain Memorable with Pearl Homestay</h2>
             <div className="space-y-4">
-              <p>Ujjain is not just a city you visit; it's a divine calling. And your stay should reflect that same spirit — peaceful, sacred, and full of heart.</p>
-              <p>Whether you're coming for a quick darshan at Mahakal Mandir, a longer spiritual break, or just to discover the historical magic of Ujjain, Pearl Homestay in Nanakheda is ready to welcome you.</p>
+              <p>Ujjain is not just a city you visit; it&apos;s a divine calling. And your stay should reflect that same spirit — peaceful, sacred, and full of heart.</p>
+              <p>Whether you&apos;re coming for a quick darshan at Mahakal Mandir, a longer spiritual break, or just to discover the historical magic of Ujjain, Pearl Homestay in Nanakheda is ready to welcome you.</p>
               <p className="font-semibold">Book your stay now and experience Ujjain like a local, rest like a pilgrim, and feel at home like family — only at Pearl Homestay.</p>
             </div>
           </section>

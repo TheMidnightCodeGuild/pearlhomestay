@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import Head from "next/head";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -10,6 +9,7 @@ const navLinks = [
   { href: "#gallery", label: "Gallery" },
   { href: "#amenities", label: "Services" },
   { href: "#contact", label: "Contact Us" },
+  { href: "/ujjain", label: "Blogs" },
 ];
 
 const Navbar = () => {

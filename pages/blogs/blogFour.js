@@ -29,16 +29,16 @@ const BlogFour = () => {
         <div className="space-y-8">
           <div className="space-y-4">
             <p className="text-lg md:text-xl leading-relaxed">
-              If you're looking for a homestay in Ujjain that combines comfort, affordability, and authentic hospitality, your search ends here. Whether you're coming to the city for spiritual reasons, a family trip, or solo travel, Pearl Homestay stands out as one of the best homestays in Ujjain — without burning a hole in your pocket.
+              If you&apos;re looking for a homestay in Ujjain that combines comfort, affordability, and authentic hospitality, your search ends here. Whether you&apos;re coming to the city for spiritual reasons, a family trip, or solo travel, Pearl Homestay stands out as one of the best homestays in Ujjain — without burning a hole in your pocket.
             </p>
             <p className="text-lg leading-relaxed">
-              Ujjain is a city of temples, traditions, and timeless energy. And while the Mahakal Mandir draws thousands of devotees daily, your stay experience matters just as much as your spiritual journey. If you're searching for a cheap homestay in Ujjain that doesn't compromise on quality, this guide is for you.
+              Ujjain is a city of temples, traditions, and timeless energy. And while the Mahakal Mandir draws thousands of devotees daily, your stay experience matters just as much as your spiritual journey. If you&apos;re searching for a cheap homestay in Ujjain that doesn&apos;t compromise on quality, this guide is for you.
             </p>
           </div>
 
           <section>
             <h2 className="text-2xl font-semibold mb-4">🛕 Why Ujjain Is a City Everyone Should Experience</h2>
-            <p className="mb-4">Before we talk about the perfect place to stay, let's understand why Ujjain is such a special place.</p>
+            <p className="mb-4">Before we talk about the perfect place to stay, let&apos;s understand why Ujjain is such a special place.</p>
             <p className="mb-4">Known as one of the oldest cities in India, Ujjain sits on the sacred Shipra River and is home to:</p>
             <ul className="list-disc pl-6 space-y-2">
               <li>Mahakaleshwar Jyotirlinga – one of the 12 sacred Jyotirlingas of Lord Shiva</li>
@@ -49,7 +49,7 @@ const BlogFour = () => {
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold mb-4">🏠 What Is a Homestay and Why It's Better Than a Hotel</h2>
+            <h2 className="text-2xl font-semibold mb-4">🏠 What Is a Homestay and Why It&apos;s Better Than a Hotel</h2>
             <p className="mb-4">Many travelers today prefer homestays over hotels, especially in cities like Ujjain where connection, culture, and calmness matter more than luxury.</p>
             <div className="bg-gray-50 p-6 rounded-lg">
               <p className="font-semibold mb-3">A homestay in Ujjain offers:</p>
@@ -76,12 +76,12 @@ const BlogFour = () => {
                   <li>3.0 km from Ram Ghat</li>
                   <li>Close to shops, eateries, and rickshaw access</li>
                 </ul>
-                <p className="mt-4">Whether you're attending the Bhasma Aarti at 4 AM or heading out for temple darshans all day, Pearl Homestay puts you in the heart of the city — yet in a peaceful, residential setting.</p>
+                <p className="mt-4">Whether you&apos;re attending the Bhasma Aarti at 4 AM or heading out for temple darshans all day, Pearl Homestay puts you in the heart of the city — yet in a peaceful, residential setting.</p>
               </div>
 
               <div className="bg-gray-50 p-6 rounded-lg">
                 <h3 className="text-xl font-semibold mb-4">✅ Affordable Room Rates (Cheap Homestay in Ujjain)</h3>
-                <p className="mb-3">We believe spiritual journeys shouldn't be expensive. That's why Pearl Homestay offers:</p>
+                <p className="mb-3">We believe spiritual journeys shouldn&apos;t be expensive. That&apos;s why Pearl Homestay offers:</p>
                 <ul className="list-disc pl-6 space-y-2">
                   <li>Non-AC rooms for budget travelers</li>
                   <li>AC rooms for families or comfort seekers</li>
@@ -101,7 +101,7 @@ const BlogFour = () => {
                   <li>Safe premises for solo and female travelers</li>
                   <li>Local tips for food, rituals, and shopping</li>
                 </ul>
-                <p className="mt-4 font-medium">We don't just offer a bed — we offer peace of mind.</p>
+                <p className="mt-4 font-medium">We don&apos;t just offer a bed — we offer peace of mind.</p>
               </div>
             </div>
           </section>
@@ -147,17 +147,17 @@ const BlogFour = () => {
             <div className="grid md:grid-cols-2 gap-6">
               <blockquote className="bg-gray-50 p-6 rounded-lg border-l-4 border-gray-400">
                 <div className="text-yellow-400 mb-2">⭐⭐⭐⭐⭐</div>
-                <p className="italic">"Pearl Homestay is the best homestay in Ujjain I've stayed at so far. It's clean, cheap, and super close to the Mahakal temple. The hosts helped us with temple darshan info too."</p>
+                <p className="italic">&quot;Pearl Homestay is the best homestay in Ujjain I&apos;ve stayed at so far. It&apos;s clean, cheap, and super close to the Mahakal temple. The hosts helped us with temple darshan info too.&quot;</p>
                 <footer className="mt-2 font-semibold">— Ananya B., Lucknow</footer>
               </blockquote>
               <blockquote className="bg-gray-50 p-6 rounded-lg border-l-4 border-gray-400">
                 <div className="text-yellow-400 mb-2">⭐⭐⭐⭐⭐</div>
-                <p className="italic">"If you want a homestay in Ujjain that feels like home, this is the place. I came with my elderly parents and the staff was so caring and patient."</p>
+                <p className="italic">&quot;If you want a homestay in Ujjain that feels like home, this is the place. I came with my elderly parents and the staff was so caring and patient.&quot;</p>
                 <footer className="mt-2 font-semibold">— Rakesh T., Pune</footer>
               </blockquote>
               <blockquote className="bg-gray-50 p-6 rounded-lg border-l-4 border-gray-400 md:col-span-2">
                 <div className="text-yellow-400 mb-2">⭐⭐⭐⭐⭐</div>
-                <p className="italic">"Way better than any hotel. If you're on a budget and want comfort, Pearl is the top cheap homestay in Ujjain."</p>
+                <p className="italic">&quot;Way better than any hotel. If you&apos;re on a budget and want comfort, Pearl is the top cheap homestay in Ujjain.&quot;</p>
                 <footer className="mt-2 font-semibold">— Pratibha M., Delhi</footer>
               </blockquote>
             </div>
@@ -238,7 +238,7 @@ const BlogFour = () => {
             <div className="space-y-4">
               <div className="bg-gray-50 p-6 rounded-lg">
                 <h3 className="font-semibold mb-2">Q: Is Pearl Homestay far from Mahakal Mandir?</h3>
-                <p>A: No, it's just 5–10 minutes away by rickshaw or 20 minutes on foot.</p>
+                <p>A: No, it&apos;s just 5–10 minutes away by rickshaw or 20 minutes on foot.</p>
               </div>
               <div className="bg-gray-50 p-6 rounded-lg">
                 <h3 className="font-semibold mb-2">Q: Do you provide early check-in?</h3>
@@ -258,7 +258,7 @@ const BlogFour = () => {
           <section>
             <h2 className="text-2xl font-semibold mb-4">📞 Book Your Homestay in Ujjain Today</h2>
             <div className="bg-gray-50 p-6 rounded-lg">
-              <p className="mb-4">Don't wait until rooms are full during peak darshan days or festival seasons. Book early and lock in your spot at Ujjain's most affordable and best-rated homestay.</p>
+              <p className="mb-4">Don&apos;t wait until rooms are full during peak darshan days or festival seasons. Book early and lock in your spot at Ujjain&apos;s most affordable and best-rated homestay.</p>
               <ul className="list-disc pl-6 space-y-2">
                 <li>📱 Call/WhatsApp us directly</li>
                 <li>🌐 Visit our website to check availability and get instant confirmation</li>
@@ -278,7 +278,7 @@ const BlogFour = () => {
               <li>👨‍👩‍👧‍👦 Family-run</li>
               <li>📍 Located near Mahakal and Nanakheda</li>
             </ul>
-            <p className="mt-4 font-semibold">So whether you're searching for a "homestay in Ujjain," "best homestay in Ujjain," or "cheap homestay in Ujjain," choose the place where comfort meets spirituality: Pearl Homestay.</p>
+            <p className="mt-4 font-semibold">So whether you&apos;re searching for a &quot;homestay in Ujjain,&quot; &quot;best homestay in Ujjain,&quot; or &quot;cheap homestay in Ujjain,&quot; choose the place where comfort meets spirituality: Pearl Homestay.</p>
           </section>
         </div>
       </article>
