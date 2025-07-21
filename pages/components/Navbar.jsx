@@ -9,7 +9,11 @@ const navLinks = [
   { href: "#gallery", label: "Gallery" },
   { href: "#amenities", label: "Services" },
   { href: "#contact", label: "Contact Us" },
+<<<<<<< HEAD
   { href: "/ujjain", label: "Blogs" },
+=======
+  { href: "/ujjain", label: "Insights" }, // Added Insights linking to ujjain.js
+>>>>>>> b070de598efcac369ea3c0f0fa96a0ebd44e6aac
 ];
 
 const Navbar = () => {
