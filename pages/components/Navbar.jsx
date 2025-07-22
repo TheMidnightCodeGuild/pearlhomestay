@@ -77,7 +77,7 @@ const Navbar = () => {
                 - md:w-36 md:h-24 (larger desktop)
                 - lg:w-44 lg:h-[160px] (even larger desktop)
               */}
-              <span className="block relative w-20 h-20 sm:w-24 sm:h-14 md:w-36 md:h-24 lg:w-44 lg:h-[160px]">
+              <span className="block relative w-20 h-20 sm:w-24 sm:h-14 md:w-36 md:h-24 lg:w-44 lg:h-[140px]">
                 <Image
                   src="/images/logo1.png"
                   alt="Pearl Homestay Ujjain Logo"
