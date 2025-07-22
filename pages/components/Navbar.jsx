@@ -9,11 +9,7 @@ const navLinks = [
   { href: "#gallery", label: "Gallery" },
   { href: "#amenities", label: "Services" },
   { href: "#contact", label: "Contact Us" },
-<<<<<<< HEAD
-  { href: "/ujjain", label: "Blogs" },
-=======
-  { href: "/ujjain", label: "Insights" }, // Added Insights linking to ujjain.js
->>>>>>> b070de598efcac369ea3c0f0fa96a0ebd44e6aac
+  { href: "/ujjain", label: "Insights" },
 ];
 
 const Navbar = () => {
@@ -56,7 +52,7 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out border-t-[10px] border-r-[10px] border-l-[10px] border-[#ffffff]    ${
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out border-t-[10px] border-r-[10px] border-l-[10px] border-[#ffffff] bg-[#C6A38D]   ${
           isScrolled ? "bg-[#C6A38D] shadow-md" : "bg-[#C6A38D]"
         } ${
           isVisible
@@ -66,34 +62,43 @@ const Navbar = () => {
         role="navigation"
         aria-label="Main navigation"
       >
-        <div className="max-w-[1300px] mx-auto px-4 sm:px-6 py-0">
+        <div className="max-w-[1300px] mx-auto px-4 sm:px-6 ">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link
               href="/"
-              className="flex items-center"
+              className="flex items-center relative"
               aria-label="Pearl Homestay Ujjain - Home"
             >
-              <Image
-                src="/images/logo1.png"
-                alt="Pearl Homestay Ujjain Logo"
-                width={150}
-                height={50}
-                className="object-cover w-20 h-20 sm:w-24 sm:h-14 md:w-28 md:h-16 lg:w-32 lg:h-[110px]"
-                priority
-              />
+              {/* 
+                Increase logo size in desktop view:
+                - w-20 h-20 (mobile)
+                - sm:w-24 sm:h-14 (small screens)
+                - md:w-36 md:h-24 (larger desktop)
+                - lg:w-44 lg:h-[160px] (even larger desktop)
+              */}
+              <span className="block relative w-20 h-20 sm:w-24 sm:h-14 md:w-36 md:h-24 lg:w-44 lg:h-[160px]">
+                <Image
+                  src="/images/logo1.png"
+                  alt="Pearl Homestay Ujjain Logo"
+                  fill
+                  className="object-contain"
+                  priority
+                  sizes="(max-width: 640px) 80px, (max-width: 768px) 96px, (max-width: 1024px) 144px, 176px"
+                />
+              </span>
             </Link>
 
             {/* Desktop Navigation */}
             <div
-              className="hidden md:flex items-center space-x-1 lg:space-x-2"
+              className="hidden md:flex items-center space-x-1 lg:space-x-3"
               role="menubar"
             >
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`px-3 py-2 rounded-lg text-sm lg:text-xs font-medium transition-all duration-200 relative group
+                  className={`px-3 py-2 rounded-lg text-sm lg:text-sm font-medium transition-all duration-200 relative group 
                     ${
                       router.pathname === link.href
                         ? "text-[#4A2511] "
@@ -105,7 +110,7 @@ const Navbar = () => {
                   role="menuitem"
                 >
                   {link.label}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#8B593E] transition-all duration-300 group-hover:w-full"></span>
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#8B593E] transition-all duration-300 group-hover:w-[100%]"></span>
                 </Link>
               ))}
               <Link

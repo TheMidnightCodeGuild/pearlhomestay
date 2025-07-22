@@ -36,7 +36,7 @@ const index = () => {
           content="Experience a luxurious and peaceful stay at Pearl Home Stay. Enjoy scenic views, comfortable accommodations, and warm hospitality."
         />
         <meta property="og:type" content="website" />
-        <link rel="canonical" href="https://pearlhomestay.com" />
+        <link rel="canonical" href="https://pearlhomestayujjain.in" />
       </Head>
       <Loader />
       <Navbar />

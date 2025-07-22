@@ -179,10 +179,12 @@ export default function NearbyAtraction() {
           className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
         >
           <header className="text-center pb-10">
-            <h1 className="text-3xl sm:text-4xl md:text-4xl font-bold text-[#000000] mb-4">
-              Nearby
-              <span className="text-[#8B593E]"> Attractions</span>
-            </h1>
+            <h2 className="text-3xl sm:text-4xl md:text-4xl font-bold text-[#000000] mb-4">
+              Spiritual Temples and Sacred Destinations Near Pearl Homestay
+            </h2>
+            <h3 className="text-xl md:text-2xl font-semibold text-[#8B593E] mb-4">
+              Explore the Perfect Stay for Pilgrims and Spiritual Seekers
+            </h3>
             <p className="text-sm sm:text-base md:text-lg text-[#5C3D2E]/80">
               Explore the rich spiritual and cultural heritage of Ujjain with
               these nearby attractions:

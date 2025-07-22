@@ -6,8 +6,7 @@ import { Autoplay } from "swiper/modules";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import Head from 'next/head';
-
+import Head from "next/head";
 
 const Testimonial = () => {
   const sectionRef = useRef(null);
@@ -57,7 +56,7 @@ const Testimonial = () => {
       id: 3,
       content:
         "I had an unforgettable experience at this homestay. The personalized service, attention to detail, and the warmth of the hosts made all the difference. Highly recommend.",
-      name: "Krish Gupta", 
+      name: "Krish Gupta",
       role: "Solo Traveler",
     },
     {
@@ -73,22 +72,31 @@ const Testimonial = () => {
     <>
       <Head>
         <title>Guest Testimonials - Pearl Homestay Ujjain</title>
-        <meta name="description" content="Read authentic reviews and testimonials from guests who have experienced the warm hospitality and comfortable stay at Pearl Homestay in Ujjain." />
-        <meta name="keywords" content="Pearl Homestay reviews, Ujjain homestay testimonials, guest feedback, customer reviews" />
-        <meta property="og:title" content="Guest Testimonials - Pearl Homestay Ujjain" />
-        <meta property="og:description" content="Read authentic reviews and testimonials from guests who have experienced the warm hospitality and comfortable stay at Pearl Homestay in Ujjain." />
+        <meta
+          name="description"
+          content="Read authentic reviews and testimonials from guests who have experienced the warm hospitality and comfortable stay at Pearl Homestay in Ujjain."
+        />
+        <meta
+          name="keywords"
+          content="Pearl Homestay reviews, Ujjain homestay testimonials, guest feedback, customer reviews"
+        />
+        <meta
+          property="og:title"
+          content="Guest Testimonials - Pearl Homestay Ujjain"
+        />
+        <meta
+          property="og:description"
+          content="Read authentic reviews and testimonials from guests who have experienced the warm hospitality and comfortable stay at Pearl Homestay in Ujjain."
+        />
       </Head>
-      <section 
+      <section
         id="testimonials"
         className="py-16 bg-[#C6A38D] border-l-[10px] border-r-[10px] border-[#ffffff]"
       >
-        <div 
-          ref={sectionRef}
-          className="max-w-[1300px] mx-auto px-4 sm:px-6"
-        >
+        <div ref={sectionRef} className="max-w-[1300px] mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl md:text-4xl font-bold mb-4 text-neutral-800">
-              What Our <span className="text-[#8B593E]">Guests</span> Say
+              Guest Experiences: Why Our Homestay is the Perfect Spiritual Stay
             </h2>
             <p className="text-base md:text-base text-neutral-900 max-w-4xl mx-auto">
               Discover the experiences of those who&apos;ve stayed with us
@@ -129,12 +137,12 @@ const Testimonial = () => {
                     </div>
                     <div className="flex items-center mt-auto">
                       <div className="flex-shrink-0">
-                        <svg 
-                          xmlns="http://www.w3.org/2000/svg" 
-                          viewBox="0 0 512 512" 
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 512 512"
                           className="w-12 h-12 text-[#8B593E]"
                         >
-                          <path d="M399 384.2C376.9 345.8 335.4 320 288 320l-64 0c-47.4 0-88.9 25.8-111 64.2c35.2 39.2 86.2 63.8 143 63.8s107.8-24.7 143-63.8zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 16a72 72 0 1 0 0-144 72 72 0 1 0 0 144z"/>
+                          <path d="M399 384.2C376.9 345.8 335.4 320 288 320l-64 0c-47.4 0-88.9 25.8-111 64.2c35.2 39.2 86.2 63.8 143 63.8s107.8-24.7 143-63.8zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 16a72 72 0 1 0 0-144 72 72 0 1 0 0 144z" />
                         </svg>
                       </div>
                       <div className="ml-4">
