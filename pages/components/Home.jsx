@@ -86,37 +86,11 @@ const HomePage = () => {
 
   return (
     <>
-      <Head>
-        <title>
-          Pearl Homestay Ujjain - Luxury Accommodation Near Mahakal Temple
-        </title>
-        <meta
-          name="description"
-          content="Experience luxury stay at Pearl Homestay Ujjain, located near Mahakaleshwar Temple. Enjoy comfortable rooms, modern amenities and warm hospitality. Book your spiritual stay today."
-        />
-        <meta
-          name="keywords"
-          content="Pearl Homestay Ujjain, accommodation near Mahakal temple, luxury homestay Ujjain, best place to stay in Ujjain"
-        />
-        <meta
-          property="og:title"
-          content="Pearl Homestay Ujjain - Luxury Accommodation Near Mahakal Temple"
-        />
-        <meta
-          property="og:description"
-          content="Experience luxury stay at Pearl Homestay Ujjain, located near Mahakaleshwar Temple. Enjoy comfortable rooms, modern amenities and warm hospitality."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://pearlhomestayujjain.in" />
-
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </Head>
-
       <section className="flex flex-col md:flex-row justify-center items-center min-h-[calc(100vh-80px)] p-4 md:p-8 sm:mt-[80px] mt-[40px] bg-[#C6A38D] border-r-[10px] border-l-[10px] border-[#ffffff]">
         <div className="w-full md:w-1/2 px-2 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-6 md:py-8">
-          <div className="md:mb-2 mt-2 sm:mt-4 md:mt-6 text-center md:text-left mx-10">
+          <div className="md:mb-2 mt-2 sm:mt-4 md:mt-6 text-center md:text-left">
             <h1 className="text-3xl sm:text-3xl md:text-4xl lg:text-[59px] font-extralight text-[#4A2511] uppercase font-masiku md:bg-transparent p-2 rounded-lg">
-              <span className="block sm:inline-block font-masiku mx-10">
+              <span className="block sm:inline-block font-masiku sm:mx-12 mx-0">
                 Welcome to
               </span>
               <br className="hidden sm:block" />
@@ -144,10 +118,9 @@ const HomePage = () => {
             make you feel right at home.&quot;
           </p>
 
-          <div className="flex justify-center md:justify-start mt-4 sm:mt-6 mx-48">
+          <div className="flex justify-center md:justify-start mt-4 sm:mt-6 sm:mx-44 mx-0">
             <Link
               href="/booking"
-              target="_blank"
               className="relative inline-flex items-center justify-start px-4 sm:px-5 py-2 sm:py-3 overflow-hidden font-bold rounded-full group hover:scale-105 transition-transform bg-[#4A2511]"
               aria-label="Book your stay at Pearl Homestay"
             >
@@ -156,7 +129,7 @@ const HomePage = () => {
               <span className="relative w-full text-sm sm:text-base text-white text-left transition-colors duration-200 ease-in-out group-hover:text-[#4A2511]">
                 Book Now
               </span>
-              <span className="absolute inset-0 border-2 border-[#ffffff] rounded-full "></span>
+              <span className="absolute inset-0 border-2 border-[#ffffff] rounded-full"></span>
             </Link>
           </div>
         </div>

@@ -59,25 +59,6 @@ export default function GoogleReviews() {
 
   return (
     <>
-      <Head>
-        <title>Google Reviews - Pearl Homestay Ujjain</title>
-        <meta
-          name="description"
-          content="Read authentic Google reviews from guests who have experienced the warm hospitality and comfortable stay at Pearl Homestay in Ujjain."
-        />
-        <meta
-          name="keywords"
-          content="Pearl Homestay Google reviews, Ujjain homestay testimonials, guest feedback, customer reviews"
-        />
-        <meta
-          property="og:title"
-          content="Google Reviews - Pearl Homestay Ujjain"
-        />
-        <meta
-          property="og:description"
-          content="Read authentic Google reviews from guests who have experienced the warm hospitality and comfortable stay at Pearl Homestay in Ujjain."
-        />
-      </Head>
       <section
         id="google-reviews"
         className="py-16 bg-[#C6A38D] border-l-[10px] border-r-[10px] border-[#ffffff]"

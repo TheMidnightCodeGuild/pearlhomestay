@@ -55,20 +55,6 @@ const Amenities = () => {
 
   return (
     <>
-      <Head>
-        <title>
-          Premium Amenities at Pearl Homestay Ujjain - Luxury Stay Near Mahakal
-          Temple
-        </title>
-        <meta
-          name="description"
-          content="Enjoy premium amenities at Pearl Homestay including AC, hot water, WiFi, power backup, security and food service. Experience comfortable accommodation near Mahakaleshwar Temple."
-        />
-        <meta
-          name="keywords"
-          content="Pearl Homestay amenities, Ujjain hotel facilities, Mahakal Temple accommodation, luxury stay Ujjain, AC rooms near Mahakaleshwar"
-        />
-      </Head>
       <section
         id="amenities"
         className="py-24 md:py-12 bg-[#C6A38D] border-l-[10px] border-r-[10px] border-[#ffffff]"

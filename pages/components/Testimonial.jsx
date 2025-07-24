@@ -70,25 +70,7 @@ const Testimonial = () => {
 
   return (
     <>
-      <Head>
-        <title>Guest Testimonials - Pearl Homestay Ujjain</title>
-        <meta
-          name="description"
-          content="Read authentic reviews and testimonials from guests who have experienced the warm hospitality and comfortable stay at Pearl Homestay in Ujjain."
-        />
-        <meta
-          name="keywords"
-          content="Pearl Homestay reviews, Ujjain homestay testimonials, guest feedback, customer reviews"
-        />
-        <meta
-          property="og:title"
-          content="Guest Testimonials - Pearl Homestay Ujjain"
-        />
-        <meta
-          property="og:description"
-          content="Read authentic reviews and testimonials from guests who have experienced the warm hospitality and comfortable stay at Pearl Homestay in Ujjain."
-        />
-      </Head>
+  
       <section
         id="testimonials"
         className="py-16 bg-[#C6A38D] border-l-[10px] border-r-[10px] border-[#ffffff]"

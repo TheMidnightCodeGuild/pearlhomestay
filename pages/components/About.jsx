@@ -36,36 +36,6 @@ const About = () => {
 
   return (
     <>
-      <Head>
-        <title>
-          About Pearl Homestay - Your Gateway to Mahakal Temple in Ujjain
-        </title>
-        <meta
-          name="description"
-          content="Experience divine comfort at Pearl Homestay, located near Mahakaleshwar Temple in Ujjain. Perfect accommodation for pilgrims visiting the sacred Jyotirlinga."
-        />
-        <meta
-          name="keywords"
-          content="Pearl Homestay, Ujjain accommodation, Mahakal Temple stay, pilgrim homestay Ujjain, Mahakaleshwar Temple accommodation"
-        />
-        <meta
-          property="og:title"
-          content="About Pearl Homestay - Your Gateway to Mahakal Temple in Ujjain"
-        />
-        <meta
-          property="og:description"
-          content="Experience divine comfort at Pearl Homestay, located near Mahakaleshwar Temple in Ujjain. Perfect accommodation for pilgrims visiting the sacred Jyotirlinga."
-        />
-        <meta property="og:type" content="website" />
-        <meta
-          property="og:url"
-          content="https://pearlhomestayujjain.in/components/About"
-        />
-        <meta
-          property="og:image"
-          content="https://pearlhomestayujjain.in/images/about.png"
-        />
-      </Head>
       <section
         id="about"
         className="w-full min-h-screen bg-[#C6A38D]  px-4 border-l-[10px] border-r-[10px] border-[#ffffff] py-24 md:py-12 "
