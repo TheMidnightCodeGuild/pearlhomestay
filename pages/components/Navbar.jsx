@@ -52,7 +52,7 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out border-t-[10px] border-r-[10px] border-l-[10px] border-[#ffffff] bg-[#C6A38D]   ${
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out border-t-[10px] border-r-[10px] border-l-[10px] border-[#ffffff] bg-[#C6A38D] ${
           isScrolled ? "bg-[#C6A38D] shadow-md" : "bg-[#C6A38D]"
         } ${
           isVisible
@@ -62,7 +62,7 @@ const Navbar = () => {
         role="navigation"
         aria-label="Main navigation"
       >
-        <div className="max-w-[1300px] mx-auto px-4 sm:px-6 ">
+        <div className="max-w-[1300px] mx-auto px-2 xs:px-4 sm:px-6">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link
@@ -70,21 +70,14 @@ const Navbar = () => {
               className="flex items-center relative"
               aria-label="Pearl Homestay Ujjain - Home"
             >
-              {/* 
-                Increase logo size in desktop view:
-                - w-20 h-20 (mobile)
-                - sm:w-24 sm:h-14 (small screens)
-                - md:w-36 md:h-24 (larger desktop)
-                - lg:w-44 lg:h-[160px] (even larger desktop)
-              */}
-              <span className="block relative w-20 h-20 sm:w-24 sm:h-14 md:w-36 md:h-24 lg:w-44 lg:h-[140px]">
+              <span className="block relative w-16 h-16 xs:w-20 xs:h-20 sm:w-24 sm:h-14 md:w-36 md:h-24 lg:w-44 lg:h-[140px]">
                 <Image
                   src="/images/logo1.png"
                   alt="Pearl Homestay Ujjain Logo"
                   fill
                   className="object-contain"
                   priority
-                  sizes="(max-width: 640px) 80px, (max-width: 768px) 96px, (max-width: 1024px) 144px, 176px"
+                  sizes="(max-width: 480px) 64px, (max-width: 640px) 80px, (max-width: 768px) 96px, (max-width: 1024px) 144px, 176px"
                 />
               </span>
             </Link>
@@ -151,7 +144,7 @@ const Navbar = () => {
               aria-controls="mobile-menu"
             >
               <svg
-                className="w-6 h-6 text-[#4A2511]"
+                className="w-5 h-5 xs:w-6 xs:h-6 text-[#4A2511]"
                 fill="none"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -178,12 +171,12 @@ const Navbar = () => {
             aria-hidden={!isMenuOpen}
             role="menu"
           >
-            <div className="py-3 space-y-2">
+            <div className="py-2 xs:py-3 space-y-1 xs:space-y-2">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`block px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 relative group
+                  className={`block px-3 xs:px-4 py-2 xs:py-3 rounded-lg text-sm xs:text-base font-medium transition-all duration-200 relative group
                     ${
                       router.pathname === link.href
                         ? "text-[#8B593E] bg-[#F2E2D7]"
@@ -198,11 +191,15 @@ const Navbar = () => {
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#8B593E] transition-all duration-300 group-hover:w-full"></span>
                 </Link>
               ))}
-              <Link href="/booking" className="block px-4 py-2" role="menuitem">
-                <div className="relative inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-[#8B593E] rounded-full shadow-md group w-full">
+              <Link
+                href="/booking"
+                className="block px-3 xs:px-4 py-2"
+                role="menuitem"
+              >
+                <div className="relative inline-flex items-center justify-center p-3 xs:p-4 px-4 xs:px-6 py-2 xs:py-3 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-[#8B593E] rounded-full shadow-md group w-full">
                   <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-[#ffffff] group-hover:translate-x-0 ease">
                     <svg
-                      className="w-6 h-6"
+                      className="w-5 h-5 xs:w-6 xs:h-6"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -217,10 +214,10 @@ const Navbar = () => {
                       ></path>
                     </svg>
                   </span>
-                  <span className="absolute flex items-center justify-center w-full h-full text-[#ffffff] transition-all duration-300 transform group-hover:translate-x-full ease">
+                  <span className="absolute flex items-center justify-center w-full h-full text-[#ffffff] transition-all duration-300 transform group-hover:translate-x-full ease text-sm xs:text-base">
                     Book Now
                   </span>
-                  <span className="relative invisible text-[#ffffff]">
+                  <span className="relative invisible text-[#ffffff] text-sm xs:text-base">
                     Book Now
                   </span>
                 </div>

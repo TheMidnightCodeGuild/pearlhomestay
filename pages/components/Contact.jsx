@@ -79,39 +79,38 @@ const Contact = () => {
 
   return (
     <>
-      {/* Contact Section */}
       <section
         id="contact"
-        className="py-24 md:py-12 bg-[#C6A38D] border-l-[10px] border-r-[10px] ] border-[#ffffff]"
+        className="py-8 xs:py-12 sm:py-16 md:py-24 bg-[#C6A38D] border-l-[5px] xs:border-l-[8px] sm:border-l-[10px] border-r-[5px] xs:border-r-[8px] sm:border-r-[10px] border-[#ffffff]"
       >
         <div
           ref={sectionRef}
-          className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+          className="mx-auto max-w-7xl px-3 xs:px-4 sm:px-6 lg:px-8"
         >
-          <div className="grid lg:grid-cols-2 grid-cols-1 gap-8">
-            <div className="lg:mb-0 mb-8">
-              <div className="group w-full h-full min-h-[400px] sm:min-h-[500px]">
-                <div className="relative h-full border-6 rounded-4xl border-[#ffffff]">
+          <div className="grid lg:grid-cols-2 grid-cols-1 gap-4 xs:gap-6 sm:gap-8">
+            <div className="lg:mb-0 mb-4 xs:mb-6 sm:mb-8">
+              <div className="group w-full h-full min-h-[300px] xs:min-h-[350px] sm:min-h-[400px] md:min-h-[500px]">
+                <div className="relative h-full border-4 xs:border-5 sm:border-6 rounded-2xl xs:rounded-3xl sm:rounded-4xl border-[#ffffff]">
                   <Image
                     src="/images/contact.png"
                     alt="Pearl Homestay Ujjain Contact Office"
                     fill
                     priority
                     quality={100}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="w-full h-full lg:rounded-l-2xl rounded-2xl object-cover"
+                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="w-full h-full rounded-xl xs:rounded-2xl lg:rounded-l-2xl object-cover"
                   />
 
-                  <div className="absolute bottom-0 w-full p-4 sm:p-6 md:p-8 lg:p-11">
-                    <div className="bg-[#1A1A1A]/80 rounded-lg p-4 sm:p-6 block">
-                      <div className="flex items-center mb-4 sm:mb-6">
+                  <div className="absolute bottom-0 w-full p-3 xs:p-4 sm:p-6 md:p-8 lg:p-11">
+                    <div className="bg-[#1A1A1A]/80 rounded-lg p-3 xs:p-4 sm:p-6 block">
+                      <div className="flex items-center mb-3 xs:mb-4 sm:mb-6">
                         <svg
-                          width="24"
-                          height="24"
+                          width="20"
+                          height="20"
                           viewBox="0 0 30 30"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
-                          className="sm:w-[30px] sm:h-[30px]"
+                          className="xs:w-[24px] xs:h-[24px] sm:w-[30px] sm:h-[30px]"
                           aria-label="Phone Icon"
                         >
                           <path
@@ -122,18 +121,18 @@ const Contact = () => {
                             strokeLinejoin="round"
                           />
                         </svg>
-                        <h5 className="text-[#F2E2D7] text-base sm:text-lg font-semibold leading-6 ml-3 sm:ml-5">
+                        <h5 className="text-[#F2E2D7] text-sm xs:text-base sm:text-lg font-semibold leading-6 ml-2 xs:ml-3 sm:ml-5">
                           +9194562-94563
                         </h5>
                       </div>
-                      <div className="flex items-center mb-4 sm:mb-6">
+                      <div className="flex items-center mb-3 xs:mb-4 sm:mb-6">
                         <svg
-                          width="24"
-                          height="24"
+                          width="20"
+                          height="20"
                           viewBox="0 0 30 30"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
-                          className="sm:w-[30px] sm:h-[30px]"
+                          className="xs:w-[24px] xs:h-[24px] sm:w-[30px] sm:h-[30px]"
                           aria-label="Email Icon"
                         >
                           <path
@@ -143,19 +142,19 @@ const Contact = () => {
                             strokeLinecap="round"
                           />
                         </svg>
-                        <h5 className="text-[#F2E2D7] text-base sm:text-lg font-semibold leading-6 ml-3 sm:ml-5 break-all">
+                        <h5 className="text-[#F2E2D7] text-sm xs:text-base sm:text-lg font-semibold leading-6 ml-2 xs:ml-3 sm:ml-5 break-all">
                           pearlhomestayujjain@gmail.com
                         </h5>
                       </div>
 
                       <div className="flex items-start">
                         <svg
-                          width="24"
-                          height="24"
+                          width="20"
+                          height="20"
                           viewBox="0 0 30 30"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
-                          className="sm:w-[30px] sm:h-[30px] mt-1"
+                          className="xs:w-[24px] xs:h-[24px] sm:w-[30px] sm:h-[30px] mt-1"
                           aria-label="Location Icon"
                         >
                           <path
@@ -169,7 +168,7 @@ const Contact = () => {
                             strokeWidth="2"
                           />
                         </svg>
-                        <h5 className="text-[#F2E2D7] text-base sm:text-lg font-semibold leading-6 ml-3 sm:ml-5">
+                        <h5 className="text-[#F2E2D7] text-sm xs:text-base sm:text-lg font-semibold leading-6 ml-2 xs:ml-3 sm:ml-5">
                           B - 61, Arpita Enclave, Near Jain Lassi, Ujjain,
                           Madhya Pradesh 456010
                         </h5>
@@ -179,16 +178,16 @@ const Contact = () => {
                 </div>
               </div>
             </div>
-            <div className="bg-[#1A1A1A] p-4 sm:p-6 md:p-8 lg:p-11 lg:rounded-r-2xl rounded-2xl border-[10px]  ">
-              <h2 className="text-[#E69500] font-manrope text-2xl sm:text-3xl md:text-4xl font-semibold leading-tight mb-6 sm:mb-8 md:mb-11">
+            <div className="bg-[#1A1A1A] p-3 xs:p-4 sm:p-6 md:p-8 lg:p-11 rounded-xl xs:rounded-2xl border-[5px] xs:border-[8px] sm:border-[10px]">
+              <h2 className="text-[#E69500] font-manrope text-xl xs:text-2xl sm:text-3xl md:text-4xl font-semibold leading-tight mb-4 xs:mb-6 sm:mb-8 md:mb-11">
                 Contact Us
               </h2>
               <form
                 onSubmit={handleSubmit}
-                className="space-y-6 sm:space-y-8 md:space-y-10"
+                className="space-y-4 xs:space-y-6 sm:space-y-8 md:space-y-10"
               >
                 <input
-                  className="w-full h-10 sm:h-12 text-[#F2E2D7] placeholder-gray-400 shadow-sm bg-transparent text-base sm:text-lg font-normal leading-7 rounded-full border border-[#F2E2D7] focus:outline-none px-4"
+                  className="w-full h-9 xs:h-10 sm:h-12 text-[#F2E2D7] placeholder-gray-400 shadow-sm bg-transparent text-sm xs:text-base sm:text-lg font-normal leading-7 rounded-full border border-[#F2E2D7] focus:outline-none px-3 xs:px-4"
                   placeholder="Name"
                   name="name"
                   value={formData.name}
@@ -198,7 +197,7 @@ const Contact = () => {
                   aria-label="Name"
                 />
                 <input
-                  className="w-full h-10 sm:h-12 text-[#F2E2D7] placeholder-gray-400 shadow-sm bg-transparent text-base sm:text-lg font-normal leading-7 rounded-full border border-[#F2E2D7] focus:outline-none px-4"
+                  className="w-full h-9 xs:h-10 sm:h-12 text-[#F2E2D7] placeholder-gray-400 shadow-sm bg-transparent text-sm xs:text-base sm:text-lg font-normal leading-7 rounded-full border border-[#F2E2D7] focus:outline-none px-3 xs:px-4"
                   placeholder="Email"
                   name="email"
                   value={formData.email}
@@ -208,7 +207,7 @@ const Contact = () => {
                   aria-label="Email"
                 />
                 <input
-                  className="w-full h-10 sm:h-12 text-[#F2E2D7] placeholder-gray-400 shadow-sm bg-transparent text-base sm:text-lg font-normal leading-7 rounded-full border border-[#F2E2D7] focus:outline-none px-4"
+                  className="w-full h-9 xs:h-10 sm:h-12 text-[#F2E2D7] placeholder-gray-400 shadow-sm bg-transparent text-sm xs:text-base sm:text-lg font-normal leading-7 rounded-full border border-[#F2E2D7] focus:outline-none px-3 xs:px-4"
                   placeholder="Phone"
                   name="phone"
                   value={formData.phone}
@@ -218,7 +217,7 @@ const Contact = () => {
                   aria-label="Phone"
                 />
                 <textarea
-                  className="w-full h-24 sm:h-32 text-[#F2E2D7] placeholder-gray-400 bg-transparent text-base sm:text-lg shadow-sm font-normal leading-7 rounded-3xl border border-[#F2E2D7] focus:outline-none p-4"
+                  className="w-full h-20 xs:h-24 sm:h-32 text-[#F2E2D7] placeholder-gray-400 bg-transparent text-sm xs:text-base sm:text-lg shadow-sm font-normal leading-7 rounded-2xl xs:rounded-3xl border border-[#F2E2D7] focus:outline-none p-3 xs:p-4"
                   placeholder="Message"
                   name="message"
                   value={formData.message}
@@ -229,11 +228,11 @@ const Contact = () => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full h-10 sm:h-12 text-[#1A1A1A] text-sm sm:text-base font-semibold leading-6 rounded-full transition-all duration-700 hover:bg-[#F2E2D7] bg-[#E69500] shadow-sm flex items-center justify-center"
+                  className="w-full h-9 xs:h-10 sm:h-12 text-[#1A1A1A] text-xs xs:text-sm sm:text-base font-semibold leading-6 rounded-full transition-all duration-700 hover:bg-[#F2E2D7] bg-[#E69500] shadow-sm flex items-center justify-center"
                   aria-label="Send Message"
                 >
                   {loading ? (
-                    <div className="w-6 h-6 border-2 border-t-transparent border-[#1A1A1A] rounded-full animate-spin"></div>
+                    <div className="w-5 xs:w-6 h-5 xs:h-6 border-2 border-t-transparent border-[#1A1A1A] rounded-full animate-spin"></div>
                   ) : (
                     "Send Message"
                   )}
