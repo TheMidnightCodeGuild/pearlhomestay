@@ -3,15 +3,15 @@ import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { db } from "../../lib/firebase";
 import { collection, addDoc } from "firebase/firestore";
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import Head from 'next/head';
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import Head from "next/head";
 
 const Contact = () => {
   const sectionRef = useRef(null);
   const [formData, setFormData] = useState({
     name: "",
-    email: "", 
+    email: "",
     phone: "",
     message: "",
   });
@@ -19,24 +19,28 @@ const Contact = () => {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    
+
     const section = sectionRef.current;
-    
-    gsap.fromTo(section, {
-      opacity: 0,
-      y: 100
-    }, {
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: section,
-        start: "top 80%",
-        end: "top 20%",
-        toggleActions: "play none none reverse"
+
+    gsap.fromTo(
+      section,
+      {
+        opacity: 0,
+        y: 100,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: section,
+          start: "top 80%",
+          end: "top 20%",
+          toggleActions: "play none none reverse",
+        },
       }
-    });
+    );
   }, []);
 
   const handleChange = (e) => {
@@ -55,7 +59,7 @@ const Contact = () => {
         email: formData.email,
         phone: formData.phone,
         message: formData.message,
-        createdAt: new Date()
+        createdAt: new Date(),
       });
 
       alert("Message sent successfully!");
@@ -65,7 +69,6 @@ const Contact = () => {
         phone: "",
         message: "",
       });
-      
     } catch (error) {
       console.error("Error:", error);
       alert("Failed to send message. Please try again later.");
@@ -76,18 +79,15 @@ const Contact = () => {
 
   return (
     <>
-      <Head>
-        <title>Contact Pearl Homestay Ujjain | Get in Touch</title>
-        <meta name="description" content="Contact Pearl Homestay Ujjain for bookings, inquiries and support. Reach us via phone, email or fill out our contact form. Located at B-61, Arpita Enclave, Near Jain Lassi, Ujjain." />
-        <meta name="keywords" content="contact pearl homestay, pearl homestay contact, homestay in ujjain contact, ujjain accommodation contact" />
-      </Head>
-
       {/* Contact Section */}
       <section
         id="contact"
         className="py-24 md:py-12 bg-[#C6A38D] border-l-[10px] border-r-[10px] ] border-[#ffffff]"
       >
-        <div ref={sectionRef} className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div
+          ref={sectionRef}
+          className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+        >
           <div className="grid lg:grid-cols-2 grid-cols-1 gap-8">
             <div className="lg:mb-0 mb-8">
               <div className="group w-full h-full min-h-[400px] sm:min-h-[500px]">
