@@ -155,37 +155,20 @@ export default function NearbyAtraction() {
 
   return (
     <>
-      <Head>
-        <title>
-          Sacred Attractions Near Pearl Homestay Ujjain - Religious & Cultural
-          Sites
-        </title>
-        <meta
-          name="description"
-          content="Explore famous religious and cultural attractions near Pearl Homestay Ujjain including Mahakaleshwar Temple, Harsiddhi Temple, Ram Ghat and other sacred sites."
-        />
-        <meta
-          name="keywords"
-          content="Ujjain attractions, Mahakaleshwar Temple, Harsiddhi Temple, Ram Ghat, religious sites Ujjain, cultural places Ujjain, places to visit near Pearl Homestay"
-        />
-      </Head>
-
       <section
         id="nearbyAttraction"
-        className="py-12 xs:py-16 sm:py-20 md:py-24 bg-[#C6A38D] border-l-[10px] border-r-[10px] border-[#ffffff]"
+        className="py-24 md:py-12 bg-[#C6A38D] border-l-[10px] border-r-[10px] border-[#ffffff]"
       >
         <div
           ref={sectionRef}
-          className="mx-auto max-w-7xl px-3 xs:px-4 sm:px-6 lg:px-8"
+          className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
         >
-          <header className="text-center pb-6 xs:pb-8 sm:pb-10">
-            <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-[#000000] mb-2 xs:mb-3 sm:mb-4">
-              Spiritual Temples and Sacred Destinations Near Pearl Homestay
-            </h2>
-            <h3 className="text-lg xs:text-xl sm:text-2xl font-semibold text-[#8B593E] mb-2 xs:mb-3 sm:mb-4">
-              Explore the Perfect Stay for Pilgrims and Spiritual Seekers
-            </h3>
-            <p className="text-xs xs:text-sm sm:text-base md:text-lg text-[#5C3D2E]/80">
+          <header className="text-center pb-10">
+            <h1 className="text-3xl sm:text-4xl md:text-4xl font-bold text-[#000000] mb-4">
+              Nearby
+              <span className="text-[#8B593E]"> Attractions</span>
+            </h1>
+            <p className="text-sm sm:text-base md:text-lg text-[#5C3D2E]/80">
               Explore the rich spiritual and cultural heritage of Ujjain with
               these nearby attractions:
             </p>
@@ -194,7 +177,7 @@ export default function NearbyAtraction() {
           <Swiper
             modules={[Navigation, Autoplay, Pagination, Parallax]}
             slidesPerView={1}
-            spaceBetween={10}
+            spaceBetween={20}
             loop={true}
             autoplay={{
               delay: 2000,
@@ -202,10 +185,6 @@ export default function NearbyAtraction() {
               reverseDirection: false,
             }}
             breakpoints={{
-              320: {
-                slidesPerView: 1,
-                spaceBetween: 10,
-              },
               480: {
                 slidesPerView: 1,
                 spaceBetween: 15,
@@ -219,13 +198,13 @@ export default function NearbyAtraction() {
                 spaceBetween: 30,
               },
             }}
-            className="swiper-container mb-4 xs:mb-6 sm:mb-8"
+            className="swiper-container mb-8"
           >
             {attractionImages.map((attraction, index) => (
               <SwiperSlide key={index}>
                 <div className="h-full flex flex-col bg-white/90 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-                  <div className="flex-grow flex flex-col p-3 xs:p-4">
-                    <div className="relative w-full h-32 xs:h-36 sm:h-40 md:h-48 mb-3 xs:mb-4 overflow-hidden rounded-md">
+                  <div className="flex-grow flex flex-col p-4">
+                    <div className="relative w-full h-40 sm:h-48 mb-4 overflow-hidden rounded-md">
                       <Image
                         src={attraction.src}
                         alt={attraction.alt}
@@ -235,16 +214,16 @@ export default function NearbyAtraction() {
                         onClick={() => openImage(attraction.src)}
                       />
                     </div>
-                    <h3 className="text-sm xs:text-base sm:text-lg font-semibold mb-2 text-[#5C3D2E]">
+                    <h3 className="text-base sm:text-lg font-semibold mb-2 text-[#5C3D2E]">
                       {attraction.title}
                     </h3>
-                    <p className="text-xs sm:text-sm text-[#5C3D2E]/70 flex-grow mb-3 xs:mb-4">
+                    <p className="text-xs sm:text-sm text-[#5C3D2E]/70 flex-grow mb-4">
                       {attraction.description}
                     </p>
                     <div className="flex justify-end">
                       <Link href={attraction.link}>
-                        <button className="bg-[#8B593E] text-white rounded-full p-1.5 xs:p-2 hover:bg-[#5C3D2E] transition-colors">
-                          <PlusIcon className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5" />
+                        <button className="bg-[#8B593E] text-white rounded-full p-2 hover:bg-[#5C3D2E] transition-colors">
+                          <PlusIcon className="w-4 h-4 sm:w-5 sm:h-5" />
                         </button>
                       </Link>
                     </div>
@@ -257,7 +236,7 @@ export default function NearbyAtraction() {
           <Swiper
             modules={[Navigation, Autoplay, Pagination, Parallax]}
             slidesPerView={1}
-            spaceBetween={10}
+            spaceBetween={20}
             loop={true}
             autoplay={{
               delay: 2000,
@@ -265,10 +244,6 @@ export default function NearbyAtraction() {
               reverseDirection: true,
             }}
             breakpoints={{
-              320: {
-                slidesPerView: 1,
-                spaceBetween: 10,
-              },
               480: {
                 slidesPerView: 1,
                 spaceBetween: 15,
@@ -287,8 +262,8 @@ export default function NearbyAtraction() {
             {moreAttractionImages.map((attraction, index) => (
               <SwiperSlide key={index}>
                 <div className="h-full flex flex-col bg-white/90 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-                  <div className="flex-grow flex flex-col p-3 xs:p-4">
-                    <div className="relative w-full h-32 xs:h-36 sm:h-40 md:h-48 mb-3 xs:mb-4 overflow-hidden rounded-md">
+                  <div className="flex-grow flex flex-col p-4">
+                    <div className="relative w-full h-40 sm:h-48 mb-4 overflow-hidden rounded-md">
                       <Image
                         priority
                         width={800}
@@ -299,16 +274,16 @@ export default function NearbyAtraction() {
                         onClick={() => openImage(attraction.src)}
                       />
                     </div>
-                    <h3 className="text-sm xs:text-base sm:text-lg font-semibold mb-2 text-[#5C3D2E]">
+                    <h3 className="text-base sm:text-lg font-semibold mb-2 text-[#5C3D2E]">
                       {attraction.title}
                     </h3>
-                    <p className="text-xs sm:text-sm text-[#5C3D2E]/70 flex-grow mb-3 xs:mb-4">
+                    <p className="text-xs sm:text-sm text-[#5C3D2E]/70 flex-grow mb-4">
                       {attraction.description}
                     </p>
                     <div className="flex justify-end">
                       <Link href={attraction.link}>
-                        <button className="bg-[#8B593E] text-white rounded-full p-1.5 xs:p-2 hover:bg-[#5C3D2E] transition-colors">
-                          <PlusIcon className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5" />
+                        <button className="bg-[#8B593E] text-white rounded-full p-2 hover:bg-[#5C3D2E] transition-colors">
+                          <PlusIcon className="w-4 h-4 sm:w-5 sm:h-5" />
                         </button>
                       </Link>
                     </div>
@@ -322,7 +297,7 @@ export default function NearbyAtraction() {
         {/* Full-screen image modal */}
         {selectedImage && (
           <div
-            className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-2 xs:p-3 sm:p-4"
+            className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4"
             onClick={closeImage}
           >
             <Image

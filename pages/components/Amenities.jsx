@@ -65,11 +65,8 @@ const Amenities = () => {
         >
           <header className="text-center mb-8 md:mb-10 lg:mb-14">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 md:mb-5 text-neutral-800">
-              Premium Amenities for a Perfect Stay at Pearl Homestay
+              Premium <span className="text-[#8B593E]">Amenities</span>
             </h2>
-            <h3 className="text-xl md:text-2xl font-semibold text-[#8B593E] mb-4">
-              Experience Comfort, Security, and Spiritual Tranquility
-            </h3>
             <p className="text-sm sm:text-base text-neutral-600 max-w-2xl mx-auto leading-relaxed px-4">
               Experience luxury and comfort with our carefully curated selection
               of premium amenities designed to make your stay exceptional.

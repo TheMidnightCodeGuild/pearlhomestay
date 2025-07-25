@@ -47,7 +47,7 @@ const index = () => {
       <Amenities />
       <Destinations />
       <Testimonial />
-      <GoogleReviews />
+      {/* <GoogleReviews /> */}
       <Contact />
       <Footer />
     </>

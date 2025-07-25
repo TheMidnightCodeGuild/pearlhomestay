@@ -37,6 +37,7 @@ const Gallery = () => {
     );
   }, []);
 
+  // Add effect to handle body scroll
   useEffect(() => {
     if (selectedImage) {
       document.body.style.overflow = "hidden";
@@ -44,6 +45,7 @@ const Gallery = () => {
       document.body.style.overflow = "unset";
     }
 
+    // Cleanup function to reset overflow when component unmounts
     return () => {
       document.body.style.overflow = "unset";
     };
@@ -118,19 +120,33 @@ const Gallery = () => {
 
   return (
     <>
+      <Head>
+        <title>
+          Gallery - Pearl Homestay Ujjain | Photo Tour of Our Accommodation
+        </title>
+        <meta
+          name="description"
+          content="Browse our gallery to see Pearl Homestay's comfortable rooms, modern amenities and peaceful surroundings. Located near Mahakaleshwar Temple in Ujjain."
+        />
+        <meta
+          name="keywords"
+          content="Pearl homestay gallery, Ujjain accommodation photos, homestay images, Mahakal temple stay pictures, Ujjain rooms gallery"
+        />
+      </Head>
+
       <section
         id="gallery"
-        className="py-6 xs:py-8 sm:py-10 md:py-12 bg-[#C6A38D] border-l-[10px] border-r-[10px] border-[#ffffff]"
+        className="py-12 md:py-12 bg-[#C6A38D] border-l-[10px] border-r-[10px] border-[#ffffff] "
       >
         <div
           ref={sectionRef}
-          className="w-full lg:max-w-[1300px] mx-auto px-2 xs:px-3 sm:px-4 md:px-6"
+          className="w-full lg:max-w-[1300px] mx-auto px-4 md:px-6 "
         >
-          <header className="text-center mb-4 xs:mb-6 sm:mb-8">
-            <h2 className="text-2xl xs:text-3xl sm:text-4xl font-bold mb-2 xs:mb-3 sm:mb-4 text-neutral-800">
+          <header className="text-center mb-8 md:mb-8">
+            <h2 className="text-3xl sm:text-4xl md:text-4xl font-bold mb-4 md:mb-2 text-neutral-800 text-center">
               Our <span className="text-[#8B593E]">Gallery</span>
             </h2>
-            <p className="text-sm xs:text-base sm:text-lg text-neutral-900 max-w-4xl leading-relaxed mx-auto px-2">
+            <p className="text-base md:text-base text-neutral-900 max-w-4xl leading-relaxed text-center mx-auto">
               Take a visual journey through our elegant spaces and discover the
               perfect setting for your stay.
             </p>
@@ -138,7 +154,7 @@ const Gallery = () => {
 
           <Swiper
             modules={[Autoplay]}
-            spaceBetween={10}
+            spaceBetween={15}
             slidesPerView={1}
             pagination={{ clickable: true }}
             autoplay={{
@@ -147,13 +163,9 @@ const Gallery = () => {
             }}
             loop={true}
             breakpoints={{
-              320: {
-                slidesPerView: 1,
-                spaceBetween: 10,
-              },
               480: {
                 slidesPerView: 2,
-                spaceBetween: 15,
+                spaceBetween: 20,
               },
               640: {
                 slidesPerView: 2,
@@ -168,21 +180,23 @@ const Gallery = () => {
                 spaceBetween: 30,
               },
             }}
-            className="[&_.swiper-pagination-bullet]:bg-[#8B593E] [&_.swiper-pagination-bullet]:w-1.5 [&_.swiper-pagination-bullet]:h-1.5 [&_.swiper-pagination-bullet]:mx-1 
-                     [&_.swiper-pagination-bullet-active]:bg-[#8B593E] [&_.swiper-pagination-bullet-active]:w-2 [&_.swiper-pagination-bullet-active]:h-2"
+            className="[&_.swiper-pagination-bullet]:bg-[#8B593E] [&_.swiper-pagination-bullet]:w-2 [&_.swiper-pagination-bullet]:h-2 [&_.swiper-pagination-bullet]:mx-1.5 
+                     [&_.swiper-pagination-bullet-active]:bg-[#8B593E] [&_.swiper-pagination-bullet-active]:w-2.5 [&_.swiper-pagination-bullet-active]:h-2.5
+                     sm:[&_.swiper-pagination-bullet]:w-1.5 sm:[&_.swiper-pagination-bullet]:h-1.5 sm:[&_.swiper-pagination-bullet]:mx-1
+                     sm:[&_.swiper-pagination-bullet-active]:w-2 sm:[&_.swiper-pagination-bullet-active]:h-2"
           >
             {images.map((image, index) => (
               <SwiperSlide key={index}>
                 <div
-                  className="relative h-[250px] xs:h-[300px] sm:h-[400px] md:h-[450px] lg:h-[500px] rounded-lg overflow-hidden border-2 xs:border-3 sm:border-4 border-[#8B593E] cursor-pointer"
+                  className="relative h-[600px] sm:h-[400px] md:h-[500px] lg:h-[500px] rounded-lg overflow-hidden border-4 border-[#8B593E] cursor-pointer"
                   onClick={() => setSelectedImage(image)}
                 >
                   <Image
                     src={image.src}
                     alt={image.alt}
                     fill
-                    className="object-cover"
-                    sizes="(max-width: 320px) 280px, (max-width: 480px) 440px, (max-width: 768px) 360px, (max-width: 1024px) 400px, 450px"
+                    className="object-cover h-full w-full sm:h-[500px] md:h-[500px] lg:h-[800px] "
+                    sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 33vw"
                     priority={index < 4}
                   />
                 </div>
@@ -194,21 +208,21 @@ const Gallery = () => {
 
       {selectedImage && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center p-2 xs:p-3 sm:p-4"
+          className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center p-4"
           onClick={() => setSelectedImage(null)}
         >
-          <div className="relative w-full h-[60vh] xs:h-[70vh] sm:h-[80vh] max-w-6xl">
+          <div className="relative w-full max-w-6xl h-[80vh]">
             <Image
               src={selectedImage.src}
               alt={selectedImage.alt}
               fill
               className="object-contain"
-              sizes="(max-width: 480px) 90vw, (max-width: 768px) 85vw, 80vw"
+              sizes="90vw"
               priority
               quality={100}
             />
             <button
-              className="absolute top-2 right-2 xs:top-3 xs:right-3 sm:top-4 sm:right-4 text-white bg-black bg-opacity-50 rounded-full p-1.5 xs:p-2 hover:bg-opacity-75"
+              className="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-75"
               onClick={(e) => {
                 e.stopPropagation();
                 setSelectedImage(null);
@@ -216,7 +230,7 @@ const Gallery = () => {
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4 xs:h-5 xs:w-5 sm:h-6 sm:w-6"
+                className="h-6 w-6"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
