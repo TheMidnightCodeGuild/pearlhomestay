@@ -120,20 +120,6 @@ const Gallery = () => {
 
   return (
     <>
-      <Head>
-        <title>
-          Gallery - Pearl Homestay Ujjain | Photo Tour of Our Accommodation
-        </title>
-        <meta
-          name="description"
-          content="Browse our gallery to see Pearl Homestay's comfortable rooms, modern amenities and peaceful surroundings. Located near Mahakaleshwar Temple in Ujjain."
-        />
-        <meta
-          name="keywords"
-          content="Pearl homestay gallery, Ujjain accommodation photos, homestay images, Mahakal temple stay pictures, Ujjain rooms gallery"
-        />
-      </Head>
-
       <section
         id="gallery"
         className="py-12 md:py-12 bg-[#C6A38D] border-l-[10px] border-r-[10px] border-[#ffffff] "
