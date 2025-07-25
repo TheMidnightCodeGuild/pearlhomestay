@@ -1,9 +1,7 @@
-"use client";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import Link from "next/link";
-import Head from "next/head";
 
 const HomePage = () => {
   const desktopImageRef = useRef(null);
