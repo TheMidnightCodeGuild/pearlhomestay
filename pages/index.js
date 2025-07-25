@@ -20,7 +20,7 @@ const index = () => {
         <title>Pearl Home Stay - Your Perfect Getaway in Nature</title>
         <meta
           name="description"
-          content="Experience a luxurious and peaceful stay at Pearl Home Stay. Enjoy scenic views, comfortable accommodations, and warm hospitality in our nature-surrounded property."
+          content="Experience luxury and tranquility at Pearl Home Stay in Ujjain. Nestled in nature, we offer comfortable rooms, scenic views and exceptional hospitality."
         />
         <meta
           name="keywords"
@@ -33,7 +33,7 @@ const index = () => {
         />
         <meta
           property="og:description"
-          content="Experience a luxurious and peaceful stay at Pearl Home Stay. Enjoy scenic views, comfortable accommodations, and warm hospitality."
+          content="Experience luxury and tranquility at Pearl Home Stay in Ujjain. Nestled in nature, we offer comfortable rooms, scenic views and exceptional hospitality."
         />
         <meta property="og:type" content="website" />
         <link rel="canonical" href="https://pearlhomestayujjain.in" />

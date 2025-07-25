@@ -90,11 +90,8 @@ const HomePage = () => {
         <div className="w-full md:w-1/2 px-2 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-6 md:py-8">
           <div className="md:mb-2 mt-2 sm:mt-4 md:mt-6 text-center md:text-left">
             <h1 className="text-3xl sm:text-3xl md:text-4xl lg:text-[59px] font-extralight text-[#4A2511] uppercase font-masiku md:bg-transparent p-2 rounded-lg">
-              <span className="block sm:inline-block font-masiku">
-                Welcome to
-              </span>
-              <br className="hidden sm:block" />
-              <span className="text-[#8B593E] animate-pulse font-masiku block mt-2 sm:mt-0">
+              Welcome to{" "}
+              <span className="text-[#8B593E] animate-pulse font-masiku">
                 Pearl Homestay
               </span>
             </h1>
