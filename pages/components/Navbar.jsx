@@ -70,10 +70,10 @@ const Navbar = () => {
               className="flex items-center relative"
               aria-label="Pearl Homestay Ujjain - Home"
             >
-              <span className="block relative w-16 h-16 xs:w-20 xs:h-20 sm:w-24 sm:h-14 md:w-36 md:h-24 lg:w-44 lg:h-[140px]">
+              <span className="block relative w-16 h-16 xs:w-20 xs:h-20 sm:w-24 sm:h-14 md:w-36 md:h-24 lg:w-44 lg:h-[120px]">
                 <Image
                   src="/images/logo1.png"
-                  alt="Pearl Homestay Ujjain Logo"
+                  alt="Pearl Homestay Ujjain"
                   fill
                   className="object-contain"
                   priority
